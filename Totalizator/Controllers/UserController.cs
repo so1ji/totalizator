@@ -8,9 +8,11 @@ using Totalizator.Services;
 using Ninject;
 using Totalizator.Models;
 using Newtonsoft.Json;
+using Totalizator.Util;
 
 namespace Totalizator.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class UserController : ApiController
     {
         IUserRepository repository;
@@ -22,7 +24,6 @@ namespace Totalizator.Controllers
         }
 
 
-        [Authorize(Roles = "System.Data.Entity.DynamicProxies.Role_2F0271305D837B32652CC60927782089F7A52BCDE8B4DAABD01172DEDF2BD43F")]
         [HttpGet]
         public string GetAllUsers()
         {

@@ -56,7 +56,11 @@
                         data: data
                     }).done(function (data)
                     {
-                        sessionStorage.setItem(tokenKey, data.access_token);
+                        var expire = new Date();
+                        expire.setHours(expire.getHours() + 4);
+                        document.cookie = 'tokenInfo=' + data.access_token + 'path=/;expires=' + expire.toUTCString + ';';
+                          alert(document.cookie);
+                   //     sessionStorage.setItem(tokenKey, data.access_token);
                     })
                 });
             })
@@ -67,7 +71,6 @@
                     var data = {
                         id: $('#deleteid').val(),
                     };
-
                     $.ajax({
                         type: 'DELETE',
                         url: '/api/user/DeleteUser',
@@ -97,11 +100,19 @@
                 })
             })
             $(function () {
+                                    var tokenKey = "tokenInfo"; //FIX 
+
                 $('#getAllUsers').click(function () {
                     $.ajax({
+
                         type: 'GET',
                         url: '/api/user/GetAllUsers',
-                        contentType: 'application/json; charset=utf-8',
+                        contentType: 'application/json; charset=UTF-8',
+                                                beforeSend: function (xhr) {
+                            var token = sessionStorage.getItem(tokenKey);
+                            xhr.setRequestHeader("Authorization", "Bearer " + token);
+                        }
+
                     })
                 })
             })

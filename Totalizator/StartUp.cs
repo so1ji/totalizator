@@ -9,6 +9,7 @@ namespace Totalizator
 {
     public class Startup
     {
+
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
         public void Configuration(IAppBuilder app)
@@ -16,10 +17,10 @@ namespace Totalizator
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/token"),
-                Provider = new OAuthCustomeTokenProvider(), // We will create
+                Provider = new OAuthCustomTokenProvider(), 
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(20),
                 AllowInsecureHttp = true,
-                RefreshTokenProvider = new OAuthCustomRefreshTokenProvider() // We will create
+                RefreshTokenProvider = new OAuthCustomRefreshTokenProvider()
             };
 
             app.UseOAuthAuthorizationServer(OAuthOptions);

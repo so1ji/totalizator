@@ -9,7 +9,7 @@ using Totalizator.Services;
 
 namespace Totalizator.Providers
 {
-    public class OAuthCustomeTokenProvider : OAuthAuthorizationServerProvider
+    public class OAuthCustomTokenProvider : OAuthAuthorizationServerProvider
     {
 
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
