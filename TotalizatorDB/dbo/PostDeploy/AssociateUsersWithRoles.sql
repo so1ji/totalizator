@@ -1,0 +1,5 @@
+﻿IF NOT EXISTS(SELECT TOP 1 * FROM UserRoles WHERE RoleId = 10 AND UserId = 3)
+BEGIN
+INSERT INTO UserRoles (RoleId, UserId) VALUES (10,3)
+END
+GO

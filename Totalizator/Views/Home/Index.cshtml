@@ -1,0 +1,113 @@
+﻿<div class="jumbotron">
+    <div>
+        <p> UserName </p>
+        <input type="text" id="username" required>
+    </div>
+    <div>
+        <p> Email </p>
+        <input type="email" id="email" required>
+    </div>
+    <div>
+        <p> Password </p>
+        <input type="password" id="pass" required>
+    </div>
+    <div>
+        <input type="submit" id="submit" value="AddUser">
+    </div>
+
+
+
+    <div>
+
+        <input id="userid" /> <br>
+        <input type="submit" id="find" value="FindUser">
+    </div>
+
+    <input id="findusername" />
+    <input id="finduseremail" />
+
+    <div>
+        <input id="deleteid" />
+        <input type="submit" id="delete" value="Delete">
+    </div> 
+    
+    <div>
+        <input type="submit" id="getAllUsers" value="GetAllUsers">
+    </div>
+    
+    @section scripts{
+        <script type="text/javascript">
+            $(function () {
+                var tokenKey = "tokenInfo"; //FIX 
+                $('#submit').click(function (e) {
+                    e.preventDefault();
+                    var data = {
+                        grant_type: 'password',
+                        username: $('#username').val(),
+                        email: $('#email').val(),
+                        password: $('#pass').val()
+                    };
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/token',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        dataType: 'json',
+                        data: data
+                    }).done(function (data)
+                    {
+                        sessionStorage.setItem(tokenKey, data.access_token);
+                    })
+                });
+            })
+
+            $(function () {
+                $('#delete').click(function (e) {
+                    e.preventDefault();
+                    var data = {
+                        id: $('#deleteid').val(),
+                    };
+
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '/api/user/DeleteUser',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(data)
+                    })
+                });
+            })
+
+            $(function () {
+                $('#find').click(function () {
+                    var tokenKey = "tokenInfo"; //FIX 
+                    var a = $('#userid').val()
+                    $.ajax({
+                        type: 'GET',
+                        url: '/api/user/GetUserNameById' + '?id=' + a,
+                        contentType: 'application/json; charset=utf-8',
+                        beforeSend: function (xhr) {
+                            var token = sessionStorage.getItem(tokenKey);
+                            xhr.setRequestHeader("Authorization", "Bearer " + token);
+                        }
+                    }).done(function (data) {
+                        var obj = jQuery.parseJSON(data);
+                        $("#findusername").val(obj.UserName)
+                        $("#finduseremail").val(obj.Email)
+                    });
+                })
+            })
+            $(function () {
+                $('#getAllUsers').click(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/api/user/GetAllUsers',
+                        contentType: 'application/json; charset=utf-8',
+                    })
+                })
+            })
+
+
+        </script>
+    }
+
+</div>

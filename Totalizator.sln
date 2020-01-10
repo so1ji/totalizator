@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TotalizatorDB", "TotalizatorDB\TotalizatorDB.sqlproj", "{CF52E3BA-4A14-4D6A-96E2-5A156570271D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Totalizator", "Totalizator\Totalizator.csproj", "{7A46F2C1-365B-4E62-A2AB-F84E681FF70B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF52E3BA-4A14-4D6A-96E2-5A156570271D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF52E3BA-4A14-4D6A-96E2-5A156570271D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF52E3BA-4A14-4D6A-96E2-5A156570271D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CF52E3BA-4A14-4D6A-96E2-5A156570271D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF52E3BA-4A14-4D6A-96E2-5A156570271D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF52E3BA-4A14-4D6A-96E2-5A156570271D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7A46F2C1-365B-4E62-A2AB-F84E681FF70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A46F2C1-365B-4E62-A2AB-F84E681FF70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A46F2C1-365B-4E62-A2AB-F84E681FF70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A46F2C1-365B-4E62-A2AB-F84E681FF70B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B3D271C-B33F-4721-99CD-6AA2D5ABE421}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b82142c2e85c4d07a5a48ae9f228fc98" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="sweeptakesDBModel.Bet" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sweeptakesDBModel.Event" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sweeptakesDBModel.Role" Width="1.5" PointX="1.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sweeptakesDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sweeptakesDBModel.Team" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sweeptakesDBModel.Type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sweeptakesDBModel.User" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Bets_Events" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Bets_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams1" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams2" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.UserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
