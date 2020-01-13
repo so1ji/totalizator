@@ -12,7 +12,7 @@ using Totalizator.Util;
 
 namespace Totalizator.Controllers
 {
-    [Authorize(Roles = "Moderator")]
+    [Authorize(Roles = "Admin")]
     public class UserController : ApiController
     {
         IUserRepository repository;

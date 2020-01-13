@@ -12,33 +12,39 @@
         <input type="password" id="pass" required>
     </div>
     <div>
-        <input type="submit" id="submit" value="AddUser">
+        <input type="submit" id="submit" value="Login">
     </div>
-
 
 
     <div>
 
-        <input id="userid" /> <br>
+        <input id="userid"/> <br>
         <input type="submit" id="find" value="FindUser">
     </div>
 
-    <input id="findusername" />
-    <input id="finduseremail" />
+    <input id="findusername"/>
+    <input id="finduseremail"/>
 
     <div>
-        <input id="deleteid" />
+        <input id="deleteid"/>
         <input type="submit" id="delete" value="Delete">
-    </div> 
-    
+    </div>
+
     <div>
         <input type="submit" id="getAllUsers" value="GetAllUsers">
     </div>
-    
+
     @section scripts{
-        <script type="text/javascript">
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+        <script>
+            function getCookie(name) {
+                var value = "; " + document.cookie;
+                var parts = value.split("; " + name + "=");
+                if (parts.length == 2) return parts.pop().split(";").shift();
+            }
+
             $(function () {
-                var tokenKey = "tokenInfo"; //FIX 
+                var tokenKey = "tokenInfo"; //FIX
                 $('#submit').click(function (e) {
                     e.preventDefault();
                     var data = {
@@ -54,13 +60,11 @@
                         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                         dataType: 'json',
                         data: data
-                    }).done(function (data)
-                    {
+                    }).done(function (data) {
                         var expire = new Date();
                         expire.setHours(expire.getHours() + 4);
-                        document.cookie = 'tokenInfo=' + data.access_token + 'path=/;expires=' + expire.toUTCString + ';';
-                          alert(document.cookie);
-                   //     sessionStorage.setItem(tokenKey, data.access_token);
+                        document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
+                        //     sessionStorage.setItem(tokenKey, data.access_token);
                     })
                 });
             })
@@ -82,14 +86,14 @@
 
             $(function () {
                 $('#find').click(function () {
-                    var tokenKey = "tokenInfo"; //FIX 
+                    var tokenKey = "tokenInfo"; //FIX
                     var a = $('#userid').val()
                     $.ajax({
                         type: 'GET',
                         url: '/api/user/GetUserNameById' + '?id=' + a,
                         contentType: 'application/json; charset=utf-8',
                         beforeSend: function (xhr) {
-                            var token = sessionStorage.getItem(tokenKey);
+                            var token = getCookie(tokenKey);
                             xhr.setRequestHeader("Authorization", "Bearer " + token);
                         }
                     }).done(function (data) {
@@ -100,7 +104,7 @@
                 })
             })
             $(function () {
-                                    var tokenKey = "tokenInfo"; //FIX 
+                var tokenKey = "tokenInfo"; //FIX
 
                 $('#getAllUsers').click(function () {
                     $.ajax({
@@ -108,8 +112,8 @@
                         type: 'GET',
                         url: '/api/user/GetAllUsers',
                         contentType: 'application/json; charset=UTF-8',
-                                                beforeSend: function (xhr) {
-                            var token = sessionStorage.getItem(tokenKey);
+                        beforeSend: function (xhr) {
+                            var token = cookie.getItem(tokenKey);
                             xhr.setRequestHeader("Authorization", "Bearer " + token);
                         }
 
