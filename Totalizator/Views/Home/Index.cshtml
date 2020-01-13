@@ -1,128 +1,154 @@
 ﻿<div class="jumbotron">
     <div>
         <p> UserName </p>
-        <input type="text" id="username" required>
-    </div>
-    <div>
-        <p> Email </p>
-        <input type="email" id="email" required>
+        <input type="text" id="username" data-bind="value: LoginUserName" required>
     </div>
     <div>
         <p> Password </p>
-        <input type="password" id="pass" required>
+        <input type="password" id="pass" data-bind="value: UserPassword" required>
     </div>
     <div>
-        <input type="submit" id="submit" value="Login">
+        <button data-bind="click: LoginClick">Login</button>
+    </div>
+
+    <div>
+        <p data-bind="text: UserName"></p>
     </div>
 
 
     <div>
 
-        <input id="userid"/> <br>
+        <input id="userid" /> <br>
         <input type="submit" id="find" value="FindUser">
     </div>
 
-    <input id="findusername"/>
-    <input id="finduseremail"/>
+    <input id="findusername" />
+    <input id="finduseremail" />
 
     <div>
-        <input id="deleteid"/>
+        <input id="deleteid" />
         <input type="submit" id="delete" value="Delete">
     </div>
 
     <div>
         <input type="submit" id="getAllUsers" value="GetAllUsers">
     </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+    <script>
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
 
-    @section scripts{
-        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
-        <script>
-            function getCookie(name) {
-                var value = "; " + document.cookie;
-                var parts = value.split("; " + name + "=");
-                if (parts.length == 2) return parts.pop().split(";").shift();
+        function getUserNameFromToken() { //не работает с allowanonymous //проверить разные варианты ограничений в контроллерере
+            var tokenKey = "tokenInfo"; //FIX
+
+            $.ajax({
+                type: 'GET',
+                url: '/api/user/GetUserNameFromToken',
+                contentType: 'application/json; charset=UTF-8',
+                beforeSend: function (xhr) {
+                    var token = getCookie(tokenKey);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                }
+            }).done(function (data) {
+                viewModel.UserName(data);
+            })
+        }
+
+        var viewModel = {
+            UserName: ko.observable(),
+            LoginUserName: ko.observable(),
+            UserPassword: ko.observable(),
+
+
+
+            LoginClick: function () {
+                var tokenKey = "tokenInfo"; //FIX
+                var data = {
+                    grant_type: 'password',
+                    username: viewModel.LoginUserName(),
+                    password: viewModel.UserPassword()
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/token',
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    dataType: 'json',
+                    data: data
+                }).done(function (data) {
+                    var expire = new Date();
+                    expire.setHours(expire.getHours() + 4);
+                    document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
+                    //     sessionStorage.setItem(tokenKey, data.access_token);
+                    // вывести куда-то имя авторизированного юзера
+                    setTimeout(getUserNameFromToken, 1000);
+                })
             }
+        }
+        ko.applyBindings(viewModel);
 
-            $(function () {
+
+
+
+        $(function () {
+            $('#delete').click(function (e) {
+                e.preventDefault();
+                var data = {
+                    id: $('#deleteid').val(),
+                };
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/api/user/DeleteUser',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data)
+                })
+            });
+        })
+
+        $(function () {
+            $('#find').click(function () {
                 var tokenKey = "tokenInfo"; //FIX
-                $('#submit').click(function (e) {
-                    e.preventDefault();
-                    var data = {
-                        grant_type: 'password',
-                        username: $('#username').val(),
-                        email: $('#email').val(),
-                        password: $('#pass').val()
-                    };
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/token',
-                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                        dataType: 'json',
-                        data: data
-                    }).done(function (data) {
-                        var expire = new Date();
-                        expire.setHours(expire.getHours() + 4);
-                        document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
-                        //     sessionStorage.setItem(tokenKey, data.access_token);
-                    })
+                var a = $('#userid').val()
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/user/GetUserNameById' + '?id=' + a,
+                    contentType: 'application/json; charset=utf-8',
+                    beforeSend: function (xhr) {
+                        var token = getCookie(tokenKey);
+                        xhr.setRequestHeader("Authorization", "Bearer " + token);
+                    }
+                }).done(function (data) {
+                    var obj = jQuery.parseJSON(data);
+                    $("#findusername").val(obj.UserName)
+                    $("#finduseremail").val(obj.Email)
                 });
             })
+        })
+        $(function () {
+            var tokenKey = "tokenInfo"; //FIX
 
-            $(function () {
-                $('#delete').click(function (e) {
-                    e.preventDefault();
-                    var data = {
-                        id: $('#deleteid').val(),
-                    };
-                    $.ajax({
-                        type: 'DELETE',
-                        url: '/api/user/DeleteUser',
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify(data)
-                    })
-                });
-            })
+            $('#getAllUsers').click(function () {
+                $.ajax({
 
-            $(function () {
-                $('#find').click(function () {
-                    var tokenKey = "tokenInfo"; //FIX
-                    var a = $('#userid').val()
-                    $.ajax({
-                        type: 'GET',
-                        url: '/api/user/GetUserNameById' + '?id=' + a,
-                        contentType: 'application/json; charset=utf-8',
-                        beforeSend: function (xhr) {
-                            var token = getCookie(tokenKey);
-                            xhr.setRequestHeader("Authorization", "Bearer " + token);
-                        }
-                    }).done(function (data) {
-                        var obj = jQuery.parseJSON(data);
-                        $("#findusername").val(obj.UserName)
-                        $("#finduseremail").val(obj.Email)
-                    });
+                    type: 'GET',
+                    url: '/api/user/GetUserNameFromToken',
+                    contentType: 'application/json; charset=UTF-8',
+                    beforeSend: function (xhr) {
+                        var token = getCookie(tokenKey);
+                        xhr.setRequestHeader("Authorization", "Bearer " + token);
+                    }
+
                 })
             })
-            $(function () {
-                var tokenKey = "tokenInfo"; //FIX
-
-                $('#getAllUsers').click(function () {
-                    $.ajax({
-
-                        type: 'GET',
-                        url: '/api/user/GetAllUsers',
-                        contentType: 'application/json; charset=UTF-8',
-                        beforeSend: function (xhr) {
-                            var token = cookie.getItem(tokenKey);
-                            xhr.setRequestHeader("Authorization", "Bearer " + token);
-                        }
-
-                    })
-                })
-            })
+        })
 
 
-        </script>
-    }
+    </script>
+}
 
 </div>

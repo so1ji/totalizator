@@ -1,6 +1,6 @@
 ﻿<#@ template language="C#" debug="false" hostspecific="true"#>
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@
- output extension=".cs"#><#@ import namespace="System.CodeDom.Compiler" #><#@ import namespace="System.Collections.Generic" #><#@ import namespace="System.Globalization" #><#@ import namespace="System.Text" #><#
+ output extension=".cs"#><#@ import namespace="System.CodeDom.Compiler" #><#@ import namespace="System.Collections.Generic" #><#@ import namespace="System.Globalization" #><#@ import namespace="System.Text" #><#@ assembly name="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" #><#@ import namespace="System.Data.Entity.Core.Metadata.Edm" #><#@ assembly name="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" #><#
 
 const string inputFile = @"DataModel.edmx";
 var textTransform = DynamicTextTransformation.Create(this);

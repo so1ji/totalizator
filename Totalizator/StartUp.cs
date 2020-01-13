@@ -18,7 +18,7 @@ namespace Totalizator
             {
                 TokenEndpointPath = new PathString("/token"),
                 Provider = new OAuthCustomTokenProvider(), 
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(20),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(4), //CHECK
                 AllowInsecureHttp = true,
                 RefreshTokenProvider = new OAuthCustomRefreshTokenProvider()
             };

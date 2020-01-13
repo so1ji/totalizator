@@ -9,6 +9,8 @@ using Ninject;
 using Totalizator.Models;
 using Newtonsoft.Json;
 using Totalizator.Util;
+using Microsoft.Owin.Security.OAuth;
+using System.Security.Claims;
 
 namespace Totalizator.Controllers
 {
@@ -29,6 +31,14 @@ namespace Totalizator.Controllers
         {
             var users = repository.ListUser();
             return JsonConvert.SerializeObject(users);
+        }
+
+        [HttpGet]
+        public string GetUserNameFromToken()
+        {
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var name = ClaimsPrincipal.Current.Identity.Name;
+            return name;
         }
 
         [HttpGet]

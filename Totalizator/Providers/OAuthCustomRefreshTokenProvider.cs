@@ -22,8 +22,6 @@ namespace Totalizator.Providers
         public async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
             var guid = Guid.NewGuid().ToString();
-            /* Copy claims from previous token
-             ***********************************/
             var refreshTokenProperties = new AuthenticationProperties(context.Ticket.Properties.Dictionary)
             {
                 IssuedUtc = context.Ticket.Properties.IssuedUtc,
@@ -33,7 +31,6 @@ namespace Totalizator.Providers
 
             _refreshTokens.TryAdd(guid, refreshTokenTicket);
 
-            // consider storing only the hash of the handle  
             context.SetToken(guid);
 
         }
@@ -52,6 +49,5 @@ namespace Totalizator.Providers
             throw new NotImplementedException();
         }
 
-        // We will add code here
     }
 }
