@@ -33,13 +33,12 @@
     <div>
         <input type="submit" id="getAllUsers" value="GetAllUsers">
     </div>
-</div>
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
-        function getCookie(name) {
+        function getCookiePartByKey(key) {
             var value = "; " + document.cookie;
-            var parts = value.split("; " + name + "=");
+            var parts = value.split("; " + key + "=");
             if (parts.length == 2) return parts.pop().split(";").shift();
         }
 
@@ -51,7 +50,7 @@
                 url: '/api/user/GetUserNameFromToken',
                 contentType: 'application/json; charset=UTF-8',
                 beforeSend: function (xhr) {
-                    var token = getCookie(tokenKey);
+                    var token = getCookiePartByKey(tokenKey);
                     xhr.setRequestHeader("Authorization", "Bearer " + token);
                 }
             }).done(function (data) {
@@ -119,7 +118,7 @@
                     url: '/api/user/GetUserNameById' + '?id=' + a,
                     contentType: 'application/json; charset=utf-8',
                     beforeSend: function (xhr) {
-                        var token = getCookie(tokenKey);
+                        var token = getCookiePartByKey(tokenKey);
                         xhr.setRequestHeader("Authorization", "Bearer " + token);
                     }
                 }).done(function (data) {
@@ -139,7 +138,7 @@
                     url: '/api/user/GetUserNameFromToken',
                     contentType: 'application/json; charset=UTF-8',
                     beforeSend: function (xhr) {
-                        var token = getCookie(tokenKey);
+                        var token = getCookiePartByKey(tokenKey);
                         xhr.setRequestHeader("Authorization", "Bearer " + token);
                     }
 
