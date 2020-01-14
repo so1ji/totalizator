@@ -4,17 +4,31 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Totalizator.Models;
 using Totalizator.Services;
 
 namespace Totalizator.Controllers
 {
     public class EventController : ApiController
     {
-        IEventRepository _repo;
+        IEventRepository repository;
 
         public EventController(IEventRepository eventRepository)
         {
-            _repo = eventRepository;
+            repository = eventRepository;
         }
+
+        [HttpPost]
+        public HttpResponseMessage Register(Event eventData)
+        {
+            if (eventData != null) //TODO ADD VALIDATION
+            {
+                repository.AddEvent(eventData);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+
     }
 }

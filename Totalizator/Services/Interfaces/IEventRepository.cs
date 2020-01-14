@@ -9,7 +9,7 @@ namespace Totalizator.Services
 {
   public  interface IEventRepository
     {
-        IEnumerable<Event> ListUser();
-        void AddUser(Event item);
+        IEnumerable<Event> ListEvent();
+        void AddEvent(Event item);
     }
 }

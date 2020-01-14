@@ -5,6 +5,10 @@ using System.Web.Http;
 
 namespace Totalizator
 {
+
+
+
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

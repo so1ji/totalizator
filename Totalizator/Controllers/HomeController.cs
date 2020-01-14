@@ -25,7 +25,6 @@ namespace Totalizator.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Users = _repo.ListUser();
             return View();
         }
     }

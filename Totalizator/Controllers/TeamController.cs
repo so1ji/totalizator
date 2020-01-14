@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -12,18 +13,18 @@ namespace Totalizator.Controllers
     public class TeamController : ApiController
     {
 
-        ITeamRepository _repo;
+        ITeamRepository repository;
 
         public TeamController(ITeamRepository teamRepository)
         {
-            _repo = teamRepository;
+            repository = teamRepository;
         }
 
         [HttpGet]
-        public HttpResponseMessage GetListOfTeams()
+        public string  GetListOfTeams()
         {
-            //var response = Request.CreateResponse<IEnumerable<Team>>(HttpStatusCode.OK, _repo.ListTeam);
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            var teamList = repository.ListTeam();
+            return JsonConvert.SerializeObject(teamList);
         }
 
     }

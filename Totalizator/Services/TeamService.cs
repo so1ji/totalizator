@@ -8,7 +8,7 @@ namespace Totalizator.Services
 {
     public class TeamService : ITeamRepository
     {
-        sweeptakesDBEntities sweeptakes = new sweeptakesDBEntities();
+        sweeptakesDBEntities db = new sweeptakesDBEntities();
         public void AddTeam(Team team)
         {
             throw new NotImplementedException();
@@ -16,7 +16,7 @@ namespace Totalizator.Services
 
         public IEnumerable<Team> ListTeam()
         {
-            return sweeptakes.Teams;
+            return db.Teams;
         }
     }
 }

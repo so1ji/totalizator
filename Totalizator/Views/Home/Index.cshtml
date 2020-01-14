@@ -1,4 +1,5 @@
-﻿<div class="jumbotron">
+﻿@Scripts.Render("~/scripts/LoginService.js")
+<div class="jumbotron">
     <div>
         <p> UserName </p>
         <input type="text" id="username" data-bind="value: LoginUserName" required>
@@ -33,107 +34,44 @@
     <div>
         <input type="submit" id="getAllUsers" value="GetAllUsers">
     </div>
-@section scripts{
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
-    <script>
-        function getCookiePartByKey(key) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + key + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
 
-        function getUserNameFromToken() { //не работает с allowanonymous //проверить разные варианты ограничений в контроллерере
-            var tokenKey = "tokenInfo"; //FIX
-
-            $.ajax({
-                type: 'GET',
-                url: '/api/user/GetUserNameFromToken',
-                contentType: 'application/json; charset=UTF-8',
-                beforeSend: function (xhr) {
-                    var token = getCookiePartByKey(tokenKey);
-                    xhr.setRequestHeader("Authorization", "Bearer " + token);
-                }
-            }).done(function (data) {
-                viewModel.UserName(data);
-            })
-        }
-
-        var viewModel = {
-            UserName: ko.observable(),
-            LoginUserName: ko.observable(),
-            UserPassword: ko.observable(),
+    <select data-bind="options: TeamsList"></select>
 
 
-
-            LoginClick: function () {
-                var tokenKey = "tokenInfo"; //FIX
-                var data = {
-                    grant_type: 'password',
-                    username: viewModel.LoginUserName(),
-                    password: viewModel.UserPassword()
-                };
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/token',
-                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                    dataType: 'json',
-                    data: data
-                }).done(function (data) {
-                    var expire = new Date();
-                    expire.setHours(expire.getHours() + 4);
-                    document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
-                    //     sessionStorage.setItem(tokenKey, data.access_token);
-                    // вывести куда-то имя авторизированного юзера
-                    setTimeout(getUserNameFromToken, 1000);
-                })
+    @Scripts.Render("~/bundles/jquery")
+    @section scripts{
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+        <script>
+            function getCookiePartByKey(key) {
+                var value = "; " + document.cookie;
+                var parts = value.split("; " + key + "=");
+                if (parts.length == 2) return parts.pop().split(";").shift();
             }
-        }
-        ko.applyBindings(viewModel);
 
-
-
-
-        $(function () {
-            $('#delete').click(function (e) {
-                e.preventDefault();
-                var data = {
-                    id: $('#deleteid').val(),
-                };
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/api/user/DeleteUser',
-                    contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify(data)
-                })
-            });
-        })
-
-        $(function () {
-            $('#find').click(function () {
+            function getTeams() {
                 var tokenKey = "tokenInfo"; //FIX
-                var a = $('#userid').val()
                 $.ajax({
                     type: 'GET',
-                    url: '/api/user/GetUserNameById' + '?id=' + a,
-                    contentType: 'application/json; charset=utf-8',
+                    url: '/api/team/GetListOfTeams',
+                    contentType: 'application/json; charset=UTF-8',
                     beforeSend: function (xhr) {
                         var token = getCookiePartByKey(tokenKey);
                         xhr.setRequestHeader("Authorization", "Bearer " + token);
                     }
                 }).done(function (data) {
                     var obj = jQuery.parseJSON(data);
-                    $("#findusername").val(obj.UserName)
-                    $("#finduseremail").val(obj.Email)
-                });
-            })
-        })
-        $(function () {
-            var tokenKey = "tokenInfo"; //FIX
+                    let names = new Array();
+                    for (let i = 0; i < obj.length; i++) {
+                        names.push(obj[i].Name);
+                    }
+                    return names;
+                })
+            }
 
-            $('#getAllUsers').click(function () {
+            function getUserNameFromToken() {//проверить разные варианты ограничений в контроллерере
+                var tokenKey = "tokenInfo"; //FIX
+
                 $.ajax({
-
                     type: 'GET',
                     url: '/api/user/GetUserNameFromToken',
                     contentType: 'application/json; charset=UTF-8',
@@ -141,13 +79,98 @@
                         var token = getCookiePartByKey(tokenKey);
                         xhr.setRequestHeader("Authorization", "Bearer " + token);
                     }
+                }).done(function (data) {
+                    viewModel.UserName(data);
+                })
+            }
 
+            var viewModel = {
+                UserName: ko.observable(),
+                LoginUserName: ko.observable(),
+                UserPassword: ko.observable(),
+                TeamsList: ko.observableArray(getTeams()),
+
+
+
+                LoginClick: function () {
+                    var data = {
+                        grant_type: 'password',
+                        username: viewModel.LoginUserName(),
+                        password: viewModel.UserPassword()
+                    };
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/token',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        dataType: 'json',
+                        data: data
+                    }).done(function (data) {
+                        var expire = new Date();
+                        expire.setHours(expire.getHours() + 4);
+                        document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
+                    })
+                }
+            }
+            ko.applyBindings(viewModel);
+
+
+
+
+            $(function () {
+                $('#delete').click(function (e) {
+                    e.preventDefault();
+                    var data = {
+                        id: $('#deleteid').val(),
+                    };
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '/api/user/DeleteUser',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(data)
+                    })
+                });
+            })
+
+            $(function () {
+                $('#find').click(function () {
+                    var tokenKey = "tokenInfo"; //FIX
+                    var a = $('#userid').val()
+                    $.ajax({
+                        type: 'GET',
+                        url: '/api/user/GetUserNameById' + '?id=' + a,
+                        contentType: 'application/json; charset=utf-8',
+                        beforeSend: function (xhr) {
+                            var token = getCookiePartByKey(tokenKey);
+                            xhr.setRequestHeader("Authorization", "Bearer " + token);
+                        }
+                    }).done(function (data) {
+                        var obj = jQuery.parseJSON(data);
+                        $("#findusername").val(obj.UserName)
+                        $("#finduseremail").val(obj.Email)
+                    });
                 })
             })
-        })
+            $(function () {
+                var tokenKey = "tokenInfo"; //FIX
+
+                $('#getAllUsers').click(function () {
+                    $.ajax({
+
+                        type: 'GET',
+                        url: '/api/user/GetUserNameFromToken',
+                        contentType: 'application/json; charset=UTF-8',
+                        beforeSend: function (xhr) {
+                            var token = getCookiePartByKey(tokenKey);
+                            xhr.setRequestHeader("Authorization", "Bearer " + token);
+                        }
+
+                    })
+                })
+            })
 
 
-    </script>
-}
+        </script>
+    }
 
 </div>
