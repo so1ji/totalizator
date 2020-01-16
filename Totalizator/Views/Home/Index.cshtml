@@ -17,28 +17,29 @@
     </div>
 
 
-    <div>
+    @*<div>
 
-        <input id="userid" /> <br>
-        <input type="submit" id="find" value="FindUser">
-    </div>
+            <input id="userid" /> <br>
+            <input type="submit" id="find" value="FindUser">
+        </div>
 
-    <input id="findusername" />
-    <input id="finduseremail" />
+        <input id="findusername" />
+        <input id="finduseremail" />
 
-    <div>
-        <input id="deleteid" />
-        <input type="submit" id="delete" value="Delete">
-    </div>
+        <div>
+            <input id="deleteid" />
+            <input type="submit" id="delete" value="Delete">
+        </div>
 
-    <div>
-        <input type="submit" id="getAllUsers" value="GetAllUsers">
-    </div>
+        <div>
+            <input type="submit" id="getAllUsers" value="GetAllUsers">
+        </div>*@
 
     <select data-bind="options: TeamsList"></select>
 
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/LoginService.js")
     @section scripts{
         <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
         <script>
@@ -64,11 +65,11 @@
                     for (let i = 0; i < obj.length; i++) {
                         names.push(obj[i].Name);
                     }
-                    return names;
+                    loginViewModel.TeamsList(names);
                 })
             }
 
-            function getUserNameFromToken() {//проверить разные варианты ограничений в контроллерере
+            function getUserNameFromToken() {
                 var tokenKey = "tokenInfo"; //FIX
 
                 $.ajax({
@@ -80,39 +81,43 @@
                         xhr.setRequestHeader("Authorization", "Bearer " + token);
                     }
                 }).done(function (data) {
-                    viewModel.UserName(data);
+                    loginViewModel.UserName(data);
                 })
             }
 
-            var viewModel = {
-                UserName: ko.observable(),
-                LoginUserName: ko.observable(),
-                UserPassword: ko.observable(),
-                TeamsList: ko.observableArray(getTeams()),
+
+            function LoginViewModel(loginService) { //вынести?
+
+                var self = this;
+                self.init = function () {
 
 
+                    self.loginService = loginService;
 
-                LoginClick: function () {
-                    var data = {
-                        grant_type: 'password',
-                        username: viewModel.LoginUserName(),
-                        password: viewModel.UserPassword()
-                    };
+                    self.UserName = ko.observable();//useless
+                    self.LoginUserName = ko.observable();
+                    self.UserPassword = ko.observable();
+                    self.TeamsList = ko.observableArray();
 
-                    $.ajax({
-                        type: 'POST',
-                        url: '/token',
-                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                        dataType: 'json',
-                        data: data
-                    }).done(function (data) {
-                        var expire = new Date();
-                        expire.setHours(expire.getHours() + 4);
-                        document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
-                    })
+                                getTeams(); //куда?
+
+
+                    self.LoginClick = function () {
+
+                        loginService.signIn(self.LoginUserName(), self.UserPassword());
+                    }
+
                 }
             }
-            ko.applyBindings(viewModel);
+
+            var loginService = new LoginService();
+            var loginViewModel = new LoginViewModel(loginService);
+
+            loginViewModel.init();
+
+            ko.applyBindings(loginViewModel);
+
+
 
 
 
