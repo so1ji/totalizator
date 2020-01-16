@@ -1,5 +1,4 @@
-﻿@Scripts.Render("~/scripts/LoginService.js")
-<div class="jumbotron">
+﻿<div class="jumbotron">
     <div>
         <p> UserName </p>
         <input type="text" id="username" data-bind="value: LoginUserName" required>
@@ -39,7 +38,8 @@
 
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/LoginService.js")
+    @Scripts.Render("~/Scripts/Services/LoginService.js")
+    @Scripts.Render("~/Scripts/ViewModels/LoginViewModel.js")
     @section scripts{
         <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
         <script>
@@ -86,29 +86,6 @@
             }
 
 
-            function LoginViewModel(loginService) { //вынести?
-
-                var self = this;
-                self.init = function () {
-
-
-                    self.loginService = loginService;
-
-                    self.UserName = ko.observable();//useless
-                    self.LoginUserName = ko.observable();
-                    self.UserPassword = ko.observable();
-                    self.TeamsList = ko.observableArray();
-
-                                getTeams(); //куда?
-
-
-                    self.LoginClick = function () {
-
-                        loginService.signIn(self.LoginUserName(), self.UserPassword());
-                    }
-
-                }
-            }
 
             var loginService = new LoginService();
             var loginViewModel = new LoginViewModel(loginService);

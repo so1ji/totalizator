@@ -27,5 +27,13 @@ namespace Totalizator.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Main()
+        {
+            return View();
+        }
+
+
     }
 }
