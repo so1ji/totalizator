@@ -22,6 +22,14 @@ namespace Totalizator
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Services").IncludeDirectory(
+                "~/Scripts/Services/", "*.js", true
+                ));
+
+            bundles.Add(new ScriptBundle("~/ViewModels").IncludeDirectory(
+                "~/Scripts/ViewModels/", "*.js", true
+                ));
         }
     }
 }

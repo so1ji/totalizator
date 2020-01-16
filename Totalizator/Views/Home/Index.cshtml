@@ -16,6 +16,9 @@
     </div>
 
 
+    <a href="/Home/Main">Main page</a>
+
+
     @*<div>
 
             <input id="userid" /> <br>
@@ -38,8 +41,8 @@
 
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/Services/LoginService.js")
-    @Scripts.Render("~/Scripts/ViewModels/LoginViewModel.js")
+    @Scripts.Render("~/Services")
+    @Scripts.Render("~/ViewModels")
     @section scripts{
         <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
         <script>
@@ -48,44 +51,6 @@
                 var parts = value.split("; " + key + "=");
                 if (parts.length == 2) return parts.pop().split(";").shift();
             }
-
-            function getTeams() {
-                var tokenKey = "tokenInfo"; //FIX
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/team/GetListOfTeams',
-                    contentType: 'application/json; charset=UTF-8',
-                    beforeSend: function (xhr) {
-                        var token = getCookiePartByKey(tokenKey);
-                        xhr.setRequestHeader("Authorization", "Bearer " + token);
-                    }
-                }).done(function (data) {
-                    var obj = jQuery.parseJSON(data);
-                    let names = new Array();
-                    for (let i = 0; i < obj.length; i++) {
-                        names.push(obj[i].Name);
-                    }
-                    loginViewModel.TeamsList(names);
-                })
-            }
-
-            function getUserNameFromToken() {
-                var tokenKey = "tokenInfo"; //FIX
-
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/user/GetUserNameFromToken',
-                    contentType: 'application/json; charset=UTF-8',
-                    beforeSend: function (xhr) {
-                        var token = getCookiePartByKey(tokenKey);
-                        xhr.setRequestHeader("Authorization", "Bearer " + token);
-                    }
-                }).done(function (data) {
-                    loginViewModel.UserName(data);
-                })
-            }
-
-
 
             var loginService = new LoginService();
             var loginViewModel = new LoginViewModel(loginService);
@@ -96,63 +61,8 @@
 
 
 
-
-
-
-            $(function () {
-                $('#delete').click(function (e) {
-                    e.preventDefault();
-                    var data = {
-                        id: $('#deleteid').val(),
-                    };
-                    $.ajax({
-                        type: 'DELETE',
-                        url: '/api/user/DeleteUser',
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify(data)
-                    })
-                });
-            })
-
-            $(function () {
-                $('#find').click(function () {
-                    var tokenKey = "tokenInfo"; //FIX
-                    var a = $('#userid').val()
-                    $.ajax({
-                        type: 'GET',
-                        url: '/api/user/GetUserNameById' + '?id=' + a,
-                        contentType: 'application/json; charset=utf-8',
-                        beforeSend: function (xhr) {
-                            var token = getCookiePartByKey(tokenKey);
-                            xhr.setRequestHeader("Authorization", "Bearer " + token);
-                        }
-                    }).done(function (data) {
-                        var obj = jQuery.parseJSON(data);
-                        $("#findusername").val(obj.UserName)
-                        $("#finduseremail").val(obj.Email)
-                    });
-                })
-            })
-            $(function () {
-                var tokenKey = "tokenInfo"; //FIX
-
-                $('#getAllUsers').click(function () {
-                    $.ajax({
-
-                        type: 'GET',
-                        url: '/api/user/GetUserNameFromToken',
-                        contentType: 'application/json; charset=UTF-8',
-                        beforeSend: function (xhr) {
-                            var token = getCookiePartByKey(tokenKey);
-                            xhr.setRequestHeader("Authorization", "Bearer " + token);
-                        }
-
-                    })
-                })
-            })
-
-
         </script>
     }
+    
 
 </div>

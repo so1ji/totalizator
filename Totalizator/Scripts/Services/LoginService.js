@@ -20,6 +20,8 @@
             var expire = new Date();
             expire.setHours(expire.getHours() + 4);
             document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
+        }).done(function () {
+            location.href = "/Home/Main"; //норм?
         })
     }
 }
