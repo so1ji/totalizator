@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "CreateEvent";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Services")
+@Scripts.Render("~/ViewModels")
+@Styles.Render("~/Content/CreateEvent.css")
+
+
+<h2>CreateEvent</h2>
+
+<div>
+
+    <div class="container">
+
+        <p>Type</p>
+        <select data-bind="options: TypeList"></select>
+
+    </div>
+
+    <div class="container">
+
+        <p>Date</p>
+        <input type="datetime-local" id="date">
+
+    </div>
+
+    <div class="container">
+
+        <p>Name</p>
+        <input id="name">
+
+    </div>
+
+    <div class="container">
+
+        <p>Description</p>
+        <textarea id="description"></textarea>
+
+    </div>
+
+    <div class="container">
+
+        <p>Coefficient</p>
+        <input type="number" id="coefficient">
+
+    </div>
+
+    <div class="container">
+
+        <p>First Team</p>
+        <select id="firstTeam" data-bind="options: TeamList"></select>
+
+    </div>
+
+    <div class="container">
+
+        <p>Second Team</p>
+        <select id="secondTeam" data-bind="options: TeamList"></select>
+
+    </div>
+
+    <div class="container">
+
+        <p>Winner</p>
+        <input id="winner">
+
+    </div>
+
+    <div class="container">
+
+        <p>Total Points</p>
+        <input type="number" id="total">
+
+    </div>
+
+    <div class="container">
+
+        <p>Status</p>
+        <select data-bind="options: StatusesList"></select>
+
+    </div>
+
+
+
+</div>
+
+@section scripts{
+
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+    <script>
+        function getCookiePartByKey(key) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + key + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        var createEventService = new CreateEventService();
+        var createEventViewModel = new CreateEventViewModel(createEventService);
+
+        createEventViewModel.init();
+
+        ko.applyBindings(createEventViewModel);
+    </script>
+
+
+}
+
+
+

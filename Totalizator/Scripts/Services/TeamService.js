@@ -14,6 +14,6 @@
         for (let i = 0; i < obj.length; i++) {
             names.push(obj[i].Name);
         }
-        loginViewModel.TeamsList(names);
+        createEventViewModel.TeamList(names);
     })
 }

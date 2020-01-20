@@ -25,9 +25,6 @@ namespace Totalizator.Services
             IEnumerable<User> userIEnum = db.Users;
 
             var users = userIEnum.Where(p => p.Id == id).ToList();
-
-
-            // User user = db.Users.Find(id);
             return users;
         }
 

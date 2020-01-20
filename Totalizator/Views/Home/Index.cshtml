@@ -1,7 +1,7 @@
 ﻿<div class="jumbotron">
     <div>
         <p> UserName </p>
-        <input type="text" id="username" data-bind="value: LoginUserName" required>
+        <input type="text" id="username" data-bind="value: UserName" required>
     </div>
     <div>
         <p> Password </p>
@@ -11,34 +11,8 @@
         <button data-bind="click: LoginClick">Login</button>
     </div>
 
-    <div>
-        <p data-bind="text: UserName"></p>
-    </div>
-
-
     <a href="/Home/Main">Main page</a>
-
-
-    @*<div>
-
-            <input id="userid" /> <br>
-            <input type="submit" id="find" value="FindUser">
-        </div>
-
-        <input id="findusername" />
-        <input id="finduseremail" />
-
-        <div>
-            <input id="deleteid" />
-            <input type="submit" id="delete" value="Delete">
-        </div>
-
-        <div>
-            <input type="submit" id="getAllUsers" value="GetAllUsers">
-        </div>*@
-
-    <select data-bind="options: TeamsList"></select>
-
+    <a href="/Home/CreateEvent">Create Event page</a>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Services")
