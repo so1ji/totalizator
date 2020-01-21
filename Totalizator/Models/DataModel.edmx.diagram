@@ -16,7 +16,7 @@
         <AssociationConnector Association="sweeptakesDBModel.FK_Bets_Users" ManuallyRouted="false" />
         <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams" ManuallyRouted="false" />
         <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams1" ManuallyRouted="false" />
-        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams2" ManuallyRouted="false" />
+        <AssociationConnector Association="sweeptakesDBModel.FK_Events_Teams2" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="sweeptakesDBModel.FK_Events_Types" ManuallyRouted="false" />
         <AssociationConnector Association="sweeptakesDBModel.FK_Events_Users" ManuallyRouted="false" />
         <AssociationConnector Association="sweeptakesDBModel.FK_Events_Users1" ManuallyRouted="false" />

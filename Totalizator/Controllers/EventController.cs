@@ -25,10 +25,9 @@ namespace Totalizator.Controllers
         [HttpGet]
         public string GetStatusList()
         {
-            var listOfStatuses = Enum.GetNames(typeof(EventStatusEnum));
+            var listOfStatuses = typeof(EventStatusEnum).GetEnumNames();
 
-
-            return JsonConvert.SerializeObject(listOfStatuses);
+            return JsonConvert.SerializeObject(listOfStatuses); 
         }
 
         public string GetTypesList()

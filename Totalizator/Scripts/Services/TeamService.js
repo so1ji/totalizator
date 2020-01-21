@@ -10,10 +10,10 @@
         }
     }).done(function (data) {
         var obj = jQuery.parseJSON(data);
-        let names = new Array();
+        let teams = new Array();
         for (let i = 0; i < obj.length; i++) {
-            names.push(obj[i].Name);
+            teams.push(obj[i]);
         }
-        createEventViewModel.TeamList(names);
+        createEventViewModel.TeamList(teams);
     })
 }

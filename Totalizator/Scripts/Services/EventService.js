@@ -31,10 +31,11 @@ function getTypes(){
         }
     }).done(function (data) {
         var obj = jQuery.parseJSON(data);
-        let statuses = new Array();
+        let types = new Array();
         for (let i = 0; i < obj.length; i++) {
-            statuses.push(obj[i].Name);
+            types.push(obj[i]);
         }
-        createEventViewModel.TypeList(statuses);
+        createEventViewModel.TypeList(types);
     })
+
 }
