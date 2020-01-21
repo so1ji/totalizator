@@ -14,7 +14,7 @@ using System.Security.Claims;
 
 namespace Totalizator.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   
     public class UserController : ApiController
     {
         IUserRepository repository;
@@ -53,17 +53,17 @@ namespace Totalizator.Controllers
         {
             if (userData != null)
             {
-                if (userData.UserName.Length > 3 && userData.UserName.Length < 15)
-                {
-                    if (userData.Password.Length > 6 && userData.Password.Length < 10)
-                    {
-                        if (userData.Email.Length > 5 && userData.Email.Length < 40)
-                        {
+                //if (userData.UserName.Length > 3 && userData.UserName.Length < 15)
+                //{
+                //    if (userData.Password.Length > 6 && userData.Password.Length < 10)
+                //    {
+                //        if (userData.Email.Length > 5 && userData.Email.Length < 40)
+                //        {
                             repository.AddUser(userData);
                             return new HttpResponseMessage(HttpStatusCode.OK);
-                        }
-                    }
-                }
+            //            }
+            //        }
+            //    }
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }

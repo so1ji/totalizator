@@ -11,7 +11,6 @@ namespace Totalizator.Providers
 {
     public class OAuthCustomRefreshTokenProvider : IAuthenticationTokenProvider
     {
-        // Add a static variable
         private static ConcurrentDictionary<string, AuthenticationTicket> _refreshTokens = new ConcurrentDictionary<string, AuthenticationTicket>();
 
         public void Create(AuthenticationTokenCreateContext context)

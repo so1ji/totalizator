@@ -1,7 +1,7 @@
 ﻿function LoginService() {
     var self = this;
 
-    self.signIn = function (LoginUserName, UserPassword) {
+    self.signIn = function (UserName, UserPassword) {
 
         var tokenKey = "tokenInfo"; //FIX
         var data = {
@@ -22,6 +22,21 @@
             document.cookie = "tokenInfo=" + data.access_token + "; path=/; expires=" + expire.toUTCString() + ";";
         }).done(function () {
             location.href = "/Home/Main";
+        })
+    }
+
+    self.register = function (UserName, UserPassword) {
+        var data = {
+            grant_type: 'password',
+            username: UserName,
+            password: UserPassword
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/api/user/Register',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            dataType: 'json',
+            data: data
         })
     }
 }
