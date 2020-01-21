@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -27,7 +25,7 @@ namespace Totalizator.Controllers
         {
             var listOfStatuses = typeof(EventStatusEnum).GetEnumNames();
 
-            return JsonConvert.SerializeObject(listOfStatuses); 
+            return JsonConvert.SerializeObject(listOfStatuses);
         }
 
         public string GetTypesList()
