@@ -41,7 +41,7 @@ public partial class Event
 
     public int TeamFirstId { get; set; }
 
-    public int TeamdSecondId { get; set; }
+    public int TeamSecondId { get; set; }
 
     public int WinnerId { get; set; }
 

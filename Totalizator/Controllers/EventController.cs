@@ -46,7 +46,7 @@ namespace Totalizator.Controllers
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
 
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            return new HttpResponseMessage(HttpStatusCode.Conflict);
         }
 
     }

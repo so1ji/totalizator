@@ -24,7 +24,9 @@
 
 
         self.SaveEvent = function () {
-            createEventService.saveEvent(self.FirstTeamId());
+            createEventService.saveEvent(self.FirstTeamId(), self.SecondTeamId(),
+                self.TypeOfEvent(), self.DateOfEvent(), self.NameOfEvent(), self.DescriptionOfEvent(),
+                self.CoefficientOfEvent(), self.WinnerTeamId(), self.TotalPoints(), self.StatusOfEvent());
         }
 
         getStatuses();
