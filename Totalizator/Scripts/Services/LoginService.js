@@ -6,7 +6,7 @@
         var tokenKey = "tokenInfo"; //FIX
         var data = {
             grant_type : 'password',
-            username : LoginUserName,
+            username : UserName,
             password : UserPassword
         };
    

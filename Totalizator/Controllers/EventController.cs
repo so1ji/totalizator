@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Totalizator.Models;
+using Totalizator.Models.DbModel;
+using Totalizator.Models.DomenModel;
 using Totalizator.Models.Enums;
 using Totalizator.Services;
 
@@ -30,16 +33,20 @@ namespace Totalizator.Controllers
 
         public string GetTypesList()
         {
-            sweeptakesDBEntities dB = new sweeptakesDBEntities();
+            totalizatorEntities dB = new totalizatorEntities();
             var typesList = dB.Types.ToList();
             return JsonConvert.SerializeObject(typesList);
         }
 
         [HttpPost]
-        public HttpResponseMessage Register(Event eventData)
+        public HttpResponseMessage Register(EventDomenModel domenEventData)
         {
-            if (eventData != null) //TODO ADD VALIDATION
+            if (domenEventData != null) //TODO ADD VALIDATION
             {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventDomenModel, Event>());
+                var mapper = new Mapper(config);
+                Event eventData = mapper.Map<EventDomenModel, Event>(domenEventData);
+
                 repository.AddEvent(eventData);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

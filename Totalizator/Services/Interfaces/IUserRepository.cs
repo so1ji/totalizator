@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Totalizator.Models;
+using Totalizator.Models.DbModel;
 
 namespace Totalizator.Services
 {

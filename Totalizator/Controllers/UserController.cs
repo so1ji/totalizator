@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Totalizator.Util;
 using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
+using Totalizator.Models.DbModel;
 
 namespace Totalizator.Controllers
 {

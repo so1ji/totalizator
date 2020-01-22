@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -210,43 +213,44 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bet.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+    <Compile Include="Models\DbModel\Bet.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModel.Context.cs">
+    <Compile Include="Models\DbModel\Event.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel\Role.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel\sysdiagram.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel\Team.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel\totalizatorModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.Context.tt</DependentUpon>
+      <DependentUpon>totalizatorModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModel.cs">
+    <Compile Include="Models\DbModel\totalizatorModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModel.Designer.cs">
+    <Compile Include="Models\DbModel\totalizatorModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.edmx</DependentUpon>
+      <DependentUpon>totalizatorModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DbModel\Type.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbModel\User.cs">
+      <DependentUpon>totalizatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DomenModel\EventDomenModel.cs" />
     <Compile Include="Models\Enums\EventStatusEnum.cs" />
-    <Compile Include="Models\Event.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Role.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Team.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Type.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\OAuthCustomTokenProvider.cs" />
     <Compile Include="Providers\OAuthCustomRefreshTokenProvider.cs" />
@@ -271,15 +275,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DataModel.Context.tt">
+    <Content Include="Models\DbModel\totalizatorModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+      <DependentUpon>totalizatorModel.edmx</DependentUpon>
+      <LastGenOutput>totalizatorModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DataModel.tt">
+    <Content Include="Models\DbModel\totalizatorModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.cs</LastGenOutput>
+      <DependentUpon>totalizatorModel.edmx</DependentUpon>
+      <LastGenOutput>totalizatorModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -302,12 +306,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\DataModel.edmx">
+    <EntityDeploy Include="Models\DbModel\totalizatorModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>totalizatorModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DataModel.edmx.diagram">
-      <DependentUpon>DataModel.edmx</DependentUpon>
+    <Content Include="Models\DbModel\totalizatorModel.edmx.diagram">
+      <DependentUpon>totalizatorModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
