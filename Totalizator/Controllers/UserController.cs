@@ -12,10 +12,11 @@ using Totalizator.Util;
 using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
 using Totalizator.Models.DbModel;
+using System.Web;
 
 namespace Totalizator.Controllers
 {
-   
+
     public class UserController : ApiController
     {
         IUserRepository repository;
@@ -34,18 +35,17 @@ namespace Totalizator.Controllers
             return JsonConvert.SerializeObject(users);
         }
 
+
         [HttpGet]
-        public string GetUserNameFromToken()
+        public string GetCurrentUser()
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
             var name = ClaimsPrincipal.Current.Identity.Name;
-            return name;
-        }
 
-        [HttpGet]
-        public string GetUserNameById(int id)
-        {
-            string json = JsonConvert.SerializeObject(repository.GetUserById(id).FirstOrDefault());
+            var user = repository.GetUserByName(name);
+
+            var json = JsonConvert.SerializeObject(user);
+
             return json;
         }
 
@@ -60,11 +60,11 @@ namespace Totalizator.Controllers
                 //    {
                 //        if (userData.Email.Length > 5 && userData.Email.Length < 40)
                 //        {
-                            repository.AddUser(userData);
-                            return new HttpResponseMessage(HttpStatusCode.OK);
-            //            }
-            //        }
-            //    }
+                repository.AddUser(userData);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+                //            }
+                //        }
+                //    }
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }

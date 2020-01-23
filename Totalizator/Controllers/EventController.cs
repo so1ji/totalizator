@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,7 +13,7 @@ using Totalizator.Services;
 
 namespace Totalizator.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Moderator")]
     public class EventController : ApiController
     {
         IEventRepository repository;
@@ -43,10 +44,13 @@ namespace Totalizator.Controllers
         {
             if (domenEventData != null) //TODO ADD VALIDATION
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventDomenModel, Event>());
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventDomenModel, Event>()
+                .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date))));
+
+
                 var mapper = new Mapper(config);
                 Event eventData = mapper.Map<EventDomenModel, Event>(domenEventData);
-
+                eventData.CreateDate = DateTime.Now;
                 repository.AddEvent(eventData);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

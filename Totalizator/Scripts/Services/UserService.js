@@ -14,6 +14,24 @@
     })
 }
 
+function getCurrentUser() { // rename in controller and interface
+    var tokenKey = "tokenInfo"; //FIX
+    $.ajax({
+        type: 'GET',
+        url: '/api/user/GetCurrentUser',
+        contentType: 'application/json; charset=UTF-8',
+        beforeSend: function (xhr) {
+            var token = getCookiePartByKey(tokenKey);
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+        }
+    }).done(function (data) {
+        var obj = jQuery.parseJSON(data);
+        $("#userName").append(obj.UserName)
+        $("#userID").append(obj.Id)
+    });
+}
+
+
 function deleteUserById(id) {
     var data = {
         id: id, // data or one value?

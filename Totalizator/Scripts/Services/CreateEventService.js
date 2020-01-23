@@ -3,24 +3,22 @@
 
     self.saveEvent = function (FirstTeamId, SecondTeamId, TypeOfEvent, DateOfEvent,
         NameOfEvent, DescriptionOfEvent, CoefficientOfEvent, WinnerTeamId, TotalPoints, StatusOfEvent) {
-        var currentDate = new Date();
         var tokenKey = "tokenInfo"; //FIX
         var data =
         {
             TypeId: TypeOfEvent,
-            Date: DateOfEvent, //
+            Date: DateOfEvent,
             Name: NameOfEvent,
             Description: DescriptionOfEvent,
             Coefficient: CoefficientOfEvent,
             TeamFirstId: FirstTeamId,
             TeamSecondId: SecondTeamId,
-            WinnerId: 1,//
+            WinnerId: WinnerTeamId,//addd a null value
             TotalPoints: TotalPoints,
             CreatorId: 1, //
-            CreateDate: currentDate,
             Status: StatusOfEvent //
         };
-        alert(SecondTeamId);
+        console.log(data);
         $.ajax({
             type: 'POST',
             url: '/api/event/Register',

@@ -12,6 +12,11 @@
         <button data-bind="click: RegisterClick">Register</button>
     </div>
 
+    <div>
+        <p id="userName">UserName:</p>
+        <p id="userID">UserID: </p>
+    </div>
+
     <a href="/Home/Main">Main page</a>
     <a href="/Home/CreateEvent">Create Event page</a>
 
@@ -27,6 +32,7 @@
                 if (parts.length == 2) return parts.pop().split(";").shift();
             }
 
+
             var loginService = new LoginService();
             var loginViewModel = new LoginViewModel(loginService);
 
@@ -34,10 +40,12 @@
 
             ko.applyBindings(loginViewModel);
 
+            getCurrentUser();
+
 
 
         </script>
     }
-    
+
 
 </div>

@@ -18,7 +18,7 @@ namespace Totalizator.Services
             return db.Users;
         }
 
-        public User Validate(string email, string password) //TODO ADD IN INTERFACE
+        public User Validate(string email, string password)
           => ListUser().FirstOrDefault(x => x.Email == email && x.Password == password);
 
         public IEnumerable<User> GetUserById(int id)
@@ -27,6 +27,12 @@ namespace Totalizator.Services
 
             var users = userIEnum.Where(p => p.Id == id).ToList();
             return users;
+        }
+
+        public User GetUserByName(string name)
+        {
+            var user = db.Users.Where(p => p.UserName == name).FirstOrDefault();
+            return user;
         }
 
 
@@ -46,7 +52,6 @@ namespace Totalizator.Services
 
         public void DeleteUser(int id)
         {
-            //TODO check nulls
             User user = db.Users.Find(id);
             db.Users.Remove(user);
             db.SaveChanges();

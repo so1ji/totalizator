@@ -11,6 +11,7 @@ namespace Totalizator.Services
         IEnumerable<User> GetUserById(int id);
 
         void DeleteUser(int id);
-
+        User GetUserByName(string name);
+        User Validate(string email, string password);
     }
 }
