@@ -3,6 +3,10 @@
 
     self.saveEvent = function (FirstTeamId, SecondTeamId, TypeOfEvent, DateOfEvent,
         NameOfEvent, DescriptionOfEvent, CoefficientOfEvent, WinnerTeamId, TotalPoints, StatusOfEvent) {
+
+        var creatorId = getCurrentUser(); //return a obj
+        console.log(creatorId);
+     
         var tokenKey = "tokenInfo"; //FIX
         var data =
         {
@@ -15,7 +19,7 @@
             TeamSecondId: SecondTeamId,
             WinnerId: WinnerTeamId,//addd a null value
             TotalPoints: TotalPoints,
-            CreatorId: 1, //
+            CreatorId: creatorId,
             Status: StatusOfEvent //
         };
         console.log(data);

@@ -14,9 +14,11 @@
     })
 }
 
-function getCurrentUser() { // rename in controller and interface
+function getCurrentUser() {
     var tokenKey = "tokenInfo"; //FIX
+    var user;
     $.ajax({
+        async: false,
         type: 'GET',
         url: '/api/user/GetCurrentUser',
         contentType: 'application/json; charset=UTF-8',
@@ -25,11 +27,10 @@ function getCurrentUser() { // rename in controller and interface
             xhr.setRequestHeader("Authorization", "Bearer " + token);
         }
     }).done(function (data) {
-        var obj = jQuery.parseJSON(data);
-        $("#userName").append(obj.UserName)
-        $("#userID").append(obj.Id)
+        user = data;
     });
-}
+    return user;
+}   
 
 
 function deleteUserById(id) {

@@ -43,8 +43,7 @@ namespace Totalizator.Controllers
             var name = ClaimsPrincipal.Current.Identity.Name;
 
             var user = repository.GetUserByName(name);
-
-            var json = JsonConvert.SerializeObject(user);
+            var json = JsonConvert.SerializeObject(user.Id);
 
             return json;
         }
