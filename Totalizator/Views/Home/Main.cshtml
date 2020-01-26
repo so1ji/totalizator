@@ -2,5 +2,72 @@
     ViewBag.Title = "Main";
 }
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Services")
+@Scripts.Render("~/ViewModels")
+@Styles.Render("~/Content/CreateEvent.css")
+
 <h2>Main</h2>
 
+<div class="main-element" data-bind="foreach: eventsList">
+    <div class="event-element">
+        <div class="event-element-item" data-bind="text: Name"></div>
+        <div class="event-element-item"></div>
+
+        <div class="event-element-item event-score">
+            <span class="team-1-points"></span>
+            <span>:</span>
+            <span class="team-2-points"></span>
+        </div>
+
+        <div class="event-element-item"></div>
+
+        <div class="event-element-item event-controls">
+            <div class="make-bet"></div>
+            <div class="event-edit"></div>
+        </div>
+
+        <div class="event-element-info">
+            <div class="event-element-info-date" data-bind="text: Date"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+    <script>
+
+        function getCookiePartByKey(key) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + key + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+        function getEvents() {
+            var tokenKey = "tokenInfo"; //FIX
+            $.ajax({
+                type: 'GET',
+                url: '/api/event/GetEventsList',
+                contentType: 'application/json; charset=UTF-8',
+                beforeSend: function (xhr) {
+                    var token = getCookiePartByKey(tokenKey);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                }
+            }).done(function (data) {
+                var obj = jQuery.parseJSON(data);
+                console.log(obj);
+                viewModel.eventsList(obj);
+            })
+
+        }
+
+
+        var viewModel = {
+            eventsList: ko.observableArray()
+        }
+
+        ko.applyBindings(viewModel);
+        getEvents();
+
+    </script>
+}

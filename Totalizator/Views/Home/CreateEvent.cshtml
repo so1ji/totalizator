@@ -11,106 +11,87 @@
 
 <h2>CreateEvent</h2>
 
-<div>
+<div class="main-element">
 
-    <div class="container">
-
-        <p>Type</p>
-        <select data-bind="options: TypeList, optionsText: 'Name', optionsValue: 'Id', value: TypeOfEvent"></select>
-
+    <div class="item-element">
+        <label for="gameType">Type</label>
+        <select id="gameType" data-bind="options: TypeList, optionsText: 'Name', optionsValue: 'Id', value: TypeOfEvent"></select>
     </div>
 
-    <div class="container">
-
-        <p>Date</p>
+    <div class="item-element">
+        <label for="date">Date</label>
         <input type="datetime-local" id="date" data-bind="value: DateOfEvent">
-
     </div>
 
-    <div class="container">
-
-        <p>Name</p>
+    <div class="item-element">
+        <label>Name</label>
         <input id="name" data-bind="value: NameOfEvent">
-
     </div>
 
-    <div class="container">
-
-        <p>Description</p>
+    <div class="item-element">
+        <label>Description</label>
         <textarea id="description" data-bind="value: DescriptionOfEvent"></textarea>
-
     </div>
 
-    <div class="container">
+    <div class="item-element">
 
-        <p>Coefficient</p>
+        <label>Coefficient</label>
         <input type="number" step="0.1" id="coefficient" data-bind="value: CoefficientOfEvent">
-         
+
     </div>
 
-    <div class="container">
+    <div class="item-element">
 
-        <p>First Team</p>
+        <label>First Team</label>
         <select id="firstTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: FirstTeamId"></select>
 
     </div>
 
-    <div class="container">
-
-        <p>Second Team</p>
+    <div class="item-element">
+        <label>Second Team</label>
         <select id="secondTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: SecondTeamId"></select>
-
     </div>
 
-    <div class="container">
-
-        <p>Winner</p>
+    <div class="item-element">
+        <label>Winner</label>
         <select id="winner" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: WinnerTeamId"></select>
-
     </div>
 
-    <div class="container">
-
-        <p>Total Points</p>
-        <input  type="number" step="0.5" id="total" data-bind="value: TotalPoints">
-
+    <div class="item-element">
+        <label>Total Points</label>
+        <input type="number" step="0.5" id="total" data-bind="value: TotalPoints">
     </div>
 
-    <div class="container">
-
-        <p>Status</p>
+    <div class="item-element">
+        <label>Status</label>
         <select data-bind="options: StatusesList, value: StatusOfEvent"></select>
-
     </div>
 
-
-    <div>
-        <input type="submit" data-bind="click: SaveEvent" />
-        </div>
-
-
+    <div class="button-container">
+        <button data-bind="click: SaveEvent">Submit</button>
+    </div>
 </div>
 
-@section scripts{
+    @section scripts{
 
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
-    <script>
-        function getCookiePartByKey(key) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + key + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+        <script>
+            function getCookiePartByKey(key) {
+                var value = "; " + document.cookie;
+                var parts = value.split("; " + key + "=");
+                if (parts.length == 2) return parts.pop().split(";").shift();
+            }
 
-        var createEventService = new CreateEventService();
-        var createEventViewModel = new CreateEventViewModel(createEventService);
+            var createEventService = new CreateEventService();
+            var createEventViewModel = new CreateEventViewModel(createEventService);
 
-        createEventViewModel.init();
+            createEventViewModel.init();
 
-        ko.applyBindings(createEventViewModel);
-    </script>
+            ko.applyBindings(createEventViewModel);
+        </script>
 
 
-}
+    }
 
 
 

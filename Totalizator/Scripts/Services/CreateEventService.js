@@ -6,7 +6,7 @@
 
         var creatorId = getCurrentUser(); //return a obj
         console.log(creatorId);
-     
+
         var tokenKey = "tokenInfo"; //FIX
         var data =
         {
@@ -20,7 +20,7 @@
             WinnerId: WinnerTeamId,//addd a null value
             TotalPoints: TotalPoints,
             CreatorId: creatorId,
-            Status: StatusOfEvent //
+            Status: StatusOfEvent
         };
         console.log(data);
         $.ajax({

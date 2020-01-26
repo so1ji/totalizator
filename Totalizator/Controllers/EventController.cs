@@ -31,12 +31,19 @@ namespace Totalizator.Controllers
 
             return JsonConvert.SerializeObject(listOfStatuses);
         }
-
+        //TODO HTTP GET
         public string GetTypesList()
         {
             totalizatorEntities dB = new totalizatorEntities();
             var typesList = dB.Types.ToList();
             return JsonConvert.SerializeObject(typesList);
+        }
+
+        [HttpGet]
+        public string GetEventsList()
+        {
+            var eventsList = repository.ListEvent();
+            return JsonConvert.SerializeObject(eventsList);
         }
 
         [HttpPost]
@@ -45,7 +52,9 @@ namespace Totalizator.Controllers
             if (domenEventData != null) //TODO ADD VALIDATION
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<EventDomenModel, Event>()
-                .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date))));
+                .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
+                .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)))
+                );
 
 
                 var mapper = new Mapper(config);

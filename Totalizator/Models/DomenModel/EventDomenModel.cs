@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Totalizator.Models.Enums;
 
 namespace Totalizator.Models.DomenModel
 {
@@ -21,6 +22,6 @@ namespace Totalizator.Models.DomenModel
         public DateTime CreateDate { get; set; }
         public int? EditorId { get; set; }
         public int? EditDate { get; set; }
-        public byte Status { get; set; }
+        public string Status { get; set; }
     }
 }
