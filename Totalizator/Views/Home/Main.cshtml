@@ -5,7 +5,7 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/Services")
 @Scripts.Render("~/ViewModels")
-@Styles.Render("~/Content/CreateEvent.css")
+@Styles.Render("~/Content/totalizatorStyles.css")
 
 <h2>Main</h2>
 
@@ -34,7 +34,7 @@
 </div>
 
 <div class="pagination-container" data-bind="foreach: paginationButtons">
-    <button data-bind="text: $data, click: $parent.load($data)"></button>
+    <button class="pagination-item" data-bind="text: $data, click: $parent.load.bind($data)"></button>
 </div>
 
 @section scripts{

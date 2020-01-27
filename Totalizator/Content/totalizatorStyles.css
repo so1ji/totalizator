@@ -70,9 +70,9 @@ button {
     width: 100px;
 }
 
-.event-element-item:first-child {
-    text-align: left;
-}
+    .event-element-item:first-child {
+        text-align: left;
+    }
 
 .event-score {
     font-size: 24px;
@@ -89,26 +89,26 @@ button {
     width: 20px;
 }
 
-.make-bet::before, .make-bet::after {
-    background: #6f6f6f;
-    content: "";
-    display: block;
-    height: 2px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -1px 0 0 -10px;
-    transition: 200ms;
-    width: 20px;
-}
+    .make-bet::before, .make-bet::after {
+        background: #6f6f6f;
+        content: "";
+        display: block;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -1px 0 0 -10px;
+        transition: 200ms;
+        width: 20px;
+    }
 
-.make-bet:hover::before, .make-bet:hover::after, .event-edit:hover, .event-edit:hover::before, .event-edit:hover::after {
-    background: black;
-}
+    .make-bet:hover::before, .make-bet:hover::after, .event-edit:hover, .event-edit:hover::before, .event-edit:hover::after {
+        background: black;
+    }
 
-.make-bet::after {
-    transform: rotate(90deg);
-}
+    .make-bet::after {
+        transform: rotate(90deg);
+    }
 
 .event-edit {
     cursor: pointer;
@@ -124,19 +124,19 @@ button {
         width: 4px;
     }
 
-.event-edit::before, .event-edit::after {
-    position: absolute;
-    content: "";
-    display: block;
-}
+        .event-edit::before, .event-edit::after {
+            position: absolute;
+            content: "";
+            display: block;
+        }
 
-.event-edit::before {
-    top: -7px;
-}
+        .event-edit::before {
+            top: -7px;
+        }
 
-.event-edit::after {
-    top: 7px;
-}
+        .event-edit::after {
+            top: 7px;
+        }
 
 .event-element-info {
     width: 100%;
@@ -148,5 +148,10 @@ button {
 }
 
 .pagination-container {
-    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-item {
+    margin: 0 2px 0 0;
 }
