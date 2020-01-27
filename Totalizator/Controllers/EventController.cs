@@ -41,6 +41,13 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        public string GetCountOfEvents()
+        {
+            var countOfEvents = repository.GetCountOfEvents();
+            return JsonConvert.SerializeObject(countOfEvents);
+        }
+
+        [HttpGet]
         public string GetEventsList(int pageNumber)
         {
             var eventsList = repository.ListEvent(pageNumber);

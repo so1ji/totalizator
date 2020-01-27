@@ -33,6 +33,10 @@
     </div>
 </div>
 
+<div class="pagination-container" data-bind="foreach: paginationButtons">
+    <button data-bind="text: $data, click: $parent.load($data)"></button>
+</div>
+
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
@@ -43,33 +47,14 @@
             if (parts.length == 2) return parts.pop().split(";").shift();
         }
 
-        function getEvents(pageNumber) {
-            var tokenKey = "tokenInfo"; //FIX
-            $.ajax({
-                type: 'GET',
-                url: '/api/event/GetEventsList' + '?pageNumber=' + pageNumber,
-                contentType: 'application/json; charset=UTF-8',
-                beforeSend: function (xhr) {
-                    var token = getCookiePartByKey(tokenKey);
-                    xhr.setRequestHeader("Authorization", "Bearer " + token);
-                }
-            }).done(function (data) {
-                var obj = jQuery.parseJSON(data);
-                console.log(obj);
-                viewModel.eventsList(obj);
-            })
-
-        }
 
 
-        var pageNumber = 1;
+        var mainPageViewService = new MainPageViewService();
+        var mainPageViewModel = new MainPageViewModel(mainPageViewService);
+        mainPageViewModel.init();
 
-        var viewModel = {
-            eventsList: ko.observableArray()
-        }
+        ko.applyBindings(mainPageViewModel);
 
-        ko.applyBindings(viewModel);
-        getEvents(pageNumber);
 
     </script>
 }

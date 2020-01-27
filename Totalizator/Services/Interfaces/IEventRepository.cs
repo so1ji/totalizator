@@ -12,5 +12,6 @@ namespace Totalizator.Services
     {
         IQueryable<Event> ListEvent(int pageNumber);
         void AddEvent(Event item);
+        int GetCountOfEvents();
     }
 }

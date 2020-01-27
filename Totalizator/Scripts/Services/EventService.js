@@ -17,9 +17,9 @@
         createEventViewModel.StatusesList(statuses);
     })
 
-} 
+}
 
-function getTypes(){
+function getTypes() {
     var tokenKey = "tokenInfo"; //FIX
     $.ajax({
         type: 'GET',
@@ -37,5 +37,5 @@ function getTypes(){
         }
         createEventViewModel.TypeList(types);
     })
-
 }
+
