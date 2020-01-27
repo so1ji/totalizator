@@ -43,11 +43,11 @@
             if (parts.length == 2) return parts.pop().split(";").shift();
         }
 
-        function getEvents() {
+        function getEvents(pageNumber) {
             var tokenKey = "tokenInfo"; //FIX
             $.ajax({
                 type: 'GET',
-                url: '/api/event/GetEventsList',
+                url: '/api/event/GetEventsList' + '?pageNumber=' + pageNumber,
                 contentType: 'application/json; charset=UTF-8',
                 beforeSend: function (xhr) {
                     var token = getCookiePartByKey(tokenKey);
@@ -62,12 +62,14 @@
         }
 
 
+        var pageNumber = 1;
+
         var viewModel = {
             eventsList: ko.observableArray()
         }
 
         ko.applyBindings(viewModel);
-        getEvents();
+        getEvents(pageNumber);
 
     </script>
 }

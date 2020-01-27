@@ -19,9 +19,11 @@ namespace Totalizator.Services
             }
         }
 
-        public IEnumerable<Event> ListEvent()
+        public IQueryable<Event> ListEvent(int pageNumber)
         {
-            return db.Events;
+            int pageSize = 7;
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Events.OrderBy(p => p.Date).Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }
     }
 }

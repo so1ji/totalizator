@@ -10,7 +10,7 @@ namespace Totalizator.Services
 {
   public  interface IEventRepository
     {
-        IEnumerable<Event> ListEvent();
+        IQueryable<Event> ListEvent(int pageNumber);
         void AddEvent(Event item);
     }
 }

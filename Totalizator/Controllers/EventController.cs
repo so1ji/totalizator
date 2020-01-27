@@ -31,7 +31,8 @@ namespace Totalizator.Controllers
 
             return JsonConvert.SerializeObject(listOfStatuses);
         }
-        //TODO HTTP GET
+
+        [HttpGet]
         public string GetTypesList()
         {
             totalizatorEntities dB = new totalizatorEntities();
@@ -40,9 +41,9 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
-        public string GetEventsList()
+        public string GetEventsList(int pageNumber)
         {
-            var eventsList = repository.ListEvent();
+            var eventsList = repository.ListEvent(pageNumber);
             return JsonConvert.SerializeObject(eventsList);
         }
 

@@ -14,7 +14,6 @@ namespace Totalizator.Services
         totalizatorEntities db = new totalizatorEntities();
         public IEnumerable<User> ListUser()
         {
-
             return db.Users;
         }
 

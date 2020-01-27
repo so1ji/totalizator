@@ -250,6 +250,7 @@
       <DependentUpon>totalizatorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DomenModel\EventDomenModel.cs" />
+    <Compile Include="Models\DomenModel\UserDomenModel.cs" />
     <Compile Include="Models\Enums\EventStatusEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\OAuthCustomTokenProvider.cs" />

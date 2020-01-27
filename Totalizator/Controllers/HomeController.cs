@@ -22,7 +22,6 @@ namespace Totalizator.Controllers
         }
 
 
-
         public ActionResult Index()
         {
             return View();
