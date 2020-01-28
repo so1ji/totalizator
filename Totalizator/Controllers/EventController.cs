@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -50,8 +51,32 @@ namespace Totalizator.Controllers
         [HttpGet]
         public string GetEventsList(int pageNumber)
         {
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<EventDomenModel, Event>()
+                .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
+                .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)));
+
+                cfg.CreateMap<Event, EventDomenModel>()
+                .ForMember(x => x.TeamFirstName, opt => opt.MapFrom(src => src.Team.Name))
+                .ForMember(x => x.TeamSecondName, opt => opt.MapFrom(src => src.Team1.Name))
+                .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)));
+            }
+);
+
             var eventsList = repository.ListEvent(pageNumber);
-            return JsonConvert.SerializeObject(eventsList);
+
+            var mapper = new Mapper(config);
+            List<EventDomenModel> eventListDomen = new List<EventDomenModel>();
+
+            foreach(Event e in eventsList)
+            {
+                EventDomenModel eventItemDomen = mapper.Map<Event, EventDomenModel>(e);
+                eventListDomen.Add(eventItemDomen);
+            }
+
+            return JsonConvert.SerializeObject(eventListDomen);
         }
 
         [HttpPost]
@@ -59,13 +84,24 @@ namespace Totalizator.Controllers
         {
             if (domenEventData != null) //TODO ADD VALIDATION
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventDomenModel, Event>()
-                .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
-                .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)))
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<EventDomenModel, Event>()
+                    .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
+                    .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)));
+
+                    cfg.CreateMap<Event, EventDomenModel>()
+                    .ForMember(x => x.TeamFirstName, opt => opt.MapFrom(src => src.Team.Name))
+                    .ForMember(x => x.TeamSecondName, opt => opt.MapFrom(src => src.Team1.Name))
+                    .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)));
+                }
                 );
 
 
+
+
                 var mapper = new Mapper(config);
+
                 Event eventData = mapper.Map<EventDomenModel, Event>(domenEventData);
                 eventData.CreateDate = DateTime.Now;
                 repository.AddEvent(eventData);

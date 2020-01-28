@@ -10,6 +10,7 @@
         }
     }).done(function (data) {
         var obj = jQuery.parseJSON(data);
+        console.log(obj);
         let teams = new Array();
         for (let i = 0; i < obj.length; i++) {
             teams.push(obj[i]);

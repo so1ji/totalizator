@@ -12,7 +12,7 @@
 <div class="main-element" data-bind="foreach: eventsList">
     <div class="event-element">
         <div class="event-element-item" data-bind="text: Name"></div>
-        <div class="event-element-item"></div>
+        <div class="event-element-item" data-bind= "text: TeamFirstName"></div>
 
         <div class="event-element-item event-score">
             <span class="team-1-points"></span>
@@ -20,7 +20,7 @@
             <span class="team-2-points"></span>
         </div>
 
-        <div class="event-element-item"></div>
+        <div class="event-element-item" data-bind= "text: TeamSecondName"></div>
 
         <div class="event-element-item event-controls">
             <div class="make-bet"></div>
@@ -52,7 +52,7 @@
         var mainPageViewService = new MainPageViewService();
         var mainPageViewModel = new MainPageViewModel(mainPageViewService);
         mainPageViewModel.init();
-
+        mainPageViewModel.load();
         ko.applyBindings(mainPageViewModel);
 
 

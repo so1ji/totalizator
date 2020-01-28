@@ -1,4 +1,4 @@
-﻿function mainPageViewModel(eventService) {
+﻿function CreateEventViewModel(eventService) {
 
     var self = this;
     self.init = function () {

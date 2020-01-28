@@ -10,6 +10,7 @@
         }
     }).done(function (data) {
         var obj = jQuery.parseJSON(data);
+        console.log(obj);
         let statuses = new Array();
         for (let i = 0; i < obj.length; i++) {
             statuses.push(obj[i]);
@@ -31,6 +32,7 @@ function getTypes() {
         }
     }).done(function (data) {
         var obj = jQuery.parseJSON(data);
+        console.log(obj);
         let types = new Array();
         for (let i = 0; i < obj.length; i++) {
             types.push(obj[i]);
