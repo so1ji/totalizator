@@ -70,7 +70,7 @@ namespace Totalizator.Controllers
             var mapper = new Mapper(config);
             List<EventDomenModel> eventListDomen = new List<EventDomenModel>();
 
-            foreach(Event e in eventsList)
+            foreach (Event e in eventsList)
             {
                 EventDomenModel eventItemDomen = mapper.Map<Event, EventDomenModel>(e);
                 eventListDomen.Add(eventItemDomen);
@@ -96,9 +96,6 @@ namespace Totalizator.Controllers
                     .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)));
                 }
                 );
-
-
-
 
                 var mapper = new Mapper(config);
 

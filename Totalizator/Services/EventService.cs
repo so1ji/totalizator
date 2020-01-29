@@ -28,7 +28,7 @@ namespace Totalizator.Services
         {
             int pageSize = 7;
             db.Configuration.LazyLoadingEnabled = false;
-            return db.Events.OrderByDescending(p => p.Date).Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            return db.Events.Include("Team").Include("Team1").OrderByDescending(p => p.Date).Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }
     }
 }
