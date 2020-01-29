@@ -24,19 +24,4 @@
             location.href = "/Home/Main";
         })
     }
-
-    self.register = function (UserName, UserPassword) {
-        var data = {
-            grant_type: 'password',
-            username: UserName,
-            password: UserPassword
-        };
-        $.ajax({
-            type: 'POST',
-            url: '/api/user/Register',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            dataType: 'json',
-            data: data
-        })
-    }
 }
