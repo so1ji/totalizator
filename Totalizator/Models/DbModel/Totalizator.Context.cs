@@ -16,7 +16,7 @@ namespace Totalizator.Models.DbModel
     public partial class totalizatorEntities : DbContext
     {
         public totalizatorEntities()
-            : base("name=totalizatorEntities1")
+            : base("name=totalizatorEntities4")
         {
         }
     

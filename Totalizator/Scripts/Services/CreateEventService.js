@@ -2,7 +2,7 @@
     var self = this;
 
     self.saveEvent = function (FirstTeamId, SecondTeamId, TypeOfEvent, DateOfEvent,
-        NameOfEvent, DescriptionOfEvent, CoefficientOfEvent, WinnerTeamId, TotalPoints, StatusOfEvent) {
+        NameOfEvent, DescriptionOfEvent, TeamFirstCoefficient, TeamSecondCoefficient, WinnerTeamId, TeamFirstPoints, TeamSecondPoints, StatusOfEvent) {
 
         var creatorId = getCurrentUser(); //return a obj
         console.log(creatorId);
@@ -14,11 +14,13 @@
             Date: DateOfEvent,
             Name: NameOfEvent,
             Description: DescriptionOfEvent,
-            Coefficient: CoefficientOfEvent,
             TeamFirstId: FirstTeamId,
             TeamSecondId: SecondTeamId,
+            TeamFirstCoefficient: TeamFirstCoefficient,
+            TeamSecondCoefficient: TeamSecondCoefficient,
             WinnerId: WinnerTeamId,//addd a null value
-            TotalPoints: TotalPoints,
+            TeamFirstPoints: TeamFirstPoints,
+            TeamSecondPoints: TeamSecondPoints,
             CreatorId: creatorId,
             Status: StatusOfEvent
         };

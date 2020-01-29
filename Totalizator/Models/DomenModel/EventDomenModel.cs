@@ -13,9 +13,10 @@ namespace Totalizator.Models.DomenModel
         public string Date { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public double Coefficient { get; set; }
         public int TeamFirstId { get; set; }
         public int TeamSecondId { get; set; }
+        public double TeamFirstCoefficient { get; set; }
+        public double TeamSecondCoefficient { get; set; }
         public int? WinnerId { get; set; }
         public double TotalPoints { get; set; }
         public int CreatorId { get; set; }

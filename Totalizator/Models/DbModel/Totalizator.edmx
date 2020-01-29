@@ -23,11 +23,13 @@
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
-          <Property Name="Coefficient" Type="float" Nullable="false" />
           <Property Name="TeamFirstId" Type="int" Nullable="false" />
           <Property Name="TeamSecondId" Type="int" Nullable="false" />
+          <Property Name="TeamFirstCoefficient" Type="float" Nullable="false" />
+          <Property Name="TeamSecondCoefficient" Type="float" Nullable="false" />
           <Property Name="WinnerId" Type="int" />
-          <Property Name="TotalPoints" Type="float" Nullable="false" />
+          <Property Name="TeamFirstPoints" Type="float" Nullable="false" />
+          <Property Name="TeamSecondPoints" Type="float" Nullable="false" />
           <Property Name="CreatorId" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="EditorId" Type="int" />
@@ -278,11 +280,13 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Coefficient" Type="Double" Nullable="false" />
           <Property Name="TeamFirstId" Type="Int32" Nullable="false" />
           <Property Name="TeamSecondId" Type="Int32" Nullable="false" />
+          <Property Name="TeamFirstCoefficient" Type="Double" Nullable="false" />
+          <Property Name="TeamSecondCoefficient" Type="Double" Nullable="false" />
           <Property Name="WinnerId" Type="Int32" />
-          <Property Name="TotalPoints" Type="Double" Nullable="false" />
+          <Property Name="TeamFirstPoints" Type="Double" Nullable="false" />
+          <Property Name="TeamSecondPoints" Type="Double" Nullable="false" />
           <Property Name="CreatorId" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EditorId" Type="Int32" />
@@ -446,7 +450,7 @@
           <End Role="Roles" Type="Self.Role" Multiplicity="*" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="totalizatorEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="totalizatorEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bets" EntityType="Self.Bet" />
           <EntitySet Name="Events" EntityType="Self.Event" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -496,7 +500,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="totalizatorModelStoreContainer" CdmEntityContainer="totalizatorEntities">
+        <EntityContainerMapping StorageEntityContainer="totalizatorModelStoreContainer" CdmEntityContainer="totalizatorEntities4">
           <EntitySetMapping Name="Bets">
             <EntityTypeMapping TypeName="totalizatorModel.Bet">
               <MappingFragment StoreEntitySet="Bets">
@@ -515,11 +519,13 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
                 <ScalarProperty Name="TeamFirstId" ColumnName="TeamFirstId" />
                 <ScalarProperty Name="TeamSecondId" ColumnName="TeamSecondId" />
+                <ScalarProperty Name="TeamFirstCoefficient" ColumnName="TeamFirstCoefficient" />
+                <ScalarProperty Name="TeamSecondCoefficient" ColumnName="TeamSecondCoefficient" />
                 <ScalarProperty Name="WinnerId" ColumnName="WinnerId" />
-                <ScalarProperty Name="TotalPoints" ColumnName="TotalPoints" />
+                <ScalarProperty Name="TeamFirstPoints" ColumnName="TeamFirstPoints" />
+                <ScalarProperty Name="TeamSecondPoints" ColumnName="TeamSecondPoints" />
                 <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="EditorId" ColumnName="EditorId" />

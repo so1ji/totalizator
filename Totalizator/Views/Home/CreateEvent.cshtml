@@ -35,8 +35,15 @@
 
     <div class="item-element">
 
-        <label>Coefficient</label>
-        <input type="number" step="0.1" id="coefficient" data-bind="value: CoefficientOfEvent">
+        <label>First Team Coefficient</label>
+        <input type="number" step="0.1" id="coefficient" data-bind="value: TeamFirstCoefficient">
+
+    </div>
+
+    <div class="item-element">
+
+        <label>First Second Coefficient</label>
+        <input type="number" step="0.1" id="coefficient" data-bind="value: TeamSecondCoefficient">
 
     </div>
 
@@ -58,8 +65,13 @@
     </div>
 
     <div class="item-element">
-        <label>Total Points</label>
-        <input type="number" step="0.5" id="total" data-bind="value: TotalPoints">
+        <label>First Team Points</label>
+        <input type="number" step="0.5" id="total" data-bind="value: TeamFirstPoints">
+    </div>
+
+    <div class="item-element">
+        <label>Second Team Points</label>
+        <input type="number" step="0.5" id="total" data-bind="value: TeamSecondPoints">
     </div>
 
     <div class="item-element">
@@ -72,26 +84,26 @@
     </div>
 </div>
 
-    @section scripts{
+@section scripts{
 
-        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
-        <script>
-            function getCookiePartByKey(key) {
-                var value = "; " + document.cookie;
-                var parts = value.split("; " + key + "=");
-                if (parts.length == 2) return parts.pop().split(";").shift();
-            }
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+    <script>
+        function getCookiePartByKey(key) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + key + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
 
-            var createEventService = new CreateEventService();
-            var createEventViewModel = new CreateEventViewModel(createEventService);
+        var createEventService = new CreateEventService();
+        var createEventViewModel = new CreateEventViewModel(createEventService);
 
-            createEventViewModel.init();
+        createEventViewModel.init();
 
-            ko.applyBindings(createEventViewModel);
-        </script>
+        ko.applyBindings(createEventViewModel);
+    </script>
 
 
-    }
+}
 
 
 

@@ -17,16 +17,18 @@
         self.DateOfEvent = ko.observable();
         self.NameOfEvent = ko.observable();
         self.DescriptionOfEvent = ko.observable();
-        self.CoefficientOfEvent = ko.observable("1");
+        self.TeamFirstCoefficient = ko.observable("1");
+        self.TeamSecondCoefficient = ko.observable("1");
         self.WinnerTeamId = ko.observable();
-        self.TotalPoints = ko.observable("0");
+        self.TeamFirstPoints = ko.observable("0");
+        self.TeamSecondPoints = ko.observable("0");
         self.StatusOfEvent = ko.observable();
 
 
         self.SaveEvent = function () {
             createEventService.saveEvent(self.FirstTeamId(), self.SecondTeamId(),
                 self.TypeOfEvent(), self.DateOfEvent(), self.NameOfEvent(), self.DescriptionOfEvent(),
-                self.CoefficientOfEvent(), self.WinnerTeamId(), self.TotalPoints(), self.StatusOfEvent());
+                self.TeamFirstCoefficient(), self.TeamSecondCoefficient(), self.WinnerTeamId(), self.TeamFirstPoints(), self.TeamSecondPoints(), self.StatusOfEvent());
         }
 
         getStatuses();

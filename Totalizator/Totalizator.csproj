@@ -213,41 +213,42 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AutoMapperBase.cs" />
     <Compile Include="Models\DbModel\Bet.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModel\Event.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModel\Role.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModel\sysdiagram.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModel\Team.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbModel\totalizatorModel.Context.cs">
+    <Compile Include="Models\DbModel\Totalizator.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>totalizatorModel.Context.tt</DependentUpon>
+      <DependentUpon>Totalizator.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbModel\totalizatorModel.cs">
+    <Compile Include="Models\DbModel\Totalizator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbModel\totalizatorModel.Designer.cs">
+    <Compile Include="Models\DbModel\Totalizator.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>totalizatorModel.edmx</DependentUpon>
+      <DependentUpon>Totalizator.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModel\Type.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbModel\User.cs">
-      <DependentUpon>totalizatorModel.tt</DependentUpon>
+      <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DomenModel\EventDomenModel.cs" />
     <Compile Include="Models\DomenModel\UserDomenModel.cs" />
@@ -276,15 +277,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DbModel\totalizatorModel.Context.tt">
+    <Content Include="Models\DbModel\Totalizator.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>totalizatorModel.edmx</DependentUpon>
-      <LastGenOutput>totalizatorModel.Context.cs</LastGenOutput>
+      <DependentUpon>Totalizator.edmx</DependentUpon>
+      <LastGenOutput>Totalizator.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DbModel\totalizatorModel.tt">
+    <Content Include="Models\DbModel\Totalizator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>totalizatorModel.edmx</DependentUpon>
-      <LastGenOutput>totalizatorModel.cs</LastGenOutput>
+      <DependentUpon>Totalizator.edmx</DependentUpon>
+      <LastGenOutput>Totalizator.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -307,12 +308,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\DbModel\totalizatorModel.edmx">
+    <EntityDeploy Include="Models\DbModel\Totalizator.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>totalizatorModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Totalizator.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DbModel\totalizatorModel.edmx.diagram">
-      <DependentUpon>totalizatorModel.edmx</DependentUpon>
+    <Content Include="Models\DbModel\Totalizator.edmx.diagram">
+      <DependentUpon>Totalizator.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

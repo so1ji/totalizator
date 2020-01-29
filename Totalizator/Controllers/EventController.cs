@@ -102,7 +102,7 @@ namespace Totalizator.Controllers
 
                 var mapper = new Mapper(config);
 
-                Event eventData = mapper.Map<EventDomenModel, Event>(domenEventData);
+                Event eventData = mapper.Map<Event>(domenEventData);
                 eventData.CreateDate = DateTime.Now;
                 repository.AddEvent(eventData);
                 return new HttpResponseMessage(HttpStatusCode.OK);
