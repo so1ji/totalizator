@@ -322,6 +322,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\Services\CreateEventService.js" />
+    <Content Include="Scripts\Services\EditEventService.js" />
     <Content Include="Scripts\Services\EventService.js" />
     <Content Include="Scripts\Services\LoginService.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -331,6 +332,7 @@
     <Content Include="Scripts\Services\TeamService.js" />
     <Content Include="Scripts\Services\UserService.js" />
     <Content Include="Scripts\ViewModels\CreateEventViewModel.js" />
+    <Content Include="Scripts\ViewModels\EditEventViewModel.js" />
     <Content Include="Scripts\ViewModels\LoginViewModel.js" />
     <Content Include="Scripts\ViewModels\MainPageViewModel.js" />
     <Content Include="Scripts\ViewModels\NewBetViewModel.js" />
@@ -353,6 +355,7 @@
     <Content Include="Views\Home\CreateEvent.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\NewBet.cshtml" />
+    <Content Include="Views\Home\EditEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

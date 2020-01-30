@@ -51,4 +51,22 @@
         sessionStorage.setItem('TeamSecondCoefficient', eventData.TeamSecondCoefficient);
         location.href = "/Home/NewBet";
     }
+
+    self.EditEvent = function (eventData) {
+        sessionStorage.clear();
+        sessionStorage.setItem('EventId', eventData.Id);
+        sessionStorage.setItem('EventName', eventData.Name);
+        sessionStorage.setItem('EventDate', eventData.Date);
+        sessionStorage.setItem('TeamFirst', eventData.TeamFirstName);
+        sessionStorage.setItem('TeamFirstId', eventData.TeamFirstId);
+        sessionStorage.setItem('TeamFirstPoints', eventData.TeamFirstPoints);
+        sessionStorage.setItem('TeamSecond', eventData.TeamSecondName);
+        sessionStorage.setItem('TeamSecondId', eventData.TeamSecondId);
+        sessionStorage.setItem('TeamSecondPoints', eventData.TeamSecondPoints);
+        sessionStorage.setItem('TeamFirstCoefficient', eventData.TeamFirstCoefficient);
+        sessionStorage.setItem('TeamSecondCoefficient', eventData.TeamSecondCoefficient);
+        sessionStorage.setItem('StatusOfEvent', eventData.Status);
+        location.href = "/Home/EditEvent";
+
+    }
 }

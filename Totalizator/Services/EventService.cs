@@ -24,11 +24,19 @@ namespace Totalizator.Services
             return db.Events.Count();
         }
 
+        public void UpdateEvent(Event item)
+        {
+            var oldEvent = db.Events.Where(p => p.Id == item.Id).FirstOrDefault();
+            oldEvent = item;
+            db.SaveChanges();
+                
+        }
+
         public IQueryable<Event> ListEvent(int pageNumber)
         {
             int pageSize = 7;
             db.Configuration.LazyLoadingEnabled = false;
-            return db.Events.Include("Team").Include("Team1").OrderByDescending(p => p.Date).Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            return db.Events.Include("Team").Include("Team1").Include("Type").OrderByDescending(p => p.Date).Skip((pageNumber - 1) * pageSize).Take(pageSize);
         }
     }
 }

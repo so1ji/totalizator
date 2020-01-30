@@ -33,7 +33,7 @@
           <Property Name="CreatorId" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="EditorId" Type="int" />
-          <Property Name="EditDate" Type="int" />
+          <Property Name="EditDate" Type="datetime" />
           <Property Name="Status" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
@@ -290,7 +290,7 @@
           <Property Name="CreatorId" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EditorId" Type="Int32" />
-          <Property Name="EditDate" Type="Int32" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Bets" Relationship="Self.FK_Bets_Events" FromRole="Events" ToRole="Bets" />
           <NavigationProperty Name="Team" Relationship="Self.FK_Events_Teams" FromRole="Events" ToRole="Teams" />
@@ -450,7 +450,7 @@
           <End Role="Roles" Type="Self.Role" Multiplicity="*" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="totalizatorEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="totalizatorEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bets" EntityType="Self.Bet" />
           <EntitySet Name="Events" EntityType="Self.Event" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -500,7 +500,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="totalizatorModelStoreContainer" CdmEntityContainer="totalizatorEntities4">
+        <EntityContainerMapping StorageEntityContainer="totalizatorModelStoreContainer" CdmEntityContainer="totalizatorEntities5">
           <EntitySetMapping Name="Bets">
             <EntityTypeMapping TypeName="totalizatorModel.Bet">
               <MappingFragment StoreEntitySet="Bets">

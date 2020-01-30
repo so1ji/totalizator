@@ -13,6 +13,9 @@
         self.MakeBet = function (data) {
             mainPageViewService.MakeBet(data);
         };
+        self.EditEvent = function (data) {
+            mainPageViewService.EditEvent(data);
+        };
         mainPageViewService.getCountOfEvents();
     }
 }

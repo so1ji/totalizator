@@ -1,4 +1,4 @@
-﻿function getStatuses() {
+﻿function getStatuses(viewModel) {
     var tokenKey = "tokenInfo"; //FIX
     $.ajax({
         type: 'GET',

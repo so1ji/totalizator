@@ -28,5 +28,6 @@ namespace Totalizator.Models.DomenModel
 
         public string TeamFirstName { get; set; }
         public string TeamSecondName { get; set; }
+        public string TypeName { get; set; }
     }
 }

@@ -42,7 +42,13 @@ namespace Totalizator.Controllers
         {
             return View();
         }
+
         public ActionResult NewBet()
+        {
+            return View();
+        }
+
+        public ActionResult EditEvent()
         {
             return View();
         }
