@@ -214,6 +214,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AutoMapperBase.cs" />
+    <Compile Include="Models\AutoMapperConfig.cs" />
     <Compile Include="Models\DbModel\Bet.cs">
       <DependentUpon>Totalizator.tt</DependentUpon>
     </Compile>
@@ -325,12 +326,14 @@
     <Content Include="Scripts\Services\LoginService.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Services\MainPageViewService.js" />
+    <Content Include="Scripts\Services\NewBetService.js" />
     <Content Include="Scripts\Services\RegistrationService.js" />
     <Content Include="Scripts\Services\TeamService.js" />
     <Content Include="Scripts\Services\UserService.js" />
     <Content Include="Scripts\ViewModels\CreateEventViewModel.js" />
     <Content Include="Scripts\ViewModels\LoginViewModel.js" />
     <Content Include="Scripts\ViewModels\MainPageViewModel.js" />
+    <Content Include="Scripts\ViewModels\NewBetViewModel.js" />
     <Content Include="Scripts\ViewModels\RegisrationViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -349,6 +352,7 @@
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Home\CreateEvent.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\NewBet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

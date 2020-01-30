@@ -10,6 +10,9 @@
         self.load = function (numberOfPage) {
             mainPageViewService.getEvents(numberOfPage);
         }
+        self.MakeBet = function (data) {
+            mainPageViewService.MakeBet(data);
+        };
         mainPageViewService.getCountOfEvents();
     }
 }

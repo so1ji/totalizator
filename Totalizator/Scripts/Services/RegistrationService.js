@@ -14,6 +14,8 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             dataType: 'json',
             data: data
+        }).done(function () {
+            location.href = "/Home/Main";
         })
     }
 }

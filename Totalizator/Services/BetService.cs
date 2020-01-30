@@ -9,14 +9,21 @@ namespace Totalizator.Services
 {
     public class BetService : IBetRepository
     {
+        totalizatorEntities db = new totalizatorEntities();
+
         public void AddBet(Bet item)
         {
-            throw new NotImplementedException();
+            if (item != null)
+            {
+                db.Bets.Add(item);
+                db.SaveChanges();
+            };
         }
 
         public IEnumerable<Bet> ListBet()
         {
-            throw new NotImplementedException();
+            db.Configuration.LazyLoadingEnabled = false;
+            return db.Bets;
         }
     }
 }

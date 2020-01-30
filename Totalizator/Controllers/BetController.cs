@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Totalizator.Models.DbModel;
 using Totalizator.Services;
 
 namespace Totalizator.Controllers
@@ -11,11 +12,21 @@ namespace Totalizator.Controllers
     public class BetController : ApiController
     {
 
-        IBetRepository _repo;
+        IBetRepository repository;
 
         public BetController(IBetRepository betRepository)
         {
-            _repo = betRepository;
+            repository = betRepository;
+        }
+
+        public HttpResponseMessage CreateBet(Bet newBet)
+        {
+            if (newBet != null)
+            {
+                repository.AddBet(newBet);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
     }

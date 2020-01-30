@@ -32,9 +32,23 @@
         }).done(function (data) {
             var obj = jQuery.parseJSON(data);
             for (var i = 1; i <= Math.ceil(parseInt(obj) / 7); i++) {
-                mainPageViewModel.paginationButtons.push(i);    
+                mainPageViewModel.paginationButtons.push(i);
             }
         })
 
+    }
+
+    self.MakeBet = function (eventData) {
+        sessionStorage.clear();
+        sessionStorage.setItem('EventId', eventData.Id);
+        sessionStorage.setItem('EventName', eventData.Name);
+        sessionStorage.setItem('EventDate', eventData.Date);
+        sessionStorage.setItem('TeamFirst', eventData.TeamFirstName);
+        sessionStorage.setItem('TeamFirstId', eventData.TeamFirstId);
+        sessionStorage.setItem('TeamSecond', eventData.TeamSecondName);
+        sessionStorage.setItem('TeamSecondId', eventData.TeamSecondId);
+        sessionStorage.setItem('TeamFirstCoefficient', eventData.TeamFirstCoefficient);
+        sessionStorage.setItem('TeamSecondCoefficient', eventData.TeamSecondCoefficient);
+        location.href = "/Home/NewBet";
     }
 }
