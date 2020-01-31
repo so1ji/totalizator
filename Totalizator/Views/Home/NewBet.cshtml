@@ -6,47 +6,36 @@
 <h2>NewBet</h2>
 
 <div class="main-element">
-
     <div class="item-element">
         <label for="nameOfEvent">Name of Event: </label>
         <label id="nameOfEvent" data-bind="text: NameOfEvent"></label>
     </div>
-
     <div class="item-element">
         <label for="dateOfEvent">DateOfEvent: </label>
         <label id="dateOfEvent" data-bind="text: DateOfEvent"></label>
     </div>
-
     <div class="item-element">
         <label data-bind="text: TeamFirstName"></label>
         <span data-bind="text: TeamFirstCoefficient">Coefficient</span>
     </div>
-
     <div class="item-element">
         <label data-bind="text: TeamSecondName"></label>
         <span data-bind="text: TeamSecondCoefficient">Coefficient</span>
     </div>
-
     <div class="item-element">
         <label>Select Team</label>
         <select id="firstTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: SelectedTeamId"></select>
     </div>
-
-
     <div class="item-element">
         <label for="betValue">Amout of Bet</label>
         <input type="number" min="1" step="1" id="betValue" data-bind="value: BetAmount">
     </div>
-
     <div class="button-container">
         <button data-bind="click: MakeBet">Submit</button>
     </div>
-
 </div>
 
-
 @section scripts{
-
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
         function getCookiePartByKey(key) {
@@ -54,15 +43,10 @@
             var parts = value.split("; " + key + "=");
             if (parts.length == 2) return parts.pop().split(";").shift();
         }
-
         var newBetService = new NewBetService();
         var newBetViewModel = new NewBetViewModel(newBetService);
-
         newBetViewModel.init();
-
         ko.applyBindings(newBetViewModel);
     </script>
-
-
 }
 
