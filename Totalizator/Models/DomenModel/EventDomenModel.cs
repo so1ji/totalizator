@@ -23,7 +23,7 @@ namespace Totalizator.Models.DomenModel
         public int CreatorId { get; set; }
         public DateTime CreateDate { get; set; }
         public int? EditorId { get; set; }
-        public int? EditDate { get; set; }
+        public DateTime EditDate { get; set; }
         public string Status { get; set; }
 
         public string TeamFirstName { get; set; }
