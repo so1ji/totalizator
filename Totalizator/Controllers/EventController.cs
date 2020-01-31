@@ -103,6 +103,9 @@ namespace Totalizator.Controllers
 
                 Event eventData = mapper.Map<Event>(domenEventData);
                 eventData.CreateDate = DateTime.Now;
+                eventData.EditDate = null;
+                eventData.EditorId = null;
+                if (eventData.Status == 0) eventData.WinnerId = null;
                 repository.AddEvent(eventData);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

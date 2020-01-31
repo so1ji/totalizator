@@ -16,6 +16,10 @@
     margin-right: 100px;
 }
 
+select:disabled {
+    background: #b0b0b0;
+}
+
 .button-container {
     margin-top: 20px;
 }

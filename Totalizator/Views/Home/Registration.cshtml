@@ -3,23 +3,19 @@
 @Scripts.Render("~/ViewModels")
 @Scripts.Render("~/ViewModels")
 
-
 <div class="jumbotron">
     <div>
         <p> UserName </p>
         <input type="text" id="username" data-bind="value: UserName" required>
     </div>
-
     <div>
         <p> Email </p>
         <input type="text" id="email" data-bind="value: Email" required>
     </div>
-
     <div>
         <p> Password </p>
         <input type="password" id="pass" data-bind="value: UserPassword" required>
     </div>
-
     <div>
         <button data-bind="click: RegisterClick">Register</button>
     </div>
@@ -27,22 +23,14 @@
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
-
-
         function getCookiePartByKey(key) {
             var value = "; " + document.cookie;
             var parts = value.split("; " + key + "=");
             if (parts.length == 2) return parts.pop().split(";").shift();
         }
-
-
         var registrationService = new RegistrationService();
         var registrationViewModel = new RegisrationViewModel(registrationService);
-
         registrationViewModel.init();
-
         ko.applyBindings(registrationViewModel);
-
-
     </script>
 }

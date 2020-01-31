@@ -23,6 +23,16 @@
         self.TeamFirstPoints = ko.observable("0");
         self.TeamSecondPoints = ko.observable("0");
         self.StatusOfEvent = ko.observable();
+        self.isDisabled = ko.observable(false);
+
+        self.OnChangeStatus = function () {
+            if (self.StatusOfEvent() == "Active") {
+                self.isDisabled(true);
+            }
+            else {
+                self.isDisabled(false);
+            }
+        }
 
 
         self.SaveEvent = function () {

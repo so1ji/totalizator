@@ -12,10 +12,6 @@
         self.TeamFirstPointsLabel = ko.observable(sessionStorage.TeamFirst + "Points");
         self.TeamSecondPointsLabel = ko.observable(sessionStorage.TeamSecond + "Points");
 
-        //self.EventId = ko.observable(sessionStorage.EventId);
-        //self.EventName = ko.observable(sessionStorage.EventName);
-        //self.EventDate = ko.observable(sessionStorage.EventDate);
-        //self.EventDescription = ko.observable(sessionStorage.EventDescription);
         self.TeamFirstCoefficient = ko.observable(sessionStorage.TeamFirstCoefficient);
         self.TeamSecondCoefficient = ko.observable(sessionStorage.TeamSecondCoefficient);
         self.TeamFirstPoints = ko.observable(sessionStorage.TeamFirstPoints);
@@ -23,6 +19,7 @@
         self.StatusOfEvent = ko.observable(sessionStorage.StatusOfEvent);
 
         self.StatusesList = ko.observable(["Active", "Gone"]);
+        self.isDisabled = ko.observable(false);
 
         self.TeamList = ko.observableArray([{
             Name: sessionStorage.TeamFirst,
@@ -40,6 +37,17 @@
                 self.TeamFirstCoefficient(), self.TeamSecondCoefficient(), self.WinnerTeamId(),
                 self.TeamFirstPoints(), self.TeamSecondPoints(), self.StatusOfEvent());
         }
+
+        self.OnChangeStatus = function () {
+            if (self.StatusOfEvent() == "Active") {
+                self.WinnerTeamId(null);
+                self.isDisabled(true);
+            }
+            else {
+                self.isDisabled(false);
+            }
+        }
+
 
     }
 } 
