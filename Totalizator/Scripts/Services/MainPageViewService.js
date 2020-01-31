@@ -55,8 +55,10 @@
     self.EditEvent = function (eventData) {
         sessionStorage.clear();
         sessionStorage.setItem('EventId', eventData.Id);
+        sessionStorage.setItem('EventTypeId', eventData.TypeId);
         sessionStorage.setItem('EventName', eventData.Name);
         sessionStorage.setItem('EventDate', eventData.Date);
+        sessionStorage.setItem('EventDescription', eventData.Description);
         sessionStorage.setItem('TeamFirst', eventData.TeamFirstName);
         sessionStorage.setItem('TeamFirstId', eventData.TeamFirstId);
         sessionStorage.setItem('TeamFirstPoints', eventData.TeamFirstPoints);
@@ -65,6 +67,8 @@
         sessionStorage.setItem('TeamSecondPoints', eventData.TeamSecondPoints);
         sessionStorage.setItem('TeamFirstCoefficient', eventData.TeamFirstCoefficient);
         sessionStorage.setItem('TeamSecondCoefficient', eventData.TeamSecondCoefficient);
+        sessionStorage.setItem('CreateDate', eventData.CreateDate);
+        sessionStorage.setItem('CreatorId', eventData.CreatorId);
         sessionStorage.setItem('StatusOfEvent', eventData.Status);
         location.href = "/Home/EditEvent";
 

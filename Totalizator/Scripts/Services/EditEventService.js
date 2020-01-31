@@ -9,11 +9,22 @@
         var tokenKey = "tokenInfo"; //FIX
         var data =
         {
+            Id: sessionStorage.EventId,
+            TypeId: sessionStorage.EventTypeId,
+            Name: sessionStorage.EventName,
+            Date: sessionStorage.EventDate,
+            Description: sessionStorage.EventDescription,
+            TeamFirstId: sessionStorage.TeamFirstId,
+            TeamSecondId: sessionStorage.TeamSecondId,
+
             TeamFirstCoefficient: TeamFirstCoefficient,
             TeamSecondCoefficient: TeamSecondCoefficient,
-            WinnerId: WinnerTeamId,//addd a null value
             TeamFirstPoints: TeamFirstPoints,
             TeamSecondPoints: TeamSecondPoints,
+            WinnerId: WinnerTeamId,//addd a null value
+            CreatorId: sessionStorage.CreatorId,
+            CreateDate: sessionStorage.CreateDate,
+
             EditorId: editorId,
             Status: StatusOfEvent
         };

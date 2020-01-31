@@ -4,17 +4,18 @@
     self.init = function () {
         self.editEventService = editEventService;
 
-        var currentDate = new Date();
-
         self.TypeList = ko.observable();
         self.WinnerTeamId = ko.observable();
 
         self.TeamFirstNameLabel = ko.observable(sessionStorage.TeamFirst + " Coefficient");
         self.TeamSecondNameLabel = ko.observable(sessionStorage.TeamSecond +  " Coefficient");
-
         self.TeamFirstPointsLabel = ko.observable(sessionStorage.TeamFirst + "Points");
         self.TeamSecondPointsLabel = ko.observable(sessionStorage.TeamSecond + "Points");
 
+        //self.EventId = ko.observable(sessionStorage.EventId);
+        //self.EventName = ko.observable(sessionStorage.EventName);
+        //self.EventDate = ko.observable(sessionStorage.EventDate);
+        //self.EventDescription = ko.observable(sessionStorage.EventDescription);
         self.TeamFirstCoefficient = ko.observable(sessionStorage.TeamFirstCoefficient);
         self.TeamSecondCoefficient = ko.observable(sessionStorage.TeamSecondCoefficient);
         self.TeamFirstPoints = ko.observable(sessionStorage.TeamFirstPoints);

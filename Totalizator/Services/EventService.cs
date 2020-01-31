@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,9 +28,29 @@ namespace Totalizator.Services
         public void UpdateEvent(Event item)
         {
             var oldEvent = db.Events.Where(p => p.Id == item.Id).FirstOrDefault();
-            oldEvent = item;
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Event, Event>();
+            });
+
+            var mapper = new Mapper(config);
+
+        //   oldEvent = mapper.Map<Event>(item);
+
+            //oldEvent.TeamFirstCoefficient = item.TeamFirstCoefficient;
+
+            oldEvent.TeamFirstCoefficient = item.TeamFirstCoefficient;
+            oldEvent.TeamFirstPoints = item.TeamFirstPoints;
+            oldEvent.TeamSecondCoefficient = item.TeamSecondCoefficient;
+            oldEvent.TeamSecondPoints = item.TeamSecondPoints;
+            oldEvent.WinnerId = item.WinnerId;
+            oldEvent.EditDate = item.EditDate;
+            oldEvent.EditorId = item.EditorId;
+            oldEvent.Status = item.Status;
+
+
             db.SaveChanges();
-                
+
         }
 
         public IQueryable<Event> ListEvent(int pageNumber)
