@@ -2,24 +2,27 @@
 @Scripts.Render("~/Services")
 @Scripts.Render("~/ViewModels")
 @Scripts.Render("~/ViewModels")
+@Styles.Render("~/Content/totalizatorStyles.css")
 
-<div class="jumbotron">
-    <div>
-        <p> UserName </p>
+<h2>Regisrtation</h2>
+<div class="main-element">
+    <div class="item-element">
+        <label> UserName </label>
         <input type="text" id="username" data-bind="value: UserName" required>
     </div>
-    <div>
-        <p> Email </p>
+    <div class="item-element">
+        <label> Email </label>
         <input type="text" id="email" data-bind="value: Email" required>
     </div>
-    <div>
-        <p> Password </p>
+    <div class="item-element">
+        <label> Password </label>
         <input type="password" id="pass" data-bind="value: UserPassword" required>
     </div>
-    <div>
+    <div class="button-container">
         <button data-bind="click: RegisterClick">Register</button>
     </div>
 </div>
+
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>

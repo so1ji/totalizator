@@ -1,22 +1,28 @@
-﻿<div class="jumbotron">
-    <div>
-        <p> UserName </p>
+﻿<h2>Login</h2>
+
+<div class="main-element">
+    <div class="item-element">
+        <label> UserName </label>
         <input type="text" id="username" data-bind="value: UserName" required>
     </div>
-    <div>
-        <p> Password </p>
+    <div class="item-element">
+        <label> Password </label>
         <input type="password" id="pass" data-bind="value: UserPassword" required>
     </div>
-    <div>
+    <div class="button-container">
         <button data-bind="click: LoginClick">Login</button>
     </div>
-
+    <div class="button-container">
+        <button data-bind="click: RegisrtationClick">Registration</button>
+    </div>
     <a href="/Home/Main">Main page</a>
     <a href="/Home/CreateEvent">Create Event page</a>
 </div>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/Services")
 @Scripts.Render("~/ViewModels")
+@Styles.Render("~/Content/totalizatorStyles.css")
+
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>

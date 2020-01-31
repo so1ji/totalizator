@@ -14,5 +14,9 @@
             loginService.signIn(self.UserName(), self.UserPassword());
         }
 
+        self.RegisrtationClick = function () {
+            location.href = "/Home/Registration";
+        }
+
     }
 }
