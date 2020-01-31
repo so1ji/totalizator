@@ -14,7 +14,7 @@ using Totalizator.Services;
 
 namespace Totalizator.Controllers
 {
-    [Authorize(Roles = "Admin, Moderator")]
+    [Authorize(Roles = "Admin, Moderator, User")]
     public class EventController : ApiController
     {
         IEventRepository repository;
@@ -80,6 +80,7 @@ namespace Totalizator.Controllers
             return JsonConvert.SerializeObject(eventListDomen);
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public HttpResponseMessage Register(EventDomenModel domenEventData)
         {
@@ -113,6 +114,7 @@ namespace Totalizator.Controllers
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public HttpResponseMessage Edit(EventDomenModel domenEventData)
         {

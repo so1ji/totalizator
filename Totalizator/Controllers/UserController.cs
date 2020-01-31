@@ -69,10 +69,6 @@ namespace Totalizator.Controllers
         }
 
 
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         [HttpDelete]
         public void DeleteUser(User user)
         {
