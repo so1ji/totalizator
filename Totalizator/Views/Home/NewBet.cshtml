@@ -8,27 +8,27 @@
 <div class="main-element">
 
     <div class="item-element">
-        <label for="nameOfEvent"></label>
-        <p id="nameOfEvent" data-bind="text: NameOfEvent"></p>
+        <label for="nameOfEvent">Name of Event: </label>
+        <label id="nameOfEvent" data-bind="text: NameOfEvent"></label>
     </div>
 
     <div class="item-element">
-        <label for="dateOfEvent"></label>
-        <p id="dateOfEvent" data-bind="text: DateOfEvent"></p>
+        <label for="dateOfEvent">DateOfEvent: </label>
+        <label id="dateOfEvent" data-bind="text: DateOfEvent"></label>
     </div>
 
     <div class="item-element">
-        <label data-bind="text: TeamFirstName">First Team</label>
+        <label data-bind="text: TeamFirstName"></label>
         <span data-bind="text: TeamFirstCoefficient">Coefficient</span>
     </div>
 
     <div class="item-element">
-        <label data-bind="text: TeamSecondName">First Team</label>
+        <label data-bind="text: TeamSecondName"></label>
         <span data-bind="text: TeamSecondCoefficient">Coefficient</span>
     </div>
 
     <div class="item-element">
-        <label>First Team</label>
+        <label>Select Team</label>
         <select id="firstTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: SelectedTeamId"></select>
     </div>
 
