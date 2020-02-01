@@ -62,7 +62,8 @@ namespace Totalizator.Controllers
                 cfg.CreateMap<Event, EventDomenModel>()
                 .ForMember(x => x.TeamFirstName, opt => opt.MapFrom(src => src.Team.Name))
                 .ForMember(x => x.TeamSecondName, opt => opt.MapFrom(src => src.Team1.Name))
-                .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)));
+                .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)))
+                .ForMember(x => x.Date, opt=> opt.MapFrom(src => src.Date.ToString("yyyy-MM-dd HH:mm")));
             }
 );
 

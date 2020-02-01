@@ -1,4 +1,5 @@
 ﻿h2 {
+    font-family: 'Sigmar One', cursive;
     margin: 30px;
     text-align: center;
 }
@@ -18,6 +19,11 @@ button:hover {
     justify-content: flex-start;
     margin-bottom: 12px;
     margin-right: 100px;
+}
+
+.team-name {
+    font-family: 'Sigmar One', cursive;
+    font-size: 18px;
 }
 
 select:disabled {
@@ -56,7 +62,6 @@ input, textarea {
 }
 
 button {
-    border: 1px solid gray;
     border-radius: 5px;
     padding: 6px 30px;
 }
@@ -64,6 +69,7 @@ button {
 .event-element {
     align-items: center;
     background: #e1e1e1;
+    border: 2px outset;
     padding: 10px 20px;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -91,8 +97,10 @@ button {
     justify-content: flex-end;
 }
 
-.make-bet {
+.make-bet, .event-edit {
     cursor: pointer;
+    height: 20px;
+    margin-left: 20px;
     position: relative;
     width: 20px;
 }
@@ -110,7 +118,7 @@ button {
         width: 20px;
     }
 
-    .make-bet:hover::before, .make-bet:hover::after, .event-edit:hover, .event-edit:hover::before, .event-edit:hover::after {
+    .make-bet:hover::before, .make-bet:hover::after, .event-edit:hover span, .event-edit:hover::before, .event-edit:hover::after {
         background: black;
     }
 
@@ -118,32 +126,28 @@ button {
         transform: rotate(90deg);
     }
 
-.event-edit {
-    cursor: pointer;
-    margin-left: 30px;
-    position: relative;
-}
-
-    .event-edit, .event-edit::before, .event-edit::after {
+    .event-edit span, .event-edit::before, .event-edit::after {
         background: #6f6f6f;
         border-radius: 50%;
+            content: "";
+            display: block;
         height: 4px;
+        left: 8px;
+            position: absolute;
         transition: 200ms;
         width: 4px;
     }
 
-        .event-edit::before, .event-edit::after {
-            position: absolute;
-            content: "";
-            display: block;
+        .event-edit span {
+            top: 0;
         }
 
         .event-edit::before {
-            top: -7px;
+            top: 8px;
         }
 
         .event-edit::after {
-            top: 7px;
+            top: 16px;
         }
 
 .event-element-info {
@@ -161,5 +165,5 @@ button {
 }
 
 .pagination-item {
-    margin: 0 2px 0 0;
+    margin: 0 10px 0 0;
 }

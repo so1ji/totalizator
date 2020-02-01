@@ -17,6 +17,7 @@ namespace Totalizator.Services
 
         public IEnumerable<Team> ListTeam()
         {
+            db.Configuration.LazyLoadingEnabled = false;
             return db.Teams;
         }
     }

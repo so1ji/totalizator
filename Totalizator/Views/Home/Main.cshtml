@@ -7,12 +7,12 @@
 @Scripts.Render("~/ViewModels")
 @Styles.Render("~/Content/totalizatorStyles.css")
 
-<h2>Main</h2>
+<h2>Matches Available to Bet</h2>
 
 <div class="main-element" data-bind="foreach: eventsList">
     <div class="event-element">
         <div class="event-element-item" data-bind="text: Name"></div>
-        <div class="event-element-item" data-bind= "text: TeamFirstName"></div>
+        <div class="event-element-item team-name" data-bind="text: TeamFirstName"></div>
 
         <div class="event-element-item event-score">
             <span class="team-1-points" data-bind="text: TeamFirstPoints"></span>
@@ -20,11 +20,13 @@
             <span class="team-2-points" data-bind="text: TeamSecondPoints"></span>
         </div>
 
-        <div class="event-element-item" data-bind= "text: TeamSecondName"></div>
+        <div class="event-element-item team-name" data-bind="text: TeamSecondName"></div>
 
         <div class="event-element-item event-controls">
             <div class="make-bet" data-bind="click: $parent.MakeBet.bind($data)"></div>
-            <div class="event-edit" data-bind="click: $parent.EditEvent.bind($data)"></div>
+            <div class="event-edit" data-bind="click: $parent.EditEvent.bind($data)">
+                <span></span>
+            </div>
         </div>
 
         <div class="event-element-info">

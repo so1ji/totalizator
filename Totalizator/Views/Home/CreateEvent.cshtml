@@ -8,18 +8,18 @@
 @Styles.Render("~/Content/totalizatorStyles.css")
 
 <h2>CreateEvent</h2>
-<div class="main-element">
+<form class="main-element" data-bind="submit: SaveEvent">
     <div class="item-element">
         <label for="gameType">Type</label>
         <select id="gameType" data-bind="options: TypeList, optionsText: 'Name', optionsValue: 'Id', value: TypeOfEvent"></select>
     </div>
     <div class="item-element">
         <label for="date">Date</label>
-        <input type="datetime-local" id="date" data-bind="value: DateOfEvent">
+        <input type="datetime-local" id="date" data-bind="value: DateOfEvent" >
     </div>
     <div class="item-element">
         <label>Name</label>
-        <input id="name" data-bind="value: NameOfEvent">
+        <input id="name" data-bind="value: NameOfEvent" required>
     </div>
     <div class="item-element">
         <label>Description</label>
@@ -58,9 +58,9 @@
         <select data-bind="options: StatusesList, value: StatusOfEvent, event: {change: OnChangeStatus}"></select>
     </div>
     <div class="button-container">
-        <button data-bind="click: SaveEvent">Submit</button>
+        <button type="submit">Submit</button>
     </div>
-</div>
+</form >
 
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
