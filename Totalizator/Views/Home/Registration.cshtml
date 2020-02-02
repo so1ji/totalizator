@@ -5,23 +5,23 @@
 @Styles.Render("~/Content/totalizatorStyles.css")
 
 <h2>Regisrtation</h2>
-<div class="main-element">
+<form class="main-element" data-bind="submit: RegisterClick">
     <div class="item-element">
         <label> UserName </label>
         <input type="text" id="username" data-bind="value: UserName" required>
     </div>
     <div class="item-element">
         <label> Email </label>
-        <input type="text" id="email" data-bind="value: Email" required>
+        <input type="email" id="email" data-bind="value: Email" required>
     </div>
     <div class="item-element">
         <label> Password </label>
         <input type="password" id="pass" data-bind="value: UserPassword" required>
     </div>
     <div class="button-container">
-        <button data-bind="click: RegisterClick">Register</button>
+        <button type="submit">Register</button>
     </div>
-</div>
+</form>
 
 @section scripts{
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>

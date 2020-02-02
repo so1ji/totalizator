@@ -51,21 +51,24 @@ namespace Totalizator.Controllers
         [HttpPost]
         public HttpResponseMessage Register(User userData)
         {
-            if (userData != null)
+            if (repository.CheckEmailAndUserName(userData.Email, userData.UserName))
             {
-                //if (userData.UserName.Length > 3 && userData.UserName.Length < 15)
-                //{
-                //    if (userData.Password.Length > 6 && userData.Password.Length < 10)
-                //    {
-                //        if (userData.Email.Length > 5 && userData.Email.Length < 40)
-                //        {
-                repository.AddUser(userData);
-                return new HttpResponseMessage(HttpStatusCode.OK);
-                //            }
-                //        }
-                //    }
+                if (userData != null)
+                {
+                    //if (userData.UserName.Length > 3 && userData.UserName.Length < 15)
+                    //{
+                    //    if (userData.Password.Length > 6 && userData.Password.Length < 10)
+                    //    {
+                    //        if (userData.Email.Length > 5 && userData.Email.Length < 40)
+                    //        {
+                    repository.AddUser(userData);
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                    //            }
+                    //        }
+                    //    }
+                }
             }
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            return new HttpResponseMessage(HttpStatusCode.Conflict);
         }
 
 

@@ -56,5 +56,12 @@ namespace Totalizator.Services
             db.SaveChanges();
 
         }
+
+        public bool CheckEmailAndUserName(string email, string username)
+        {
+            if (db.Users.Where(p => p.Email == email).FirstOrDefault() != null) return false;
+            if (db.Users.Where(p => p.UserName == username).FirstOrDefault() != null) return false;
+            else return true;
+        }
     }
 }

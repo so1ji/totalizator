@@ -2,7 +2,7 @@
 
 <div class="main-element">
     <div class="item-element">
-        <label> UserName </label>
+        <label> Email </label>
         <input type="text" id="username" data-bind="value: UserName" required>
     </div>
     <div class="item-element">
@@ -32,7 +32,11 @@
             if (parts.length == 2) return parts.pop().split(";").shift();
         }
 
-
+        function IfLoginedRedirectToMain() {
+            var tokenKey = "tokenInfo";
+            if (getCookiePartByKey(tokenKey) != null) location.href = "/Home/Main";
+        }
+        IfLoginedRedirectToMain();
         var loginService = new LoginService();
         var loginViewModel = new LoginViewModel(loginService);
 

@@ -13,5 +13,6 @@ namespace Totalizator.Services
         void DeleteUser(int id);
         User GetUserByName(string name);
         User Validate(string email, string password);
+        bool CheckEmailAndUserName(string email, string username);
     }
 }
