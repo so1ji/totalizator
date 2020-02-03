@@ -24,14 +24,7 @@
 @Styles.Render("~/Content/totalizatorStyles.css")
 
 @section scripts{
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
-        function getCookiePartByKey(key) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + key + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
-
         function IfLoginedRedirectToMain() {
             var tokenKey = "tokenInfo";
             if (getCookiePartByKey(tokenKey) != null) location.href = "/Home/Main";
@@ -39,9 +32,7 @@
         IfLoginedRedirectToMain();
         var loginService = new LoginService();
         var loginViewModel = new LoginViewModel(loginService);
-
         loginViewModel.init();
-
         ko.applyBindings(loginViewModel);
     </script>
 }

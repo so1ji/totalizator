@@ -40,23 +40,11 @@
 </div>
 
 @section scripts{
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
-
-        function getCookiePartByKey(key) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + key + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
-
-
-
         var mainPageViewService = new MainPageViewService();
         var mainPageViewModel = new MainPageViewModel(mainPageViewService);
         mainPageViewModel.init();
         mainPageViewModel.load();
         ko.applyBindings(mainPageViewModel);
-
-
     </script>
 }

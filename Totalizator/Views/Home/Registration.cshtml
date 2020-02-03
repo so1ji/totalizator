@@ -24,13 +24,7 @@
 </form>
 
 @section scripts{
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script>
-        function getCookiePartByKey(key) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + key + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-        }
         var registrationService = new RegistrationService();
         var registrationViewModel = new RegisrationViewModel(registrationService);
         registrationViewModel.init();
