@@ -28,6 +28,8 @@ namespace Totalizator.Models
 
                 cfg.CreateMap<User, UserDomenModel>();
                 cfg.CreateMap<UserDomenModel, User>();
+                cfg.CreateMap<BetDomenModel, Bet>();
+                cfg.CreateMap<Bet, BetDomenModel>();
             });
         }
     }
