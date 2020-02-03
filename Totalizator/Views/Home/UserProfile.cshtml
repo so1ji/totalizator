@@ -3,7 +3,7 @@
 @Scripts.Render("~/ViewModels")
 @Styles.Render("~/Content/totalizatorStyles.css")
 
-<h2>Profile</h2>
+<h2 id="profile">Profile</h2>
 
 <div class="main-element">
     <div class="item-element">
@@ -12,10 +12,13 @@
     <div class="item-element">
         <label id="dateOfEvent" data-bind="text: UserRole"></label>
     </div>
--</div>
+</div>
+
+<h2 id="bets">My Bets</h2>
+
 @section scripts{
     <script>
- //       var userService = new UserService();
+        //       var userService = new UserService();
         var userProfileViewModel = new UserProfileViewModel();
         userProfileViewModel.init();
         ko.applyBindings(userProfileViewModel);
