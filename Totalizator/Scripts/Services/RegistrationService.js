@@ -18,14 +18,10 @@
                 if (XmlHttpRequest.status == 409) {
                     alert('User with this Email or UserName already exists');
                 }
-            }
-        }).done(function (response) {
-            if (response.status == 409)
-            {
-                alert("hello");
-            }
-            else {
-                location.href = "/Home/Main";
+                else {
+                    alert('Registration completed successfully');
+                    location.href = "/Home/Index";
+                }
             }
         })
     }

@@ -24,7 +24,6 @@ namespace Totalizator.Controllers
             repository = eventRepository;
         }
 
-
         [HttpGet]
         public string GetStatusList()
         {
@@ -52,32 +51,13 @@ namespace Totalizator.Controllers
         [HttpGet]
         public string GetEventsList(int pageNumber)
         {
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<EventDomenModel, Event>()
-                .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
-                .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)));
-
-                cfg.CreateMap<Event, EventDomenModel>()
-                .ForMember(x => x.TeamFirstName, opt => opt.MapFrom(src => src.Team.Name))
-                .ForMember(x => x.TeamSecondName, opt => opt.MapFrom(src => src.Team1.Name))
-                .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)))
-                .ForMember(x => x.Date, opt=> opt.MapFrom(src => src.Date.ToString("yyyy-MM-dd HH:mm")));
-            }
-);
-
             var eventsList = repository.ListEvent(pageNumber);
-
-            var mapper = new Mapper(config);
             List<EventDomenModel> eventListDomen = new List<EventDomenModel>();
-
             foreach (Event e in eventsList)
             {
-                EventDomenModel eventItemDomen = mapper.Map<Event, EventDomenModel>(e);
+                EventDomenModel eventItemDomen = Mapper.Map<EventDomenModel>(e);
                 eventListDomen.Add(eventItemDomen);
             }
-
             return JsonConvert.SerializeObject(eventListDomen);
         }
 
@@ -87,23 +67,7 @@ namespace Totalizator.Controllers
         {
             if (domenEventData != null) //TODO ADD VALIDATION
             {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<EventDomenModel, Event>()
-                    .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
-                    .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)));
-
-                    cfg.CreateMap<Event, EventDomenModel>()
-                    .ForMember(x => x.TeamFirstName, opt => opt.MapFrom(src => src.Team.Name))
-                    .ForMember(x => x.TeamSecondName, opt => opt.MapFrom(src => src.Team1.Name))
-                    .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)))
-                    .ForMember(x => x.TypeName, opt => opt.MapFrom(src => src.Type.Name));
-                }
-                );
-
-                var mapper = new Mapper(config);
-
-                Event eventData = mapper.Map<Event>(domenEventData);
+                Event eventData = Mapper.Map<Event>(domenEventData);
                 eventData.CreateDate = DateTime.Now;
                 eventData.EditDate = null;
                 eventData.EditorId = null;
@@ -121,23 +85,7 @@ namespace Totalizator.Controllers
         {
             if (domenEventData != null) //TODO ADD VALIDATION
             {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<EventDomenModel, Event>()
-                    .ForMember(x => x.Date, opt => opt.MapFrom(src => DateTime.Parse(src.Date)))
-                    .ForMember(x => x.Status, opt => opt.MapFrom(src => (byte)(EventStatusEnum)Enum.Parse(typeof(EventStatusEnum), src.Status)));
-
-                    cfg.CreateMap<Event, EventDomenModel>()
-                    .ForMember(x => x.TeamFirstName, opt => opt.MapFrom(src => src.Team.Name))
-                    .ForMember(x => x.TeamSecondName, opt => opt.MapFrom(src => src.Team1.Name))
-                    .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)))
-                    .ForMember(x => x.TypeName, opt => opt.MapFrom(src => src.Type.Name));
-                }
-                );
-
-                var mapper = new Mapper(config);
-
-                Event eventData = mapper.Map<Event>(domenEventData);
+                Event eventData = Mapper.Map<Event>(domenEventData);
                 eventData.EditDate = DateTime.Now;
                 repository.UpdateEvent(eventData);
                 return new HttpResponseMessage(HttpStatusCode.OK);
@@ -145,6 +93,5 @@ namespace Totalizator.Controllers
 
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
-
     }
 }

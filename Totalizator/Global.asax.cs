@@ -13,6 +13,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Totalizator.Util;
 using Newtonsoft.Json;
+using Totalizator.Models;
 
 namespace Totalizator
 {
@@ -20,6 +21,9 @@ namespace Totalizator
     {
         protected void Application_Start()
         {
+
+            AutoMapperConfig.Initialize();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

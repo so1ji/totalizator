@@ -13,6 +13,8 @@ using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
 using Totalizator.Models.DbModel;
 using System.Web;
+using AutoMapper;
+using Totalizator.Models.DomenModel;
 
 namespace Totalizator.Controllers
 {
@@ -21,12 +23,10 @@ namespace Totalizator.Controllers
     {
         IUserRepository repository;
 
-
         public UserController(IUserRepository userRepository)
         {
             repository = userRepository;
         }
-
 
         [HttpGet]
         public string GetAllUsers()
@@ -34,7 +34,6 @@ namespace Totalizator.Controllers
             var users = repository.ListUser();
             return JsonConvert.SerializeObject(users);
         }
-
 
         [HttpGet]
         public string GetCurrentUser()
@@ -49,11 +48,11 @@ namespace Totalizator.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Register(User userData)
+        public HttpResponseMessage Register(UserDomenModel userDomenData)
         {
-            if (repository.CheckEmailAndUserName(userData.Email, userData.UserName))
+            if (repository.CheckEmailAndUserName(userDomenData.Email, userDomenData.UserName))
             {
-                if (userData != null)
+                if (userDomenData != null)
                 {
                     //if (userData.UserName.Length > 3 && userData.UserName.Length < 15)
                     //{
@@ -61,6 +60,7 @@ namespace Totalizator.Controllers
                     //    {
                     //        if (userData.Email.Length > 5 && userData.Email.Length < 40)
                     //        {
+                    var userData = Mapper.Map<User>(userDomenData);
                     repository.AddUser(userData);
                     return new HttpResponseMessage(HttpStatusCode.OK);
                     //            }
@@ -71,12 +71,12 @@ namespace Totalizator.Controllers
             return new HttpResponseMessage(HttpStatusCode.Conflict);
         }
 
-
         [HttpDelete]
-        public void DeleteUser(User user)
+        public void DeleteUser(UserDomenModel userDomen)
         {
-            if (user != null)
+            if (userDomen != null)
             {
+                var user = Mapper.Map<User>(userDomen);
                 repository.DeleteUser(user.Id);
             }
         }

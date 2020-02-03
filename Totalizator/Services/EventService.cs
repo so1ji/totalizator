@@ -28,16 +28,6 @@ namespace Totalizator.Services
         public void UpdateEvent(Event item)
         {
             var oldEvent = db.Events.Where(p => p.Id == item.Id).FirstOrDefault();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Event, Event>();
-            });
-
-            var mapper = new Mapper(config);
-
-        //   oldEvent = mapper.Map<Event>(item);
-
-            //oldEvent.TeamFirstCoefficient = item.TeamFirstCoefficient;
 
             oldEvent.TeamFirstCoefficient = item.TeamFirstCoefficient;
             oldEvent.TeamFirstPoints = item.TeamFirstPoints;
@@ -48,9 +38,7 @@ namespace Totalizator.Services
             oldEvent.EditorId = item.EditorId;
             oldEvent.Status = item.Status;
 
-
             db.SaveChanges();
-
         }
 
         public IQueryable<Event> ListEvent(int pageNumber)
