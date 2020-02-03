@@ -53,5 +53,10 @@ namespace Totalizator.Controllers
             return View();
         }
 
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
+
     }
 }

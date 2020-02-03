@@ -1,0 +1,23 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Services")
+@Scripts.Render("~/ViewModels")
+@Styles.Render("~/Content/totalizatorStyles.css")
+
+<h2>Profile</h2>
+
+<div class="main-element">
+    <div class="item-element">
+        <label id="UserName" data-bind="text: UserName"></label>
+    </div>
+    <div class="item-element">
+        <label id="dateOfEvent" data-bind="text: UserRole"></label>
+    </div>
+-</div>
+@section scripts{
+    <script>
+ //       var userService = new UserService();
+        var userProfileViewModel = new UserProfileViewModel();
+        userProfileViewModel.init();
+        ko.applyBindings(userProfileViewModel);
+    </script>
+}

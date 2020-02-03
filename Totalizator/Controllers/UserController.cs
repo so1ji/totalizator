@@ -36,7 +36,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
-        public string GetCurrentUser()
+        public string getCurrentUserId()
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
             var name = ClaimsPrincipal.Current.Identity.Name;

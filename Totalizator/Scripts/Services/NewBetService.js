@@ -3,7 +3,7 @@
 
     self.MakeBet = function (EventId, BetAmount) {
 
-        var creatorId = getCurrentUser(); //return a obj
+        var creatorId = getCurrentUserId(); //return a obj
         console.log(creatorId);
 
         var tokenKey = "tokenInfo"; //FIX

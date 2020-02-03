@@ -14,13 +14,13 @@
     })
 }
 
-function getCurrentUser() {
+function getCurrentUserId() {
     var tokenKey = "tokenInfo"; //FIX
     var user;
     $.ajax({
         async: false,
         type: 'GET',
-        url: '/api/user/GetCurrentUser',
+        url: '/api/user/getCurrentUserId',
         contentType: 'application/json; charset=UTF-8',
         beforeSend: function (xhr) {
             var token = getCookiePartByKey(tokenKey);

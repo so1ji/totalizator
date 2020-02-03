@@ -4,7 +4,7 @@
     self.saveEvent = function (TeamFirstCoefficient, TeamSecondCoefficient, WinnerTeamId,
         TeamFirstPoints, TeamSecondPoints, StatusOfEvent) {
 
-        var editorId = getCurrentUser(); //return a obj
+        var editorId = getCurrentUserId(); //return a obj
 
         var tokenKey = "tokenInfo"; //FIX
         var data =

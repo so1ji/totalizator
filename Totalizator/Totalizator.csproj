@@ -338,6 +338,7 @@
     <Content Include="Scripts\ViewModels\MainPageViewModel.js" />
     <Content Include="Scripts\ViewModels\NewBetViewModel.js" />
     <Content Include="Scripts\ViewModels\RegisrationViewModel.js" />
+    <Content Include="Scripts\ViewModels\UserProfileViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -357,6 +358,7 @@
     <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\Home\NewBet.cshtml" />
     <Content Include="Views\Home\EditEvent.cshtml" />
+    <Content Include="Views\Home\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -30,7 +30,7 @@ namespace Totalizator.Services
 
         public User GetUserByName(string name)
         {
-            var user = db.Users.Where(p => p.UserName == name).FirstOrDefault();
+            var user = db.Users.Include("Roles").Where(p => p.UserName == name).FirstOrDefault();
             return user;
         }
 
