@@ -10,8 +10,12 @@
         self.UserPassword = ko.observable();
 
         self.LoginClick = function () {
-
             loginService.signIn(self.UserName(), self.UserPassword());
+            var user = getCurrentUser();
+            console.log(user);
+            alert(user.UserName);
+            $("#currentUserNameLayout").html(user.UserName);
+         //   location.href = "/Home/Main";
         }
 
         self.RegisrtationClick = function () {

@@ -18,7 +18,7 @@
             TeamSecondId: SecondTeamId,
             TeamFirstCoefficient: TeamFirstCoefficient,
             TeamSecondCoefficient: TeamSecondCoefficient,
-            WinnerId: WinnerTeamId,//addd a null value
+            WinnerId: WinnerTeamId,
             TeamFirstPoints: TeamFirstPoints,
             TeamSecondPoints: TeamSecondPoints,
             CreatorId: creatorId,

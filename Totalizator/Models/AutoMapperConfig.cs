@@ -26,7 +26,8 @@ namespace Totalizator.Models
                 .ForMember(x => x.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Status)))
                 .ForMember(x => x.Date, opt => opt.MapFrom(src => src.Date.ToString("yyyy-MM-dd HH:mm")));
 
-                cfg.CreateMap<User, UserDomenModel>();
+                cfg.CreateMap<User, UserDomenModel>()
+                .ForMember(x => x.Roles, opt => opt.MapFrom(src => src.Roles.FirstOrDefault().Name));
                 cfg.CreateMap<UserDomenModel, User>();
                 cfg.CreateMap<BetDomenModel, Bet>();
                 cfg.CreateMap<Bet, BetDomenModel>();

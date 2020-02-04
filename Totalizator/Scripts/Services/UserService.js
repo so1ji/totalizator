@@ -14,6 +14,24 @@
     })
 }
 
+function getCurrentUser() {
+    var tokenKey = "tokenInfo"; //FIX
+    var user;
+    $.ajax({
+        async: false,
+        type: 'GET',
+        url: '/api/user/GetCurrentUser',
+        contentType: 'application/json; charset=UTF-8',
+        beforeSend: function (xhr) {
+            var token = getCookiePartByKey(tokenKey);
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+        }
+    }).done(function (data) {
+        user = JSON.parse(data);
+    });
+    return user;
+}
+
 function getCurrentUserId() {
     var tokenKey = "tokenInfo"; //FIX
     var user;

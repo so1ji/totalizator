@@ -36,7 +36,19 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
-        public string getCurrentUserId()
+        public string GetCurrentUser()
+        {
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var name = ClaimsPrincipal.Current.Identity.Name;
+
+            var user = repository.GetUserByName(name);
+            var userDomen = Mapper.Map<UserDomenModel>(user);
+            var json = JsonConvert.SerializeObject(userDomen);
+            return json;
+        }
+
+        [HttpGet]
+        public string GetCurrentUserId()
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
             var name = ClaimsPrincipal.Current.Identity.Name;
