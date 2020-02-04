@@ -29,7 +29,7 @@
             var tokenKey = "tokenInfo";
             if (getCookiePartByKey(tokenKey) != null) location.href = "/Home/Main";
         }
-       // IfLoginedRedirectToMain();
+        IfLoginedRedirectToMain();
         var loginService = new LoginService();
         var loginViewModel = new LoginViewModel(loginService);
         loginViewModel.init();
