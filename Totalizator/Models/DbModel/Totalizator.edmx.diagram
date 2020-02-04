@@ -4,15 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="28197337bb2e4ac29c09aa354db1d1a6" Name="Diagram1">
-        <EntityTypeShape EntityType="totalizatorModel.Bet" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="totalizatorModel.Event" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="totalizatorModel.Role" Width="1.5" PointX="1.5" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="totalizatorModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="totalizatorModel.Team" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="totalizatorModel.Type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="totalizatorModel.User" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+      <Diagram DiagramId="c7b119e75af5466cbf6e3aee0155fd47" Name="Diagram1">
+        <EntityTypeShape EntityType="totalizatorModel.Bet" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="totalizatorModel.Event" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="totalizatorModel.Role" Width="1.5" PointX="1.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="totalizatorModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="totalizatorModel.Team" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="totalizatorModel.Type" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="totalizatorModel.User" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
         <AssociationConnector Association="totalizatorModel.FK_Bets_Events" ManuallyRouted="false" />
+        <AssociationConnector Association="totalizatorModel.FK_Bets_Teams" ManuallyRouted="false" />
         <AssociationConnector Association="totalizatorModel.FK_Bets_Users" ManuallyRouted="false" />
         <AssociationConnector Association="totalizatorModel.FK_Events_Teams" ManuallyRouted="false" />
         <AssociationConnector Association="totalizatorModel.FK_Events_Teams1" ManuallyRouted="false" />

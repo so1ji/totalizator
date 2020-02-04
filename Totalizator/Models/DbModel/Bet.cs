@@ -17,9 +17,11 @@ namespace Totalizator.Models.DbModel
         public int Id { get; set; }
         public int UserId { get; set; }
         public int EventId { get; set; }
+        public int TeamId { get; set; }
         public double Amount { get; set; }
     
         public virtual Event Event { get; set; }
+        public virtual Team Team { get; set; }
         public virtual User User { get; set; }
     }
 }

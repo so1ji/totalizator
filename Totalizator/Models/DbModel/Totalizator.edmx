@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Events">
@@ -94,6 +95,18 @@
             </Principal>
             <Dependent Role="Bets">
               <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bets_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Bets" Type="Self.Bets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bets">
+              <PropertyRef Name="TeamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -218,6 +231,10 @@
             <End Role="Events" EntitySet="Events" />
             <End Role="Bets" EntitySet="Bets" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bets_Teams" Association="Self.FK_Bets_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Bets" EntitySet="Bets" />
+          </AssociationSet>
           <AssociationSet Name="FK_Bets_Users" Association="Self.FK_Bets_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Bets" EntitySet="Bets" />
@@ -267,8 +284,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Bets_Events" FromRole="Bets" ToRole="Events" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Bets_Teams" FromRole="Bets" ToRole="Teams" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bets_Users" FromRole="Bets" ToRole="Users" />
         </EntityType>
         <EntityType Name="Event">
@@ -325,6 +344,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bets" Relationship="Self.FK_Bets_Teams" FromRole="Teams" ToRole="Bets" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Events_Teams" FromRole="Teams" ToRole="Events" />
           <NavigationProperty Name="Events1" Relationship="Self.FK_Events_Teams1" FromRole="Teams" ToRole="Events" />
           <NavigationProperty Name="Events2" Relationship="Self.FK_Events_Teams2" FromRole="Teams" ToRole="Events" />
@@ -359,6 +379,18 @@
             </Principal>
             <Dependent Role="Bets">
               <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bets_Teams">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="Bets" Type="Self.Bet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bets">
+              <PropertyRef Name="TeamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -450,7 +482,7 @@
           <End Role="Roles" Type="Self.Role" Multiplicity="*" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="totalizatorEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="totalizatorEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bets" EntityType="Self.Bet" />
           <EntitySet Name="Events" EntityType="Self.Event" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -460,6 +492,10 @@
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Bets_Events" Association="Self.FK_Bets_Events">
             <End Role="Events" EntitySet="Events" />
+            <End Role="Bets" EntitySet="Bets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bets_Teams" Association="Self.FK_Bets_Teams">
+            <End Role="Teams" EntitySet="Teams" />
             <End Role="Bets" EntitySet="Bets" />
           </AssociationSet>
           <AssociationSet Name="FK_Bets_Users" Association="Self.FK_Bets_Users">
@@ -500,13 +536,14 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="totalizatorModelStoreContainer" CdmEntityContainer="totalizatorEntities5">
+        <EntityContainerMapping StorageEntityContainer="totalizatorModelStoreContainer" CdmEntityContainer="totalizatorEntities2">
           <EntitySetMapping Name="Bets">
             <EntityTypeMapping TypeName="totalizatorModel.Bet">
               <MappingFragment StoreEntitySet="Bets">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
