@@ -16,11 +16,42 @@
 
 <h2 id="bets">My Bets</h2>
 
+<div class="main-element" data-bind="foreach: betList">
+    <div class="event-element">
+        <div class="event-element-item" data-bind="text: Id"></div>
+        @*<div class="event-element-item team-name" data-bind="text: TeamFirstName"></div>*@
+
+        @*<div class="event-element-item event-score">
+                <span class="team-1-points" data-bind="text: TeamFirstPoints"></span>
+                <span>:</span>
+                <span class="team-2-points" data-bind="text: TeamSecondPoints"></span>
+            </div>
+
+            <div class="event-element-item team-name" data-bind="text: TeamSecondName"></div>
+
+            <div class="event-element-item event-controls">
+                <div class="make-bet" data-bind="click: $parent.MakeBet.bind($data)"></div>
+                <div class="event-edit" data-bind="click: $parent.EditEvent.bind($data)">
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="event-element-info">
+                <div class="event-element-info-date" data-bind="text: Date"></div>*@
+        @*</div>*@
+    </div>
+</div>
+
+<div class="pagination-container" data-bind="foreach: paginationButtons">
+    <button class="pagination-item" data-bind="text: $data, click: $parent.load.bind($data)"></button>
+</div>
+
 @section scripts{
     <script>
-        //       var userService = new UserService();
-        var userProfileViewModel = new UserProfileViewModel();
+        var profileService = new ProfileService();
+        var userProfileViewModel = new UserProfileViewModel(profileService);
         userProfileViewModel.init();
+        userProfileViewModel.load();
         ko.applyBindings(userProfileViewModel);
     </script>
 }

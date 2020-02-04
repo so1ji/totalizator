@@ -1,14 +1,23 @@
-﻿function UserProfileViewModel(UserService) {
+﻿function UserProfileViewModel(profileService) {
     var self = this;
 
     self.init = function () {
-        self.UserService = UserService;
+        self.profileService = profileService;
+
+        var user = getCurrentUser();
+        console.log(user);
+
+        self.UserName = ko.observable(user.UserName);
+        self.UserRole = ko.observable(user.Roles);
+        self.betList = ko.observableArray();
+        self.paginationButtons = ko.observableArray();
 
 
-        self.UserName = ko.observable();
-        self.UserRole = ko.observable();
 
-        console.log(getCurrentUserId());
+        self.load = function (numberOfPage) {
+            profileService.getEvents(numberOfPage, user.Id);
+        }
 
+        profileService.getCountOfBets(user.Id);
     }
 }

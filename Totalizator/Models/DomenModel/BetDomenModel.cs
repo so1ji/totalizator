@@ -11,5 +11,9 @@ namespace Totalizator.Models.DomenModel
         public int UserId { get; set; }
         public int EventId { get; set; }
         public double Amount { get; set; }
+
+        public string EventName { get; set; }
+        public string EventDate { get; set; }
+        public string EventStatus { get; set; }
     }
 }

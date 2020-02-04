@@ -329,6 +329,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Services\MainPageViewService.js" />
     <Content Include="Scripts\Services\NewBetService.js" />
+    <Content Include="Scripts\Services\ProfileService.js" />
     <Content Include="Scripts\Services\RegistrationService.js" />
     <Content Include="Scripts\Services\TeamService.js" />
     <Content Include="Scripts\Services\UserService.js" />

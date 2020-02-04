@@ -12,5 +12,7 @@ namespace Totalizator.Services
     {
         IEnumerable<Bet> ListBet();
         void AddBet(Bet item);
+        IQueryable<Bet> ListBet(int pageNumber, int userId);
+        int GetCountOfBets(int userId);
     }
 }
