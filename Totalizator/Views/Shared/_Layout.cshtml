@@ -12,7 +12,20 @@
     <script>
         $(document).ready(function () {
             var user = getCurrentUser();
-            $("#currentUserNameLayout").html(user.UserName);
+            if (user != null) {
+                $("#currentUserNameLayout").html(user.UserName);
+                $("#profileElement").css("visibility", "visible");
+            }
+        });
+        $("#LogOut").click(function () {
+            var cookies = document.cookie.split(";");
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
         });
     </script>
 </head>
@@ -20,7 +33,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <!-- Split button -->
-            <div class="btn-group" style=" margin: 8px 0 0 0;">
+            <div id="profileElement" class="btn-group" style=" margin: 8px 0 0 0; visibility: hidden">
                 <button id="currentUserNameLayout" type="button" class="btn btn-default"></button>
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
@@ -31,7 +44,7 @@
                     <li><a href="/Home/UserProfile">My Bets</a></li>
                     <li><a href="/Home/AdminPanel">Admin panel</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">LogOut</a></li>
+                    <li><a id="LogOut">LogOut</a></li>
                 </ul>
             </div>
             <div class="navbar-header">

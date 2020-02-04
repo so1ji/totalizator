@@ -15,6 +15,7 @@
             console.log(user);
             alert(user.UserName);
             $("#currentUserNameLayout").html(user.UserName);
+            $("#profileElement").css("visibility", "visible");
          //   location.href = "/Home/Main";
         }
 
