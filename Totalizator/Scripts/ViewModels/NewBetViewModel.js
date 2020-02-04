@@ -22,7 +22,7 @@
         }]);
 
         self.MakeBet = function () {
-            newBetService.MakeBet(self.EventId(), self.BetAmount());
+            newBetService.MakeBet(self.EventId(), self.BetAmount(), self.SelectedTeamId());
         }
     }
 }

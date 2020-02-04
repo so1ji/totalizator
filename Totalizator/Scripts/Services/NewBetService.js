@@ -1,7 +1,7 @@
 ﻿function NewBetService() {
     var self = this;
 
-    self.MakeBet = function (EventId, BetAmount) {
+    self.MakeBet = function (EventId, BetAmount, TeamId) {
 
         var creatorId = getCurrentUserId(); //return a obj
         console.log(creatorId);
@@ -11,7 +11,8 @@
         {
             UserId: creatorId,
             EventId: EventId,
-            Amount: BetAmount
+            Amount: BetAmount,
+            TeamId: TeamId
         };
         console.log(data);
         sessionStorage.clear();
