@@ -16,5 +16,6 @@ namespace Totalizator.Models.DomenModel
         public string EventName { get; set; }
         public string EventDate { get; set; }
         public string EventStatus { get; set; }
+        public string Winner { get; set; }
     }
 }

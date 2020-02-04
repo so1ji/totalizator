@@ -33,7 +33,7 @@ namespace Totalizator.Controllers
                 BetDomenModel eventItemDomen = Mapper.Map<BetDomenModel>(e);
                 betListDomen.Add(eventItemDomen);
             }
-            return JsonConvert.SerializeObject(betList);
+            return JsonConvert.SerializeObject(betListDomen);
         }
 
         [HttpPost]

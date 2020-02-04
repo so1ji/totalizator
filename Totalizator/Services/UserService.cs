@@ -45,6 +45,10 @@ namespace Totalizator.Services
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                var RoleUser = db.Roles.Where(x => x.Name == "User").FirstOrDefault();
+                user.Roles.Add(RoleUser);
+                db.SaveChanges();
             }
         }
 
