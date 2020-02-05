@@ -13,6 +13,7 @@
     <div class="event-element">
         <div class="event-element-item" data-bind="text: Name"></div>
         <div class="event-element-item team-name" data-bind="text: TeamFirstName"></div>
+        <div class="event-element-item team-name" data-bind="text: TeamFirstCoefficient"></div>
 
         <div class="event-element-item event-score">
             <span class="team-1-points" data-bind="text: TeamFirstPoints"></span>
@@ -21,6 +22,7 @@
         </div>
 
         <div class="event-element-item team-name" data-bind="text: TeamSecondName"></div>
+        <div class="event-element-item team-name" data-bind="text: TeamSecondCoefficient"></div>
 
         <div class="event-element-item event-controls">
             <div class="make-bet" data-bind="click: $parent.MakeBet.bind($data)"></div>
