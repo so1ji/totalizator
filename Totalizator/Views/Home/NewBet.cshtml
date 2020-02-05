@@ -13,20 +13,20 @@
         <label id="dateOfEvent" data-bind="text: DateOfEvent"></label>
     </div>
     <div class="item-element">
-        <label data-bind="text: TeamFirstName"></label>
-        <span data-bind="text: TeamFirstCoefficient">Coefficient</span>
+        <label for="team-first-coefficient" data-bind="text: TeamFirstName"></label>
+        <span id="team-first-coefficient" data-bind="text: TeamFirstCoefficient">Coefficient</span>
     </div>
     <div class="item-element">
-        <label data-bind="text: TeamSecondName"></label>
-        <span data-bind="text: TeamSecondCoefficient">Coefficient</span>
+        <label for="team-second-coefficient" data-bind="text: TeamSecondName"></label>
+        <span id="team-second-coefficient" data-bind="text: TeamSecondCoefficient">Coefficient</span>
     </div>
     <div class="item-element">
-        <label>Select Team</label>
+        <label for="firstTeam">Select Team</label>
         <select id="firstTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: SelectedTeamId"></select>
     </div>
     <div class="item-element">
         <label for="betValue">Amout of Bet</label>
-        <input type="number" min="1" step="1" id="betValue" data-bind="value: BetAmount">
+        <input id="betValue" type="number" min="1" step="1" data-bind="value: BetAmount">
     </div>
     <div class="button-container">
         <button data-bind="click: MakeBet">Submit</button>

@@ -18,44 +18,44 @@
         <input type="datetime-local" id="date" data-bind="value: DateOfEvent" >
     </div>
     <div class="item-element">
-        <label>Name</label>
+        <label for="name">Name</label>
         <input id="name" data-bind="value: NameOfEvent" required>
     </div>
     <div class="item-element">
-        <label>Description</label>
+        <label for="description">Description</label>
         <textarea id="description" data-bind="value: DescriptionOfEvent"></textarea>
     </div>
     <div class="item-element">
-        <label>First Team</label>
+        <label for="firstTeam">First Team</label>
         <select id="firstTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: FirstTeamId"></select>
     </div>
     <div class="item-element">
-        <label>Second Team</label>
+        <label for="secondTeam">Second Team</label>
         <select id="secondTeam" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: SecondTeamId"></select>
     </div>
     <div class="item-element">
-        <label>First Team Coefficient</label>
-        <input type="number" step="0.1" id="coefficient" data-bind="value: TeamFirstCoefficient">
+        <label for="coefficient-team-first">First Team Coefficient</label>
+        <input type="number" step="0.1" id="coefficient-team-first" data-bind="value: TeamFirstCoefficient">
     </div>
     <div class="item-element">
-        <label>First Second Coefficient</label>
-        <input type="number" step="0.1" id="coefficient" data-bind="value: TeamSecondCoefficient">
+        <label for="coefficient-team-second">First Second Coefficient</label>
+        <input type="number" step="0.1" id="coefficient-team-second" data-bind="value: TeamSecondCoefficient">
     </div>
     <div class="item-element">
-        <label>Winner</label>
+        <label for="Winner">Winner</label>
         <select id="winner" data-bind="options: TeamList, optionsText: 'Name', optionsValue: 'Id', value: WinnerTeamId, attr : {'disabled' : isDisabled}"></select>
     </div>
     <div class="item-element">
-        <label>First Team Points</label>
-        <input type="number" step="0.5" id="total" data-bind="value: TeamFirstPoints">
+        <label for="total-team-first">First Team Points</label>
+        <input type="number" step="0.5" id="total-team-first" data-bind="value: TeamFirstPoints">
     </div>
     <div class="item-element">
-        <label>Second Team Points</label>
-        <input type="number" step="0.5" id="total" data-bind="value: TeamSecondPoints">
+        <label for="total-team-second">Second Team Points</label>
+        <input type="number" step="0.5" id="total-team-second" data-bind="value: TeamSecondPoints">
     </div>
     <div class="item-element">
-        <label>Status</label>
-        <select data-bind="options: StatusesList, value: StatusOfEvent, event: {change: OnChangeStatus}"></select>
+        <label for="status">Status</label>
+        <select id="status" data-bind="options: StatusesList, value: StatusOfEvent, event: {change: OnChangeStatus}"></select>
     </div>
     <div class="button-container">
         <button type="submit">Submit</button>
