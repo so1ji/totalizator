@@ -29,10 +29,23 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
-        public string GetAllUsers()
+        public string GetUserList(int pageNumber)
         {
-            var users = repository.ListUser();
-            return JsonConvert.SerializeObject(users);
+            var userList = repository.ListUser(pageNumber);
+            List<UserDomenModel> userListDomen = new List<UserDomenModel>();
+            foreach (User e in userList)
+            {
+                UserDomenModel userItemDomen = Mapper.Map<UserDomenModel>(e);
+                userListDomen.Add(userItemDomen);
+            }
+            return JsonConvert.SerializeObject(userListDomen);
+        }
+
+        [HttpGet]
+        public string GetCountOfUsers()
+        {
+            var countOfUsers = repository.GetCountOfUsers();
+            return JsonConvert.SerializeObject(countOfUsers);
         }
 
         [HttpGet]
@@ -61,6 +74,18 @@ namespace Totalizator.Controllers
         }
 
         [HttpPost]
+        public HttpResponseMessage MakeUserAdmin(UserDomenModel userDomen)
+        {
+            if(userDomen != null)
+            {
+                var user = Mapper.Map<User>(userDomen);
+                repository.MakeUserAdmin(user);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
         public HttpResponseMessage Register(UserDomenModel userDomenData)
         {
             if (repository.CheckEmailAndUserName(userDomenData.Email, userDomenData.UserName))
@@ -85,13 +110,15 @@ namespace Totalizator.Controllers
         }
 
         [HttpDelete]
-        public void DeleteUser(UserDomenModel userDomen)
+        public HttpResponseMessage DeleteUser(UserDomenModel userDomen)
         {
             if (userDomen != null)
             {
                 var user = Mapper.Map<User>(userDomen);
                 repository.DeleteUser(user.Id);
+                return new HttpResponseMessage(HttpStatusCode.OK);
             }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
     }
 }

@@ -58,5 +58,10 @@ namespace Totalizator.Controllers
             return View();
         }
 
+        public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
     }
 }

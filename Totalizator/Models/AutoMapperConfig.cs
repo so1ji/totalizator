@@ -27,7 +27,8 @@ namespace Totalizator.Models
                 .ForMember(x => x.Date, opt => opt.MapFrom(src => src.Date.ToString("yyyy-MM-dd HH:mm")));
 
                 cfg.CreateMap<User, UserDomenModel>()
-                .ForMember(x => x.Roles, opt => opt.MapFrom(src => src.Roles.FirstOrDefault().Name));
+                .ForMember(x => x.Roles, opt => opt.MapFrom(src => src.Roles));
+
                 cfg.CreateMap<UserDomenModel, User>();
 
 

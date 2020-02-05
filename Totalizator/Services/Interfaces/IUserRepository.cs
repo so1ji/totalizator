@@ -6,7 +6,7 @@ namespace Totalizator.Services
 {
     public interface IUserRepository
     {
-        IEnumerable<User> ListUser();
+        IEnumerable<User> ListUser(int pageNumber);
         void AddUser(User user);
         IEnumerable<User> GetUserById(int id);
 
@@ -14,5 +14,7 @@ namespace Totalizator.Services
         User GetUserByName(string name);
         User Validate(string email, string password);
         bool CheckEmailAndUserName(string email, string username);
+        int GetCountOfUsers();
+        void MakeUserAdmin(User user);
     }
 }

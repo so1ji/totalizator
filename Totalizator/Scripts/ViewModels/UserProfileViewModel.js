@@ -8,7 +8,7 @@
         console.log(user);
 
         self.UserName = ko.observable(user.UserName);
-        self.UserRole = ko.observable(user.Roles);
+        self.UserRole = ko.observableArray(user.Roles);
         self.betList = ko.observableArray();
         self.paginationButtons = ko.observableArray();
 

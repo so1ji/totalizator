@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "AdminPanel";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Services")
+@Scripts.Render("~/ViewModels")
+@Styles.Render("~/Content/totalizatorStyles.css")
+
+<h2>Users</h2>
+
+<div class="main-element" data-bind="foreach: userList">
+    <div class="item-element">
+        <label id="UserName" data-bind="text: UserName"></label>
+        <label id="dateOfEvent" data-bind="text: Roles"></label>
+        <button data-bind="click: $parent.MakeModerator.bind($data)">Make Moderator</button>
+        <button data-bind="click: $parent.MakeAdmin.bind($data)">Make Admin</button>
+        <button data-bind="click: $parent.DeleteUser.bind($data)">DeleteUser</button>
+    </div>
+    <div class="item-element">
+    </div>
+</div>
+
+<div class="pagination-container" data-bind="foreach: paginationButtons">
+    <button class="pagination-item" data-bind="text: $data, click: $parent.load.bind($data)"></button>
+</div>
+
+
+@section scripts{
+    <script>
+        var adminService = new AdminService();
+        var adminPanelViewModel = new AdminPanelViewModel(adminService);
+        adminPanelViewModel.init();
+        adminPanelViewModel.load();
+        ko.applyBindings(adminPanelViewModel);
+    </script>
+}

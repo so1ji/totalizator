@@ -283,6 +283,7 @@
       <DependentUpon>Totalizator.edmx</DependentUpon>
       <LastGenOutput>Totalizator.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\DbModel\Totalizator.edmx.sql" />
     <Content Include="Models\DbModel\Totalizator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Totalizator.edmx</DependentUpon>
@@ -321,6 +322,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\Services\AdminService.js" />
     <Content Include="Scripts\Services\CookieService.js" />
     <Content Include="Scripts\Services\CreateEventService.js" />
     <Content Include="Scripts\Services\EditEventService.js" />
@@ -333,6 +335,7 @@
     <Content Include="Scripts\Services\RegistrationService.js" />
     <Content Include="Scripts\Services\TeamService.js" />
     <Content Include="Scripts\Services\UserService.js" />
+    <Content Include="Scripts\ViewModels\AdminPanelViewModel.js" />
     <Content Include="Scripts\ViewModels\CreateEventViewModel.js" />
     <Content Include="Scripts\ViewModels\EditEventViewModel.js" />
     <Content Include="Scripts\ViewModels\LoginViewModel.js" />
@@ -360,6 +363,7 @@
     <Content Include="Views\Home\NewBet.cshtml" />
     <Content Include="Views\Home\EditEvent.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
+    <Content Include="Views\Home\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
