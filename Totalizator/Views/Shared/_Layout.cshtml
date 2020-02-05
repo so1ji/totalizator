@@ -17,16 +17,19 @@
                 $("#profileElement").css("visibility", "visible");
             }
         });
-        $("#LogOut").click(function () {
-            var cookies = document.cookie.split(";");
 
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i];
-                var eqPos = cookie.indexOf("=");
-                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-            }
+        $(document).ready(function () {
+            $("#LogOut").click(function () {
+                document.cookie.split(";").forEach(function (el) {
+                    el = el.split("=")[0].trim();
+                    if (!el.indexOf("tokenInfo")) {
+                        document.cookie = el + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                        location.href = "/Home/Index";
+                    }
+                })
+            })
         });
+
     </script>
 </head>
 <body>
@@ -44,7 +47,7 @@
                     <li><a href="/Home/UserProfile">My Bets</a></li>
                     <li><a href="/Home/AdminPanel">Admin panel</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a id="LogOut">LogOut</a></li>
+                    <li id="LogOut"><a>LogOut</a></li>
                 </ul>
             </div>
             <div class="navbar-header">
