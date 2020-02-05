@@ -19,6 +19,12 @@
         });
 
         $(document).ready(function () {
+            $("#currentUserNameLayout").click(function () {
+                location.href = "/Home/UserProfile";
+            })
+        });
+
+        $(document).ready(function () {
             $("#LogOut").click(function () {
                 document.cookie.split(";").forEach(function (el) {
                     el = el.split("=")[0].trim();
