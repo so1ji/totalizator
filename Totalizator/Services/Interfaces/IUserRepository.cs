@@ -17,5 +17,8 @@ namespace Totalizator.Services
         int GetCountOfUsers();
         void MakeUserAdmin(User user);
         void MakeUserModerator(User user);
+        bool ChangeEmail(string name, string newEmail);
+        bool ChangeName(string name, string newName);
+        bool ChangePassword(string name, string newPassword);
     }
 }

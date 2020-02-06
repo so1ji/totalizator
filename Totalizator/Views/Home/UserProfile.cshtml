@@ -2,6 +2,9 @@
 @Scripts.Render("~/Services")
 @Scripts.Render("~/ViewModels")
 @Styles.Render("~/Content/totalizatorStyles.css")
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
 
 <h2 id="profile">Profile</h2>
 
@@ -10,10 +13,39 @@
         <label id="UserName" data-bind="text: UserName"></label>
     </div>
     <div class="item-element">
+        <span>Roles: </span>
         <!-- ko foreach: UserRole -->
-        <label id="dateOfEvent" data-bind="text: Name"></label>
+        &nbsp
+        <span id="dateOfEvent" data-bind="text: Name"></span>
         <!-- /ko -->
     </div>
+    <form class="form-inline" data-bind="submit: saveNewName">
+        <div class="form-group">
+            <label for="newName">New Name</label>
+            <input class="form-control" id="newName" type="text" placeholder="Jane" data-bind="value: NewName" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <form class="form-inline" data-bind="submit: saveNewEmail">
+        <div class="form-group">
+            <label for="newEmail">New Email</label>
+            <input class="form-control" id="newEmail" type="email" placeholder="jane.doe@example.com" data-bind="value: NewEmail" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <form class="form-inline" data-bind="submit: saveNewPassword">
+        <div class="form-group">
+            <label for="newPassword">New Pass</label>
+            <input class="form-control" id="newPassword" type="password" placeholder="$2AT!G4#;!Bc" data-bind="value: NewPassword" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 </div>
 
 <h2 id="bets">My Bets</h2>
@@ -23,7 +55,6 @@
         <div class="event-element-item" data-bind="text: EventName"></div>
     </div>
 </div>
-
 <div class="pagination-container" data-bind="foreach: paginationButtons">
     <button class="pagination-item" data-bind="text: $data, click: $parent.load.bind($data)"></button>
 </div>

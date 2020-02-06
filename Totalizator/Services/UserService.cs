@@ -97,5 +97,41 @@ namespace Totalizator.Services
             dbUser.Roles.Add(db.Roles.Where(p => p.Name == "Moderator").FirstOrDefault());
             db.SaveChanges();
         }
+
+        public bool ChangeEmail(string name, string newEmail)
+        {
+            if (db.Users.Where(p => p.Email == newEmail).FirstOrDefault() == null)
+            {
+                var user = GetUserByName(name);
+                user.Email = newEmail;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangeName(string name, string newName)
+        {
+            if (db.Users.Where(p => p.UserName == newName).FirstOrDefault() == null)
+            {
+                var user = GetUserByName(name);
+                user.UserName = newName;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangePassword(string name, string newPassword)
+        {
+            if (newPassword != null)
+            {
+                var user = GetUserByName(name);
+                user.Password = newPassword;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -76,7 +76,7 @@ namespace Totalizator.Controllers
         [HttpPost]
         public HttpResponseMessage MakeUserAdmin(UserDomenModel userDomen)
         {
-            if(userDomen != null)
+            if (userDomen != null)
             {
                 var user = Mapper.Map<User>(userDomen);
                 repository.MakeUserAdmin(user);
@@ -88,7 +88,7 @@ namespace Totalizator.Controllers
         [HttpPost]
         public HttpResponseMessage MakeUserModerator(UserDomenModel userDomen)
         {
-            if(userDomen != null)
+            if (userDomen != null)
             {
                 var user = Mapper.Map<User>(userDomen);
                 repository.MakeUserModerator(user);
@@ -96,8 +96,6 @@ namespace Totalizator.Controllers
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
-
-
 
         [HttpPost]
         public HttpResponseMessage Register(UserDomenModel userDomenData)
@@ -134,5 +132,39 @@ namespace Totalizator.Controllers
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
+
+        [HttpGet]
+        public HttpResponseMessage ChangeEmail(string newEmail)
+        {
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var name = ClaimsPrincipal.Current.Identity.Name;
+            if (repository.ChangeEmail(name, newEmail))
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            else
+                return new HttpResponseMessage(HttpStatusCode.Conflict);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage ChangeName(string newName)
+        {
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var name = ClaimsPrincipal.Current.Identity.Name;
+            if (repository.ChangeName(name, newName))
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            else
+                return new HttpResponseMessage(HttpStatusCode.Conflict);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage ChangePassword(string newPassword)
+        {
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var name = ClaimsPrincipal.Current.Identity.Name;
+            if (repository.ChangePassword(name, newPassword))
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            else
+                return new HttpResponseMessage(HttpStatusCode.Conflict);
+        }
     }
 }
+
