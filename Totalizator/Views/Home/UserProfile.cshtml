@@ -53,7 +53,10 @@
 <div class="main-element" data-bind="foreach: betList">
     <div class="event-element">
         <div class="event-element-item" data-bind="text: EventName"></div>
-    </div>
+        <div class="event-element-item" data-bind="text: SelectedTeam"></div>
+        <div class="event-element-item" data-bind="text: Amount"></div>
+        <div class="event-element-info" data-bind="text: EventDate"></div>
+    </div> 
 </div>
 <div class="pagination-container" data-bind="foreach: paginationButtons">
     <button class="pagination-item" data-bind="text: $data, click: $parent.load.bind($data)"></button>

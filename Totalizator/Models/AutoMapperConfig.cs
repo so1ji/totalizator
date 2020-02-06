@@ -37,6 +37,7 @@ namespace Totalizator.Models
                 .ForMember(x => x.EventName, opt => opt.MapFrom(src => src.Event.Name))
                 .ForMember(x => x.EventDate, opt => opt.MapFrom(src => src.Event.Date.ToString("yyyy-MM-dd HH:mm")))
                 .ForMember(x => x.EventStatus, opt => opt.MapFrom(src => Enum.GetName(typeof(EventStatusEnum), src.Event.Status)))
+                .ForMember(x => x.SelectedTeam, opt => opt.MapFrom(src => src.Team.Name))
                 .ForMember(x => x.Winner, opt => opt.MapFrom(src => src.Event.WinnerId));
             });
         }
