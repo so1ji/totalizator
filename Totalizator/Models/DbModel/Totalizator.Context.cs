@@ -22,9 +22,7 @@ namespace Totalizator.Models.DbModel
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-            .HasOptional(p => p.Roles)
-            .WithMany().WillCascadeOnDelete(true);
+            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Bet> Bets { get; set; }
