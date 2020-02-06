@@ -16,5 +16,6 @@ namespace Totalizator.Services
         bool CheckEmailAndUserName(string email, string username);
         int GetCountOfUsers();
         void MakeUserAdmin(User user);
+        void MakeUserModerator(User user);
     }
 }

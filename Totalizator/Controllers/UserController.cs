@@ -86,6 +86,20 @@ namespace Totalizator.Controllers
         }
 
         [HttpPost]
+        public HttpResponseMessage MakeUserModerator(UserDomenModel userDomen)
+        {
+            if(userDomen != null)
+            {
+                var user = Mapper.Map<User>(userDomen);
+                repository.MakeUserModerator(user);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+
+
+
+        [HttpPost]
         public HttpResponseMessage Register(UserDomenModel userDomenData)
         {
             if (repository.CheckEmailAndUserName(userDomenData.Email, userDomenData.UserName))

@@ -13,9 +13,9 @@
 <div class="main-element" data-bind="foreach: userList">
     <div class="item-element">
         <label id="UserName" data-bind="text: UserName"></label>
-        <label id="dateOfEvent" data-bind="text: Roles"></label>
-        <button data-bind="click: $parent.MakeModerator.bind($data)">Make Moderator</button>
-        <button data-bind="click: $parent.MakeAdmin.bind($data)">Make Admin</button>
+        @*<label id="dateOfEvent" data-bind="text: Name"></label>*@
+        <button data-bind="click: $parent.MakeModerator.bind($data), disable: $parent.hasModeratorRole">Make Moderator</button>
+        <button id="make-admin-button" data-bind="click: $parent.MakeAdmin.bind($data), disable: $parent.hasAdminRole">Make Admin</button>
         <button data-bind="click: $parent.DeleteUser.bind($data)">DeleteUser</button>
     </div>
     <div class="item-element">

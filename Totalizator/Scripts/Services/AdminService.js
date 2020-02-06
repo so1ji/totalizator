@@ -39,6 +39,12 @@
     }
 
     self.MakeAdmin = function (data) {
+        for (var i = 0; i < data.Roles.length; i++) {
+            if (data.Roles[i].Name == "Admin") {
+                alert("This user already have Admin role");
+                return;
+            }
+        }
         var tokenKey = "tokenInfo"; //FIX
         var userData = data;
         $.ajax({
@@ -50,8 +56,36 @@
                 var token = getCookiePartByKey(tokenKey);
                 xhr.setRequestHeader("Authorization", "Bearer " + token);
             }
+        }).done(function () {
+            self.getUsers();
         })
     }
+
+    self.MakeModerator = function (data) {
+        for (var i = 0; i < data.Roles.length; i++) {
+            if (data.Roles[i].Name == "Moderator") {
+                alert("This user already have Moderator role");
+                return;
+            }
+        }
+        var tokenKey = "tokenInfo"; //FIX
+        var userData = data;
+        $.ajax({
+            data: JSON.stringify(userData),
+            type: 'POST',
+            url: '/api/user/MakeUserModerator',
+            contentType: 'application/json; charset=UTF-8',
+            beforeSend: function (xhr) {
+                var token = getCookiePartByKey(tokenKey);
+                xhr.setRequestHeader("Authorization", "Bearer " + token);
+            }
+        }).done(function () {
+            self.getUsers();
+        })
+    }
+
+
+
 
     self.DeleteUser = function (data) {
         var tokenKey = "tokenInfo"; //FIX
@@ -65,6 +99,8 @@
                 var token = getCookiePartByKey(tokenKey);
                 xhr.setRequestHeader("Authorization", "Bearer " + token);
             }
+        }).done(function () {
+            self.getUsers();
         })
 
     }

@@ -86,5 +86,16 @@ namespace Totalizator.Services
             dbUser.Roles.Add(db.Roles.Where(p => p.Name == "Admin").FirstOrDefault());
             db.SaveChanges();
         }
+
+        public void MakeUserModerator(User user)
+        {
+            var dbUser = db.Users.Where(p => p.Id == user.Id).FirstOrDefault();
+
+            dbUser.Email = user.Email;
+            dbUser.UserName = user.UserName;
+            dbUser.Password = user.Password;
+            dbUser.Roles.Add(db.Roles.Where(p => p.Name == "Moderator").FirstOrDefault());
+            db.SaveChanges();
+        }
     }
 }

@@ -4,8 +4,11 @@
     self.init = function () {
         self.adminService = adminService;
 
+        self.hasModeratorRole = ko.observable(false);
+        self.hasAdminRole = ko.observable(false);
 
         self.userList = ko.observableArray();
+
         self.paginationButtons = ko.observableArray();
         self.load = function (numberOfPage) {
             adminService.getUsers(numberOfPage);
@@ -16,7 +19,7 @@
         };
 
         self.MakeModerator = function (data) {
-            adminService.MakeAdmin(data); //TODO CHANGE TO Moderator
+            adminService.MakeModerator(data); 
         };
 
         self.DeleteUser = function (data) {
@@ -25,4 +28,5 @@
 
         adminService.getCountOfUsers();
     }
+
 }
