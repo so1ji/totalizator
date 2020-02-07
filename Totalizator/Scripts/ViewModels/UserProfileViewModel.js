@@ -32,6 +32,10 @@
             profileService.getEvents(numberOfPage, user.Id);
         }
 
+        self.deleteBet = function (data) {
+            alert(data);
+        }
+
         profileService.getCountOfBets(user.Id);
     }
 }

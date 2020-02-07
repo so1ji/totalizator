@@ -10,14 +10,13 @@
 
 <div class="main-element">
     <div class="item-element">
-        <label id="UserName" data-bind="text: UserName"></label>
-    </div>
-    <div class="item-element">
-        <span>Roles: </span>
-        <!-- ko foreach: UserRole -->
-        &nbsp
-        <span id="dateOfEvent" data-bind="text: Name"></span>
-        <!-- /ko -->
+        <h4>Your roles:</h4>
+        <ul>
+            <!-- ko foreach: UserRole -->
+            &nbsp
+            <li><span id="userRoles" data-bind="text: Name"></span></li>
+            <!-- /ko -->
+        </ul>
     </div>
     <form class="form-inline" data-bind="submit: saveNewName">
         <div class="form-group">
@@ -54,9 +53,13 @@
     <div class="event-element">
         <div class="event-element-item" data-bind="text: EventName"></div>
         <div class="event-element-item" data-bind="text: SelectedTeam"></div>
-        <div class="event-element-item" data-bind="text: Amount"></div>
+        <div class="event-element-item amount" data-bind="text: Amount"></div>
+        <strong>$</strong>
+    <div class="event-element-item event-controls">
+        <div class="delete-bet" data-bind="click: $parent.deleteBet.bind($data)"></div>
+    </div>
         <div class="event-element-info" data-bind="text: EventDate"></div>
-    </div> 
+    </div>
 </div>
 <div class="pagination-container" data-bind="foreach: paginationButtons">
     <button class="pagination-item" data-bind="text: $data, click: $parent.load.bind($data)"></button>

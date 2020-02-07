@@ -7,18 +7,18 @@
 
 <div class="main-element">
     <div class="item-element">
-        <label id="nameOfEvent" data-bind="text: NameOfEvent"></label>
-    </div>
-    <div class="item-element">
-        <label id="dateOfEvent" data-bind="text: DateOfEvent"></label>
-    </div>
-    <div class="item-element">
-        <label for="team-first-coefficient" data-bind="text: TeamFirstName"></label>
-        <span id="team-first-coefficient" data-bind="text: TeamFirstCoefficient">Coefficient</span>
-    </div>
-    <div class="item-element">
-        <label for="team-second-coefficient" data-bind="text: TeamSecondName"></label>
-        <span id="team-second-coefficient" data-bind="text: TeamSecondCoefficient">Coefficient</span>
+        <ul>
+            <li><span id="nameOfEvent" data-bind="text: NameOfEvent"></span></li>
+            <li><span id="dateOfEvent" data-bind="text: DateOfEvent"></span></li>
+            <li>
+                <strong for="team-first-coefficient" data-bind="text: TeamFirstName"></strong>
+                <span id="team-first-coefficient" data-bind="text: TeamFirstCoefficient">Coefficient</span>
+            </li>
+            <li>
+                <strong for="team-second-coefficient" data-bind="text: TeamSecondName"></strong>
+                <span id="team-second-coefficient" data-bind="text: TeamSecondCoefficient">Coefficient</span>
+            </li>
+        </ul>
     </div>
     <div class="item-element">
         <label for="firstTeam">Select Team</label>

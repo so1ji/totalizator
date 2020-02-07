@@ -1,4 +1,9 @@
-﻿h2 {
+﻿.amount {
+margin-right: -30px;
+width : auto !important;
+}
+
+h2 {
     font-family: 'Sigmar One', cursive;
     margin: 30px;
     text-align: center;
@@ -97,7 +102,7 @@ button {
     justify-content: flex-end;
 }
 
-.make-bet, .event-edit {
+.make-bet, .event-edit, .delete-bet {
     cursor: pointer;
     height: 20px;
     margin-left: 20px;
@@ -105,7 +110,7 @@ button {
     width: 20px;
 }
 
-    .make-bet::before, .make-bet::after {
+    .make-bet::before, .make-bet::after, .delete-bet::before, .delete-bet::after {
         background: #6f6f6f;
         content: "";
         display: block;
@@ -118,7 +123,7 @@ button {
         width: 20px;
     }
 
-    .make-bet:hover::before, .make-bet:hover::after, .event-edit:hover span, .event-edit:hover::before, .event-edit:hover::after {
+    .make-bet:hover::before, .make-bet:hover::after, .event-edit:hover span, .event-edit:hover::before, .event-edit:hover::after, .delete-bet:hover::before, .delete-bet:hover::after {
         background: black;
     }
 
