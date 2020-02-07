@@ -32,6 +32,7 @@
             }
         }).done(function (data) {
             var obj = jQuery.parseJSON(data);
+            userProfileViewModel.paginationButtons.removeAll();
             for (var i = 1; i <= Math.ceil(parseInt(obj) / 3); i++) {
                 userProfileViewModel.paginationButtons.push(i);
             }
@@ -101,5 +102,22 @@
                 })
             })
         }
+    }
+
+    self.deleteBet = function (betId) {
+        var tokenKey = "tokenInfo"; //FIX
+        var id = betId;
+        $.ajax({
+            type: 'GET',
+            url: '/api/bet/DeleteBetById' + '?betId=' + id,
+            contentType: 'application/json; charset=utf-8',
+            beforeSend: function (xhr) {
+                var token = getCookiePartByKey(tokenKey);
+                xhr.setRequestHeader("Authorization", "Bearer " + token);
+            }
+        }).done(function () {
+            self.getEvents(1, getCurrentUserId());
+            self.getCountOfBets(getCurrentUserId());
+        })
     }
 }

@@ -55,6 +55,12 @@ namespace Totalizator.Controllers
             return JsonConvert.SerializeObject(countOfBets);
         }
 
+        [HttpGet]
+        public HttpResponseMessage DeleteBetById(int betId)
+        {
+            repository.DeleteBet(betId);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
 
     }
 }

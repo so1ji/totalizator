@@ -14,5 +14,6 @@ namespace Totalizator.Services
         void AddBet(Bet item);
         IQueryable<Bet> ListBet(int pageNumber, int userId);
         int GetCountOfBets(int userId);
+        void DeleteBet(int betId);
     }
 }

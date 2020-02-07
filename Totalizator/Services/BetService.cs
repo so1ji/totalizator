@@ -20,6 +20,12 @@ namespace Totalizator.Services
             };
         }
 
+        public void DeleteBet(int betId)
+        {
+            db.Bets.Remove(db.Bets.Where(p => p.Id == betId).FirstOrDefault());
+            db.SaveChanges();
+        }
+
         public int GetCountOfBets(int userId)
         {
             return db.Bets.Where(x => x.UserId == userId).Count();

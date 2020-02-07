@@ -33,7 +33,8 @@
         }
 
         self.deleteBet = function (data) {
-            alert(data);
+            profileService.deleteBet(data.Id);
+            console.log(data.Id);
         }
 
         profileService.getCountOfBets(user.Id);
