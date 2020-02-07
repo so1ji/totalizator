@@ -2,7 +2,7 @@
     var self = this;
 
     self.getEvents = function (pageNumber = 1, userId) {
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo";
         $.ajax({
             type: 'GET',
             url: '/api/bet/GetBetList' + '?pageNumber=' + pageNumber + '&userId=' + userId,
@@ -21,7 +21,7 @@
 
 
     self.getCountOfBets = function (userId) {
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo";
         $.ajax({
             type: 'GET',
             url: '/api/bet/GetCountOfBets' + '?userId=' + userId,
@@ -41,26 +41,42 @@
     }
 
     self.saveNewEmail = function (newEmail) {
-        var tokenKey = "tokenInfo"; //FIX
-        $.ajax({
-            type: 'GET',
-            url: '/api/user/ChangeEmail' + '?newEmail=' + newEmail,
-            contentType: 'application/json; charset=UTF-8',
-            beforeSend: function (xhr) {
-                var token = getCookiePartByKey(tokenKey);
-                xhr.setRequestHeader("Authorization", "Bearer " + token);
-            },
-            error: function (XmlHttpRequest) {
-                if (XmlHttpRequest.status == 409) {
-                    alert('This Email already exists');
-                }
+        $("#message-in-modal").text("Are you sure about changing Email?");
+        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $(window.yesClicked).change(function () {
+            if (window.yesClicked) {
+                var tokenKey = "tokenInfo";
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/user/ChangeEmail' + '?newEmail=' + newEmail,
+                    contentType: 'application/json; charset=UTF-8',
+                    beforeSend: function (xhr) {
+                        var token = getCookiePartByKey(tokenKey);
+                        xhr.setRequestHeader("Authorization", "Bearer " + token);
+                    },
+                    error: function (XmlHttpRequest) {
+                        if (XmlHttpRequest.status == 409) {
+                            alert('This Email already exists');
+                        }
+                    }
+                }).done(function () {
+                    window.yesClicked = false;
+                    $.unblockUI()
+                })
             }
+            else {
+                window.yesClicked = false;
+                $.unblockUI();
+                return false;
+            };
         })
     }
 
     self.saveNewPassword = function (newPassword) {
-        if (newPassword != "$2AT!G4#;!Bc") {
-            var tokenKey = "tokenInfo"; //FIX
+        $("#message-in-modal").text("Are you sure about changing password?");
+        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $('#yes').click(function () {
+            var tokenKey = "tokenInfo";
             $.ajax({
                 type: 'GET',
                 url: '/api/user/ChangePassword' + '?newPassword=' + newPassword,
@@ -69,15 +85,19 @@
                     var token = getCookiePartByKey(tokenKey);
                     xhr.setRequestHeader("Authorization", "Bearer " + token);
                 },
-            })
-        }
-        else alert("You can't use this password :)");
+            }).done(function () { $.unblockUI() })
+        });
+        $('#no').click(function () {
+            $.unblockUI();
+            return false;
+        });
     }
 
     self.saveNewName = function (newName) {
-        var x = window.confirm("You will be logout after changing name")
-        if (x) {
-            var tokenKey = "tokenInfo"; //FIX
+        $("#message-in-modal").text("Are you sure about changing name? You will be login out.");
+        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $('#yes').click(function () {
+            var tokenKey = "tokenInfo";
             $.ajax({
                 async: false,
                 type: 'GET',
@@ -94,6 +114,7 @@
                 }
             }).done(function () {
                 document.cookie.split(";").forEach(function (el) {
+                    $.unblockUI();
                     el = el.split("=")[0].trim();
                     if (!el.indexOf("tokenInfo")) {
                         document.cookie = el + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
@@ -101,11 +122,15 @@
                     }
                 })
             })
-        }
+        });
+        $('#no').click(function () {
+            $.unblockUI();
+            return false;
+        });
     }
 
     self.deleteBet = function (betId) {
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo";
         var id = betId;
         $.ajax({
             type: 'GET',

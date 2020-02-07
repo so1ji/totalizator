@@ -289,6 +289,7 @@
       <DependentUpon>Totalizator.edmx</DependentUpon>
       <LastGenOutput>Totalizator.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\block-ui.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

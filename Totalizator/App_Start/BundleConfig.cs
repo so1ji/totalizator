@@ -30,6 +30,10 @@ namespace Totalizator
             bundles.Add(new ScriptBundle("~/ViewModels").IncludeDirectory(
                 "~/Scripts/ViewModels/", "*.js", true
                 ));
+
+            bundles.Add(new ScriptBundle("~/BlockUi").IncludeDirectory(
+                "~/Scripts/", "block-ui.js", true
+                ));
         }
     }
 }

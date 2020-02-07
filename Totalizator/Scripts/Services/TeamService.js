@@ -1,5 +1,5 @@
 ﻿function getTeams() {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
     $.ajax({
         type: 'GET',
         url: '/api/team/GetListOfTeams',

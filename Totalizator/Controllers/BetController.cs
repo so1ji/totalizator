@@ -13,6 +13,7 @@ using Totalizator.Services;
 
 namespace Totalizator.Controllers
 {
+    [Authorize(Roles = "Admin, Moderator, User")]
     public class BetController : ApiController
     {
 
