@@ -3,7 +3,7 @@
 
     self.signIn = function (UserName, UserPassword) {
 
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo"; 
         var data = {
             grant_type : 'password',
             username : UserName,

@@ -18,7 +18,7 @@ using Totalizator.Models.DomenModel;
 
 namespace Totalizator.Controllers
 {
-
+    [Authorize(Roles = "Admin, Moderator")]
     public class UserController : ApiController
     {
         IUserRepository repository;
@@ -49,6 +49,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public string GetCurrentUser()
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
@@ -98,6 +99,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public HttpResponseMessage Register(UserDomenModel userDomenData)
         {
             if (repository.CheckEmailAndUserName(userDomenData.Email, userDomenData.UserName))
@@ -134,6 +136,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Moderator, User")]
         public HttpResponseMessage ChangeEmail(string newEmail)
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
@@ -145,6 +148,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Moderator, User")]
         public HttpResponseMessage ChangeName(string newName)
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
@@ -156,6 +160,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Moderator, User")]
         public HttpResponseMessage ChangePassword(string newPassword)
         {
             ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;

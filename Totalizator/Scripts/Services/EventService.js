@@ -1,5 +1,5 @@
 ﻿function getStatuses(viewModel) {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
     $.ajax({
         type: 'GET',
         url: '/api/event/GetStatusList',
@@ -21,7 +21,7 @@
 }
 
 function getTypes() {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
     $.ajax({
         type: 'GET',
         url: '/api/event/GetTypesList',

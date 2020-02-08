@@ -1,5 +1,5 @@
 ﻿function getUserNameFromToken() {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
 
     $.ajax({
         type: 'GET',
@@ -15,7 +15,7 @@
 }
 
 function getCurrentUser() {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
     var user;
     $.ajax({
         async: false,
@@ -33,7 +33,7 @@ function getCurrentUser() {
 }
 
 function getCurrentUserId() {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
     var user;
     $.ajax({
         async: false,
@@ -59,12 +59,16 @@ function deleteUserById(id) {
         type: 'DELETE',
         url: '/api/user/DeleteUser',
         contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(data)
+        data: JSON.stringify(data),
+        beforeSend: function (xhr) {
+            var token = getCookiePartByKey(tokenKey);
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+        }
     })
 }
 
 function getUserNameById(id) {
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
     var id = id;
     $.ajax({
         type: 'GET',
@@ -83,7 +87,7 @@ function getUserNameById(id) {
 
 function getAllUsers() {
 
-    var tokenKey = "tokenInfo"; //FIX
+    var tokenKey = "tokenInfo"; 
 
     $.ajax({
         type: 'GET',

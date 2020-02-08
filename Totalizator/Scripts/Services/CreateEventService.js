@@ -7,7 +7,7 @@
         var creatorId = getCurrentUserId(); //return a obj
         console.log(creatorId);
 
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo"; 
         var data =
         {
             TypeId: TypeOfEvent,

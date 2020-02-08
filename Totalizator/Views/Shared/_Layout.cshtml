@@ -69,6 +69,36 @@
         </footer>
     </div>
 
+    <div id="question" style="display:none; cursor: default">
+        <h1 id="message-in-modal"></h1>
+        <input type="button" id="yes" value="Yes" />
+        <input type="button" id="no" value="No" />
+    </div>
+
+
+    <!-- Modal -->
+    @*<div class="modal fade" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered" role="document"  >
+                <div class="modal-content" id="question" tabindex="-1" style="display:none; cursor: default; ">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure?</h5>
+                        <button type="button" id="no" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Hello
+                    </div>
+                    <div class="modal-footer">
+                        <button id="no" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button id="yes" type="button" class="btn btn-primary">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -76,6 +106,17 @@
 </html>
 @section scripts{
     <script>
+        window.yesClicked = false;
+        $(document).ready(function () {
+            $("#yes").click(function () {
+                window.yesClicked = true;
+            });
+        });
 
+        $(document).ready(function () {
+            $("#no").click(function () {
+                window.yesClicked = false;
+            })
+        });
     </script>
 }

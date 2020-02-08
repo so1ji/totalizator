@@ -13,6 +13,7 @@ using Totalizator.Services;
 
 namespace Totalizator.Controllers
 {
+    [Authorize(Roles = "Admin, Moderator, User")]
     public class BetController : ApiController
     {
 
@@ -55,6 +56,12 @@ namespace Totalizator.Controllers
             return JsonConvert.SerializeObject(countOfBets);
         }
 
+        [HttpGet]
+        public HttpResponseMessage DeleteBetById(int betId)
+        {
+            repository.DeleteBet(betId);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
 
     }
 }

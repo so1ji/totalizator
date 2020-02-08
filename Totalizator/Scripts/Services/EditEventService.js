@@ -6,7 +6,7 @@
 
         var editorId = getCurrentUserId(); //return a obj
 
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo"; 
         var data =
         {
             Id: sessionStorage.EventId,

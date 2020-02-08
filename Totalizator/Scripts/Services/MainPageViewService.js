@@ -2,7 +2,7 @@
     var self = this;
 
     self.getEvents = function (pageNumber = 1) {
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo"; 
         $.ajax({
             type: 'GET',
             url: '/api/event/GetEventsList' + '?pageNumber=' + pageNumber,
@@ -20,7 +20,7 @@
     }
 
     self.getCountOfEvents = function () {
-        var tokenKey = "tokenInfo"; //FIX
+        var tokenKey = "tokenInfo"; 
         $.ajax({
             type: 'GET',
             url: '/api/event/GetCountOfEvents',

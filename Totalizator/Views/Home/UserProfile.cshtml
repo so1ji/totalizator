@@ -4,6 +4,7 @@
 @Styles.Render("~/Content/totalizatorStyles.css")
 @Styles.Render("~/Content/css")
 @Scripts.Render("~/bundles/modernizr")
+@Styles.Render("~/Scripts/block-ui.js")
 
 
 <h2 id="profile">Profile</h2>
@@ -13,7 +14,6 @@
         <h4>Your roles:</h4>
         <ul>
             <!-- ko foreach: UserRole -->
-            &nbsp
             <li><span id="userRoles" data-bind="text: Name"></span></li>
             <!-- /ko -->
         </ul>
@@ -55,9 +55,9 @@
         <div class="event-element-item" data-bind="text: SelectedTeam"></div>
         <div class="event-element-item amount" data-bind="text: Amount"></div>
         <strong>$</strong>
-    <div class="event-element-item event-controls">
-        <div class="delete-bet" data-bind="click: $parent.deleteBet.bind($data)"></div>
-    </div>
+        <div class="event-element-item event-controls">
+            <div class="delete-bet" data-bind="click: $parent.deleteBet.bind($data)"></div>
+        </div>
         <div class="event-element-info" data-bind="text: EventDate"></div>
     </div>
 </div>
@@ -66,6 +66,7 @@
 </div>
 
 @section scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.js"></script>
     <script>
         var profileService = new ProfileService();
         var userProfileViewModel = new UserProfileViewModel(profileService);

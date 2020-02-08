@@ -24,6 +24,7 @@ namespace Totalizator.Controllers
             repository = eventRepository;
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet]
         public string GetStatusList()
         {
@@ -32,6 +33,7 @@ namespace Totalizator.Controllers
             return JsonConvert.SerializeObject(listOfStatuses);
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet]
         public string GetTypesList()
         {
