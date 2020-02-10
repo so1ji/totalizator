@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Totalizator.Models;
@@ -9,7 +10,12 @@ namespace Totalizator.Services
 {
     public class BetService : IBetRepository
     {
-        totalizatorEntities db = new totalizatorEntities();
+        totalizatorEntities db;
+
+        public BetService(totalizatorEntities dbContext)
+        {
+            db = dbContext;
+        }
 
         public void AddBet(Bet item)
         {

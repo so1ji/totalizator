@@ -5,6 +5,8 @@ using System.Web;
 using Ninject.Modules;
 using Totalizator.Services;
 using Ninject.Web.WebApi;
+using System.Data.Entity;
+using Totalizator.Models.DbModel;
 
 namespace Totalizator.Util
 {
@@ -12,6 +14,8 @@ namespace Totalizator.Util
     {
         public override void Load()
         {
+            Bind<DbContext>().To<totalizatorEntities>();
+            
             Bind<IUserRepository>().To<UserService>();
             Bind<IEventRepository>().To<EventService>();
             Bind<ITeamRepository>().To<TeamService>();

@@ -62,6 +62,5 @@ namespace Totalizator.Controllers
             repository.DeleteBet(betId);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
-
     }
 }
