@@ -42,35 +42,35 @@
 
     self.saveNewEmail = function (newEmail) {
         $("#message-in-modal").text("Are you sure about changing Email?");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
-        $(window.yesClicked).change(function () {
-            $('#yes').click(function () {
-                var tokenKey = "tokenInfo";
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/user/ChangeEmail' + '?newEmail=' + newEmail,
-                    contentType: 'application/json; charset=UTF-8',
-                    beforeSend: function (xhr) {
-                        var token = getCookiePartByKey(tokenKey);
-                        xhr.setRequestHeader("Authorization", "Bearer " + token);
-                    },
-                    error: function (XmlHttpRequest) {
-                        if (XmlHttpRequest.status == 409) {
-                            alert('This Email already exists');
-                        }
+        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
+        $('#yes').click(function () {
+            var tokenKey = "tokenInfo";
+            $.ajax({
+                type: 'GET',
+                url: '/api/user/ChangeEmail' + '?newEmail=' + newEmail,
+                contentType: 'application/json; charset=UTF-8',
+                beforeSend: function (xhr) {
+                    var token = getCookiePartByKey(tokenKey);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                },
+                error: function (XmlHttpRequest) {
+                    if (XmlHttpRequest.status == 409) {
+                        alert('This Email already exists');
+                        $('#yes').off('click');
+                        $.unblockUI();
                     }
-                }).done(function () {
-                    $('#yes').off('click');
-                    $.unblockUI();
+                }
+            }).done(function () {
+                $('#yes').off('click');
+                $.unblockUI();
 
-                })
-            });
-        })
+            })
+        });
     }
 
     self.saveNewPassword = function (newPassword) {
         $("#message-in-modal").text("Are you sure about changing password?");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
         $('#yes').click(function () {
             var tokenKey = "tokenInfo";
             $.ajax({
@@ -90,7 +90,7 @@
 
     self.saveNewName = function (newName) {
         $("#message-in-modal").text("Are you sure about changing name? You will be login out.");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
         $('#yes').click(function () {
             var tokenKey = "tokenInfo";
             $.ajax({

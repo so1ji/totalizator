@@ -9,7 +9,17 @@
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Sigmar+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.js"></script>
     <script>
+
+
+        $(document).ready(function () {
+            $("#no").click(function () {
+                $.unblockUI();
+                $('#yes').off('click');
+            })
+        });
+
         $(document).ready(function () {
             var user = getCurrentUser();
             if (user != null) {
@@ -69,7 +79,7 @@
         </footer>
     </div>
 
-    <div id="question" style="display:none; cursor: default">
+    <div id="question" class="modal-message" style="display:none; cursor: default">
         <h1 id="message-in-modal"></h1>
         <input type="button" id="yes" value="Yes" />
         <input type="button" id="no" value="No" />
@@ -105,13 +115,4 @@
 </body>
 </html>
 @section scripts{
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#no").click(function () {
-                $.unblockUI();
-                $('#yes').off('click');
-            })
-        });
-    </script>
 }

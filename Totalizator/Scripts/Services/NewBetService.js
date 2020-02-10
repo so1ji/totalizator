@@ -3,7 +3,7 @@
 
     self.MakeBet = function (EventId, BetAmount, TeamId) {
         $("#message-in-modal").text("Are you sure about make bet?");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
         $('#yes').click(function () {
             var creatorId = getCurrentUserId(); //return a obj
             console.log(creatorId);

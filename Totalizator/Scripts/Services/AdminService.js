@@ -40,7 +40,8 @@
 
     self.MakeAdmin = function (data) {
         $("#message-in-modal").text("Are you sure about make this user admin?");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $.blockUI({
+            message: $('#question'), css: {width: '275px', top: '30%', left: '41%'}});
         $('#yes').click(function () {
             for (var i = 0; i < data.Roles.length; i++) {
                 if (data.Roles[i].Name == "Admin") {
@@ -71,7 +72,7 @@
 
     self.MakeModerator = function (data) {
         $("#message-in-modal").text("Are you sure about make this user moderator?");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
         $('#yes').click(function () {
             for (var i = 0; i < data.Roles.length; i++) {
                 if (data.Roles[i].Name == "Moderator") {
@@ -102,7 +103,7 @@
 
     self.DeleteUser = function (data) {
         $("#message-in-modal").text("Are you sure about delete this user?");
-        $.blockUI({ message: $('#question'), css: { width: '275px' } });
+        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
         $('#yes').click(function () {
             var tokenKey = "tokenInfo";
             var userData = data;
