@@ -16,6 +16,10 @@
         self.betList = ko.observableArray();
         self.paginationButtons = ko.observableArray();
 
+        self.deleteAccount = function () {
+            profileService.deleteAccount();
+        }
+
         self.saveNewEmail = function () {
             profileService.saveNewEmail(self.NewEmail());
         }

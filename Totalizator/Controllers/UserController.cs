@@ -18,7 +18,7 @@ using Totalizator.Models.DomenModel;
 
 namespace Totalizator.Controllers
 {
-    [Authorize(Roles = "Admin, Moderator")]
+    [Authorize(Roles = "Admin, Moderator, User")]
     public class UserController : ApiController
     {
         IUserRepository repository;
@@ -29,6 +29,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public string GetUserList(int pageNumber)
         {
             var userList = repository.ListUser(pageNumber);
@@ -42,6 +43,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public string GetCountOfUsers()
         {
             var countOfUsers = repository.GetCountOfUsers();
@@ -75,6 +77,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public HttpResponseMessage MakeUserAdmin(UserDomenModel userDomen)
         {
             if (userDomen != null)
@@ -87,6 +90,7 @@ namespace Totalizator.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public HttpResponseMessage MakeUserModerator(UserDomenModel userDomen)
         {
             if (userDomen != null)
@@ -175,6 +179,17 @@ namespace Totalizator.Controllers
                 return new HttpResponseMessage(HttpStatusCode.OK);
             else
                 return new HttpResponseMessage(HttpStatusCode.Conflict);
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin, Moderator, User")]
+        public HttpResponseMessage DeleteCurrentUser()
+        {
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            var name = ClaimsPrincipal.Current.Identity.Name;
+            var user = repository.GetUserByName(name);
+            repository.DeleteUser(user.Id);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 }

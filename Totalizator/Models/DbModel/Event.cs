@@ -32,7 +32,7 @@ namespace Totalizator.Models.DbModel
         public Nullable<int> WinnerId { get; set; }
         public double TeamFirstPoints { get; set; }
         public double TeamSecondPoints { get; set; }
-        public int CreatorId { get; set; }
+        public Nullable<int> CreatorId { get; set; }
         public System.DateTime CreateDate { get; set; }
         public Nullable<int> EditorId { get; set; }
         public Nullable<System.DateTime> EditDate { get; set; }

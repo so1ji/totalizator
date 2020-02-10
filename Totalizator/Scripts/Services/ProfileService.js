@@ -42,7 +42,7 @@
 
     self.saveNewEmail = function (newEmail) {
         $("#message-in-modal").text("Are you sure about changing Email?");
-        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
+        $.blockUI({ message: $('#question'), css: { width: '275px', top: '30%', left: '41%' } });
         $('#yes').click(function () {
             var tokenKey = "tokenInfo";
             $.ajax({
@@ -70,7 +70,7 @@
 
     self.saveNewPassword = function (newPassword) {
         $("#message-in-modal").text("Are you sure about changing password?");
-        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
+        $.blockUI({ message: $('#question'), css: { width: '275px', top: '30%', left: '41%' } });
         $('#yes').click(function () {
             var tokenKey = "tokenInfo";
             $.ajax({
@@ -90,7 +90,7 @@
 
     self.saveNewName = function (newName) {
         $("#message-in-modal").text("Are you sure about changing name? You will be login out.");
-        $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
+        $.blockUI({ message: $('#question'), css: { width: '275px', top: '30%', left: '41%' } });
         $('#yes').click(function () {
             var tokenKey = "tokenInfo";
             $.ajax({
@@ -136,5 +136,32 @@
             self.getEvents(1, getCurrentUserId());
             self.getCountOfBets(getCurrentUserId());
         })
+    }
+
+    self.deleteAccount = function () {
+        $("#message-in-modal").text("Are you sure about delete your account?");
+        $.blockUI({ message: $('#question'), css: { width: '275px', top: '30%', left: '41%' } });
+        $('#yes').click(function () {
+            var tokenKey = "tokenInfo";
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/user/DeleteCurrentUser',
+                contentType: 'application/json; charset=utf-8',
+                beforeSend: function (xhr) {
+                    var token = getCookiePartByKey(tokenKey);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                }
+            }).done(function () {
+                document.cookie.split(";").forEach(function (el) {
+                    $('#yes').off('click');
+                    $.unblockUI();
+                    el = el.split("=")[0].trim();
+                    if (!el.indexOf("tokenInfo")) {
+                        document.cookie = el + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                        location.href = "/Home/Index";
+                    }
+                })
+            });
+        });
     }
 }
