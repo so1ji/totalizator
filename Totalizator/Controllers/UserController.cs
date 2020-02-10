@@ -128,6 +128,12 @@ namespace Totalizator.Controllers
         {
             if (userDomen != null)
             {
+                ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+                var name = ClaimsPrincipal.Current.Identity.Name;
+                if (userDomen.UserName == name)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.Conflict);
+                }
                 var user = Mapper.Map<User>(userDomen);
                 repository.DeleteUser(user.Id);
                 return new HttpResponseMessage(HttpStatusCode.OK);

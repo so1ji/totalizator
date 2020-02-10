@@ -115,6 +115,13 @@
                 beforeSend: function (xhr) {
                     var token = getCookiePartByKey(tokenKey);
                     xhr.setRequestHeader("Authorization", "Bearer " + token);
+                },
+                error: function (XmlHttpRequest) {
+                    if (XmlHttpRequest.status == 409) {
+                        alert("You can't delete yourself");
+                        $('#yes').off('click');
+                        $.unblockUI();
+                    }
                 }
             }).done(function () {
                 self.getUsers();
