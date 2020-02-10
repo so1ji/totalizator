@@ -28,12 +28,9 @@
                     xhr.setRequestHeader("Authorization", "Bearer " + token);
                 }
             }).done(function () {
+                $('#yes').off('click');
                 location.href = "/Home/Main";
             })
-        });
-        $('#no').click(function () {
-            $.unblockUI();
-            return false;
         });
     }
 }

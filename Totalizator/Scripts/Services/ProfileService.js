@@ -44,7 +44,7 @@
         $("#message-in-modal").text("Are you sure about changing Email?");
         $.blockUI({ message: $('#question'), css: { width: '275px' } });
         $(window.yesClicked).change(function () {
-            if (window.yesClicked) {
+            $('#yes').click(function () {
                 var tokenKey = "tokenInfo";
                 $.ajax({
                     type: 'GET',
@@ -60,15 +60,11 @@
                         }
                     }
                 }).done(function () {
-                    window.yesClicked = false;
-                    $.unblockUI()
+                    $('#yes').off('click');
+                    $.unblockUI();
+
                 })
-            }
-            else {
-                window.yesClicked = false;
-                $.unblockUI();
-                return false;
-            };
+            });
         })
     }
 
@@ -85,11 +81,10 @@
                     var token = getCookiePartByKey(tokenKey);
                     xhr.setRequestHeader("Authorization", "Bearer " + token);
                 },
-            }).done(function () { $.unblockUI() })
-        });
-        $('#no').click(function () {
-            $.unblockUI();
-            return false;
+            }).done(function () {
+                $.unblockUI();
+                $('#yes').off('click');
+            })
         });
     }
 
@@ -114,6 +109,7 @@
                 }
             }).done(function () {
                 document.cookie.split(";").forEach(function (el) {
+                    $('#yes').off('click');
                     $.unblockUI();
                     el = el.split("=")[0].trim();
                     if (!el.indexOf("tokenInfo")) {
@@ -122,10 +118,6 @@
                     }
                 })
             })
-        });
-        $('#no').click(function () {
-            $.unblockUI();
-            return false;
         });
     }
 

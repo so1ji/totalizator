@@ -46,6 +46,7 @@
                 if (data.Roles[i].Name == "Admin") {
                     $.unblockUI();
                     alert("This user already have Admin role");
+                    $('#yes').off("click");
                     return;
                 }
             }
@@ -61,14 +62,11 @@
                     xhr.setRequestHeader("Authorization", "Bearer " + token);
                 }
             }).done(function () {
+                $('#yes').off("click");
                 $.unblockUI();
                 self.getUsers();
             })
         })
-        $('#no').click(function () {
-            $.unblockUI();
-            return false;
-        });
     }
 
     self.MakeModerator = function (data) {
@@ -79,7 +77,7 @@
                 if (data.Roles[i].Name == "Moderator") {
                     alert("This user already have Moderator role");
                     $.unblockUI();
-                    data.removeAll();
+                    $('#yes').off('click');
                     return;
                 }
             }
@@ -96,13 +94,10 @@
                 }
             }).done(function () {
                 self.getUsers();
+                $('#yes').off('click');
                 $.unblockUI();
             })
         })
-        $('#no').click(function () {
-            $.unblockUI();
-            return false;
-        });
     }
 
     self.DeleteUser = function (data) {
@@ -125,9 +120,5 @@
                 $unblockUI();
             })
         })
-        $('#no').click(function () {
-            $.unblockUI();
-            return false;
-        });
     }
 }

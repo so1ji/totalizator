@@ -105,17 +105,12 @@
 </body>
 </html>
 @section scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.js"></script>
     <script>
-        window.yesClicked = false;
-        $(document).ready(function () {
-            $("#yes").click(function () {
-                window.yesClicked = true;
-            });
-        });
-
         $(document).ready(function () {
             $("#no").click(function () {
-                window.yesClicked = false;
+                $.unblockUI();
+                $('#yes').off('click');
             })
         });
     </script>
