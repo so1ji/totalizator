@@ -31,7 +31,7 @@
           <Property Name="WinnerId" Type="int" />
           <Property Name="TeamFirstPoints" Type="float" Nullable="false" />
           <Property Name="TeamSecondPoints" Type="float" Nullable="false" />
-          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="EditorId" Type="int" />
           <Property Name="EditDate" Type="datetime" />
@@ -111,9 +111,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bets_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Bets" Type="Self.Bets" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -173,7 +171,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Events_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Events" Type="Self.Events" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -209,9 +207,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserRoles_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -310,7 +306,7 @@
           <Property Name="WinnerId" Type="Int32" />
           <Property Name="TeamFirstPoints" Type="Double" Nullable="false" />
           <Property Name="TeamSecondPoints" Type="Double" Nullable="false" />
-          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EditorId" Type="Int32" />
           <Property Name="EditDate" Type="DateTime" Precision="3" />
@@ -399,9 +395,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bets_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Bets" Type="Self.Bet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -461,7 +455,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Events_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Events" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
