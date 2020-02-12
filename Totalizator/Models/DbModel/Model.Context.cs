@@ -13,7 +13,7 @@ namespace Totalizator.Models.DbModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class totalizatorEntities : DbContext
+    public partial class totalizatorEntities : DbContext, ITotalizatorContext
     {
         public totalizatorEntities()
             : base("name=totalizatorEntities")
@@ -28,9 +28,9 @@ namespace Totalizator.Models.DbModel
         public virtual DbSet<Bet> Bets { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

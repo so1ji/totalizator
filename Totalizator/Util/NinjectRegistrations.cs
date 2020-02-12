@@ -14,7 +14,7 @@ namespace Totalizator.Util
     {
         public override void Load()
         {
-            Bind<DbContext>().To<totalizatorEntities>();
+            Bind<ITotalizatorContext>().To<totalizatorEntities>();
             
             Bind<IUserRepository>().To<UserService>();
             Bind<IEventRepository>().To<EventService>();

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Totalizator.Models;
+using Totalizator.Models.DbModel;
 using Totalizator.Services;
 
 namespace Totalizator.Providers
@@ -16,9 +17,11 @@ namespace Totalizator.Providers
         {
             return Task.Factory.StartNew(() =>
             {
+                totalizatorEntities db = new totalizatorEntities(); 
+
                 var email = context.UserName;
                 var password = context.Password;
-                var userService = new UserService();
+                var userService = new UserService(db);
                 var user = userService.Validate(email, password);
                 if (user != null)
                 {

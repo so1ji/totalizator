@@ -233,6 +233,7 @@
     <Compile Include="Models\DbModel\Event.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DbModel\ITotalizatorContext.cs" />
     <Compile Include="Models\DbModel\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -279,6 +280,8 @@
     <Compile Include="Services\TeamService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="StartUp.cs" />
+    <Compile Include="Util\Exeptions\WrongPageNumberExeption.cs" />
+    <Compile Include="Util\Exeptions\WrongIdExeption.cs" />
     <Compile Include="Util\NinjectRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>

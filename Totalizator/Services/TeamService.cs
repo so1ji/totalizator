@@ -9,15 +9,26 @@ namespace Totalizator.Services
 {
     public class TeamService : ITeamRepository
     {
-        totalizatorEntities db = new totalizatorEntities();
+
+        ITotalizatorContext db;
+
+        public TeamService(ITotalizatorContext dbContext)
+        {
+            db = dbContext;
+        }
+
         public void AddTeam(Team team)
         {
-            throw new NotImplementedException();
+            if (team != null)
+            {
+                db.Teams.Add(team);
+                db.SaveChanges();
+            }
         }
 
         public IEnumerable<Team> ListTeam()
         {
-            db.Configuration.LazyLoadingEnabled = false;
+          //  db.Configuration.LazyLoadingEnabled = false;
             return db.Teams;
         }
     }
