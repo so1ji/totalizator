@@ -19,7 +19,6 @@
         })
     }
 
-
     self.getCountOfBets = function (userId) {
         var tokenKey = "tokenInfo";
         $.ajax({

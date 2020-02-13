@@ -30,7 +30,6 @@ namespace Totalizator
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
             NinjectModule registrations = new NinjectRegistrations();
             var kernel = new StandardKernel(registrations);
             kernel.Bind<DefaultFilterProviders>().ToConstant(new DefaultFilterProviders(GlobalConfiguration.Configuration.Services.GetFilterProviders()));

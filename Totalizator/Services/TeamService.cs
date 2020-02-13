@@ -9,7 +9,6 @@ namespace Totalizator.Services
 {
     public class TeamService : ITeamRepository
     {
-
         ITotalizatorContext db;
 
         public TeamService(ITotalizatorContext dbContext)
@@ -28,7 +27,6 @@ namespace Totalizator.Services
 
         public IEnumerable<Team> ListTeam()
         {
-          //  db.Configuration.LazyLoadingEnabled = false;
             return db.Teams;
         }
     }

@@ -53,7 +53,7 @@ function getCurrentUserId() {
 
 function deleteUserById(id) {
     var data = {
-        id: id, // data or one value?
+        id: id,
     };
     $.ajax({
         type: 'DELETE',
@@ -78,10 +78,6 @@ function getUserNameById(id) {
             var token = getCookiePartByKey(tokenKey);
             xhr.setRequestHeader("Authorization", "Bearer " + token);
         }
-    }).done(function (data) {
-        var obj = jQuery.parseJSON(data);
-        //$("#findusername").val(obj.UserName)
-        //$("#finduseremail").val(obj.Email)
     });
 }
 
@@ -97,9 +93,5 @@ function getAllUsers() {
             var token = getCookiePartByKey(tokenKey);
             xhr.setRequestHeader("Authorization", "Bearer " + token);
         }
-    }).done(function (data) {
-        var obj = jQuery.parseJSON(data);
-        //$("#findusername").val(obj.UserName)
-        //$("#finduseremail").val(obj.Email)
     });
 }

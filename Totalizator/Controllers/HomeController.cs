@@ -21,7 +21,6 @@ namespace Totalizator.Controllers
 
         }
 
-
         public ActionResult Index()
         {
             return View();
@@ -31,7 +30,6 @@ namespace Totalizator.Controllers
         {
             return View();
         }
-
 
         public ActionResult Main()
         {

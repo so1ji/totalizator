@@ -2,9 +2,6 @@
 
     var self = this;
     self.init = function () {
-
-        var currentDate = new Date();
-
         self.eventService = eventService;
 
         self.StatusesList = ko.observable();
@@ -33,7 +30,6 @@
                 self.isDisabled(false);
             }
         }
-
 
         self.SaveEvent = function () {
             createEventService.saveEvent(self.FirstTeamId(), self.SecondTeamId(),

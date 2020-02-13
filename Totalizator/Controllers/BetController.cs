@@ -16,7 +16,6 @@ namespace Totalizator.Controllers
     [Authorize(Roles = "Admin, Moderator, User")]
     public class BetController : ApiController
     {
-
         IBetRepository repository;
 
         public BetController(IBetRepository betRepository)

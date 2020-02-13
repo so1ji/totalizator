@@ -2,8 +2,6 @@
 
     var self = this;
     self.init = function () {
-
-
         self.registrationService = registrationService;
 
         self.UserName = ko.observable();
@@ -14,6 +12,5 @@
 
             registrationService.register(self.UserName(), self.Email(), self.UserPassword());
         }
-
     }
 }

@@ -67,7 +67,7 @@ namespace Totalizator.Controllers
         [HttpPost]
         public HttpResponseMessage Register(EventDomenModel domenEventData)
         {
-            if (domenEventData != null) //TODO ADD VALIDATION
+            if (domenEventData != null)
             {
                 Event eventData = Mapper.Map<Event>(domenEventData);
                 eventData.CreateDate = DateTime.Now;
@@ -85,7 +85,7 @@ namespace Totalizator.Controllers
         [HttpPost]
         public HttpResponseMessage Edit(EventDomenModel domenEventData)
         {
-            if (domenEventData != null) //TODO ADD VALIDATION
+            if (domenEventData != null)
             {
                 Event eventData = Mapper.Map<Event>(domenEventData);
                 eventData.EditDate = DateTime.Now;

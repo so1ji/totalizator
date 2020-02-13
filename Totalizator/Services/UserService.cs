@@ -18,14 +18,10 @@ namespace Totalizator.Services
             db = dbContext;
         }
 
-
         public IEnumerable<User> ListUser(int pageNumber)
         {
-          //  db.Configuration.LazyLoadingEnabled = false;
             int pageSize = 7;
             return db.Users.Include("Roles").OrderBy(p => p.UserName).Skip((pageNumber - 1) * pageSize).Take(pageSize);
-
-
         }
 
         public User Validate(string email, string password)
@@ -33,7 +29,6 @@ namespace Totalizator.Services
 
         public IEnumerable<User> GetUserById(int id)
         {
-           // db.Configuration.LazyLoadingEnabled = false;
             IEnumerable<User> userIEnum = db.Users;
             var users = userIEnum.Where(p => p.Id == id).ToList();
             return users;
@@ -41,15 +36,7 @@ namespace Totalizator.Services
 
         public User GetUserByName(string name)
         {
-         //   db.Configuration.LazyLoadingEnabled = false;
-
             return db.Users.Include("Roles").Where(p => p.UserName == name).FirstOrDefault();
-        }
-
-
-        public void UpdateUser(int id)
-        {
-            //TODO UPDATE 
         }
 
         public void AddUser(User user)
@@ -59,9 +46,9 @@ namespace Totalizator.Services
                 db.Users.Add(user);
                 db.SaveChanges();
 
-                //var RoleUser = db.Roles.Where(x => x.Name == "User").FirstOrDefault();
-                //user.Roles.Add(RoleUser);
-                //db.SaveChanges();
+                var RoleUser = db.Roles.Where(x => x.Name == "User").FirstOrDefault();
+                user.Roles.Add(RoleUser);
+                db.SaveChanges();
             }
         }
 

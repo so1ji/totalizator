@@ -30,8 +30,6 @@
             Id: sessionStorage.TeamSecondId
         }]);
 
-
-
         self.SaveEvent = function () {
             editEventService.saveEvent(
                 self.TeamFirstCoefficient(), self.TeamSecondCoefficient(), self.WinnerTeamId(),
@@ -47,7 +45,5 @@
                 self.isDisabled(false);
             }
         }
-
-
     }
 } 

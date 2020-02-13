@@ -5,7 +5,7 @@
         $("#message-in-modal").text("Are you sure about make bet?");
         $.blockUI({ message: $('#question'), css: {width: '275px', top: '30%', left: '41%'} });
         $('#yes').click(function () {
-            var creatorId = getCurrentUserId(); //return a obj
+            var creatorId = getCurrentUserId();
             console.log(creatorId);
 
             var tokenKey = "tokenInfo";

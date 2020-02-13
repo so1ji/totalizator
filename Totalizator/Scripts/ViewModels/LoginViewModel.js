@@ -2,8 +2,6 @@
 
     var self = this;
     self.init = function () {
-
-
         self.loginService = loginService;
 
         self.UserName = ko.observable();
@@ -20,6 +18,5 @@
         self.RegisrtationClick = function () {
             location.href = "/Home/Registration";
         }
-
     }
 }

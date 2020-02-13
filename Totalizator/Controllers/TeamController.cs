@@ -12,7 +12,6 @@ namespace Totalizator.Controllers
 {
     public class TeamController : ApiController
     {
-
         ITeamRepository repository;
 
         public TeamController(ITeamRepository teamRepository)
@@ -26,6 +25,5 @@ namespace Totalizator.Controllers
             var teamList = repository.ListTeam();
             return JsonConvert.SerializeObject(teamList);
         }
-
     }
 }

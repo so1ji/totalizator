@@ -110,18 +110,9 @@ namespace Totalizator.Controllers
             {
                 if (userDomenData != null)
                 {
-                    //if (userData.UserName.Length > 3 && userData.UserName.Length < 15)
-                    //{
-                    //    if (userData.Password.Length > 6 && userData.Password.Length < 10)
-                    //    {
-                    //        if (userData.Email.Length > 5 && userData.Email.Length < 40)
-                    //        {
                     var userData = Mapper.Map<User>(userDomenData);
                     repository.AddUser(userData);
                     return new HttpResponseMessage(HttpStatusCode.OK);
-                    //            }
-                    //        }
-                    //    }
                 }
             }
             return new HttpResponseMessage(HttpStatusCode.Conflict);
